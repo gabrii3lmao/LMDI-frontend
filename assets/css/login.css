@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    background: #f7f7f8;
+}
+
+/* --- LADO ESQUERDO --- */
+.left-panel {
+    width: 45%;
+    position: relative;
+
+    /* Imagem + suavidade */
+    background:
+        linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.25) 0%,
+            rgba(0, 0, 0, 0.10) 40%,
+            rgba(0, 0, 0, 0.03) 80%
+        ),
+        url(../img/feliz-professor-afro-americano-dando-resultados-de-testes-para-alunos-ensino-fundamental-na-sala-de-aula.jpg)
+        center/cover no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Transição para o lado direito — mais suave */
+.left-panel::after {
+    content: "";
+    position: absolute;
+    right: -90px;
+    top: 0;
+    width: 170px;
+    height: 100%;
+
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.15),
+        rgba(255, 255, 255, 0.9)
+    );
+
+    filter: blur(45px);
+}
+
+/* Texto do lado esquerdo */
+.left-content {
+    z-index: 2;
+    color: white;
+    padding: 40px;
+    max-width: 420px;
+}
+
+.left-content h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 3px 12px rgba(0,0,0,0.55);
+}
+
+.left-content p {
+    font-size: 19px;
+    line-height: 1.5;
+    opacity: 0.92;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* --- LADO DIREITO (LOGIN) --- */
+.right-panel {
+    width: 55%;
+
+    background: linear-gradient(
+        to right,
+        #fafafa 0%,
+        #ffffff 40%,
+        #fdfdfd 100%
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+}
+
+/* Garantindo consistência interna */
+.login-box * {
+    box-sizing: border-box;
+}
+
+.login-box {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    padding: 38px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 380px;
+
+    border: 1px solid rgba(0,0,0,0.07);
+    box-shadow: 0 8px 26px rgba(0,0,0,0.07);
+}
+
+.login-box h2 {
+    margin-bottom: 25px;
+    font-size: 26px;
+    text-align: center;
+    color: #222;
+    font-weight: 700;
+}
+
+.login-box .input-group {
+    margin-bottom: 18px;
+}
+
+.login-box label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #cfcfcf;
+    background: #ffffff;
+    color: #333;
+
+    transition: 0.2s ease;
+}
+
+.login-box input:focus {
+    border-color: #222;
+    box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.15);
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: 0.2s ease;
+}
+
+.login-box button:hover {
+    background: #111;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+    .left-panel { display: none; }
+    .right-panel { width: 100%; }
+}

@@ -1,0 +1,202 @@
+/* --- 1. CONFIGURAÇÃO GLOBAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    background: #18181b; 
+}
+
+/* --- 2. PAINEL ESQUERDO (IMAGEM) --- */
+.left-panel {
+    width: 45%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 0%,
+            rgba(0, 0, 0, 0.35) 90%
+        ),
+        url(https://images.unsplash.com/photo-1543269865-cbf427effbad?fit=crop&w=1080&q=80)
+        center/cover no-repeat;
+}
+
+/* Transição suave (Fumaça) */
+.left-panel::after {
+    content: "";
+    position: absolute;
+    right: -80px;
+    top: 0;
+    width: 160px;
+    height: 100%;
+    z-index: 10;
+    
+    background: linear-gradient(
+        to right, 
+        rgba(39, 39, 42, 0), 
+        #27272a 
+    );
+    filter: blur(40px);
+}
+
+.left-content {
+    z-index: 2;
+    color: #ffffff;
+    padding: 40px;
+    text-align: left;
+    max-width: 420px;
+}
+
+.left-content h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+}
+
+.left-content p {
+    font-size: 19px;
+    color: #f1f1f1;
+    line-height: 1.5;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    opacity: 0.9;
+}
+
+/* --- 3. PAINEL DIREITO (FORMULÁRIO) --- */
+.right-panel {
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+
+    background: linear-gradient(
+        240deg, 
+        #18181b 0%, 
+        #27272a 100%
+    );
+}
+
+/* --- 4. CAIXA DE AUTENTICAÇÃO --- */
+.auth-box * {
+    box-sizing: border-box;
+}
+
+.auth-box {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.auth-box h2 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 26px;
+    color: #222;
+    font-weight: 700;
+    text-align: center;
+}
+
+.auth-box .input-group {
+    margin-bottom: 20px; 
+}
+
+.auth-box label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+}
+
+.auth-box input {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    background: #ffffff;
+    color: #333;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.auth-box input:focus {
+    border-color: #333; 
+    box-shadow: 0 0 0 3px rgba(51, 51, 51, 0.15);
+}
+
+.auth-box button {
+    width: 100%;
+    padding: 12px;
+    background: #333;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-box button:hover {
+    background: #111;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Link “Já tem conta?” */
+.auth-box .form-footer {
+    margin-top: 25px;
+    font-size: 14px;
+    text-align: center;
+    color: #444;
+}
+
+.auth-box .form-footer a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.auth-box .form-footer a:hover {
+    color: #111;
+    text-decoration: underline;
+}
+
+/* --- 5. RESPONSIVO (Mobile) --- */
+@media (max-width: 900px) {
+    .left-panel { 
+        display: none; 
+    }
+
+    .right-panel { 
+        width: 100%;
+        align-items: flex-start;
+        padding-top: 60px;
+    }
+
+    .auth-box {
+        background: #ffffff;
+        backdrop-filter: none;
+        border: 1px solid #ccc;
+        box-shadow: rgba(0,0,0,0.2);
+    }
+}
