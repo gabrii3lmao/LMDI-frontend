@@ -1,68 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro</title>
-    <link rel="stylesheet" href="../assets/css/cadastro.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../assets/css/cadastro.css" />
+  </head>
+
+  <body>
     <div class="left-panel">
-        <div class="left-content">
-            <h1>Junte-se à Nossa Comunidade</h1>
-            <p>Crie sua conta para começar a gerenciar e acompanhar o progresso dos seus alunos de forma eficiente.</p>
-        </div>
+      <div class="left-content">
+        <h1>Junte-se à Nossa Comunidade</h1>
+        <p>
+          Crie sua conta para começar a gerenciar e acompanhar o progresso dos
+          seus alunos de forma eficiente.
+        </p>
+      </div>
     </div>
 
     <div class="right-panel">
-
-        <form class="auth-box-form">
+      <form class="auth-box-form">
         <div class="auth-box">
-            <h2>Criar Conta</h2>
+          <h2>Criar Conta</h2>
 
-            <div class="input-group">
-                <label for="name">Nome Completo</label>
-                <input type="text" id="name">
-            </div>
-            <div class="nome-erro">
+          <div class="input-group">
+            <label for="name">Nome Completo</label>
+            <input type="text" id="name" />
+          </div>
+          <div class="input-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" />
+          </div>
+          <div class="input-group">
+            <label for="password">Senha</label>
+            <input type="password" id="password" />
+          </div>
+          <div class="input-group">
+            <label for="confirm-password">Confirmar Senha</label>
+            <input type="password" id="confirm-password" />
+          </div>
+          <button type="submit" id="submit-button">Cadastrar</button>
 
-            </div>
-            <div class="input-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email">
-            </div>
-            <div class="email-erro">
-
-            </div>
-
-            <div class="input-group">
-                <label for="password">Senha</label>
-                <input type="password" id="password">
-            </div>
-            <div class="senha-erro">
-
-            </div>
-
-            <div class="input-group">
-                <label for="confirm-password">Confirmar Senha</label>
-                <input type="password" id="confirm-password">
-            </div>
-            <div class="confirmarSenha-erro">
-
-            </div>
-
-            <button type="submit" id="submit-button">Cadastrar</button>
-
-            <div class="form-footer">
-                <p>Já tem uma conta? <a href="/login.html">Faça login</a></p>
-            </div>
-
-        </div> 
-        </form>
-    </div> 
-
+          <div class="form-footer">
+            <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+          </div>
+        </div>
+      </form>
+    </div>
 
     <script type="module" src="../assets/js/pages/cadastro.js"></script>
-</body>
+  </body>
 </html>
-

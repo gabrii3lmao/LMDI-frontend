@@ -1,33 +1,52 @@
+// validators.js
+
+export function validaUsuario(usuario) {
+    const erros = [];
+
+    if (usuario.length < 3 || usuario.length > 12) {
+        erros.push("Usuário deve ter entre 3 e 12 caracteres.");
+    }
+
+    if (!/^[a-zA-Z0-9]+$/.test(usuario)) {
+        erros.push("Usuário deve conter apenas letras e números.");
+    }
+
+    return {
+        valido: erros.length === 0,
+        erros
+    };
+}
+
+export function validaSenha(senha) {
+    const erros = [];
+
+    if (senha.length < 6 || senha.length > 12) {
+        erros.push("Senha deve ter entre 6 e 12 caracteres.");
+    }
+
+    // Exemplo: exigir número
+    if (!/\d/.test(senha)) {
+        erros.push("Senha deve conter ao menos 1 número.");
+    }
+
+    return {
+        valido: erros.length === 0,
+        erros
+    };
+}
+
+
 export function validarEmail(email) {
+    const erros = [];
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!email || email.trim() === "") {
-        return { valido: false, erro: "campo_vazio" };
-    }
 
     if (!regex.test(email)) {
-        return { valido: false, erro: "formato_invalido" };
+        erros.push("Formato de email inválido!");
     }
 
-    return { valido: true };
+    return { 
+        valido: erros.length === 0,
+        erros
+    };
 }
-
-export function validarSenha(senha) {
-    const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
-    if (!senha || senha.trim() === "") {
-        return { valido: false, erro: "campo_vazio" };
-    }
-
-    if (senha.length < 8) {
-        return { valido: false, erro: "curta_demais" };
-    }
-
-    if (!regex.test(senha)) {
-        return { valido: false, erro: "formato_invalido" };
-    }
-
-    return { valido: true };
-}
-
-// CONSERTAR O CSS, CADASTRO TODO FUDIDO, HTML MAIS AINDA (commit fodasse)

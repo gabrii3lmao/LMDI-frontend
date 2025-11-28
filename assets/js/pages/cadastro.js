@@ -1,67 +1,89 @@
-import { validarEmail, validarSenha } from "../utils/validators.js";
-import { mensagens } from "../utils/messages.js";
+// cadastro.js
+import {
+  validaUsuario,
+  validaSenha,
+  validarEmail,
+} from "../utils/validators.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-    const authForm = document.querySelector(".auth-box-form");
-    const inputNome = document.getElementById("name");
-    const inputEmail = document.getElementById("email");
-    const inputPassword = document.getElementById("password");
-    const inputConPassword = document.getElementById("confirm-password");
+class ValidaForm {
+  constructor() {
+    this.formulario = document.querySelector(".auth-box-form");
+    this.eventos();
+  }
 
-    const boxNomeErro = document.querySelector(".nome-erro");
-    const boxEmailErro = document.querySelector(".email-erro");
-    const boxSenhaErro = document.querySelector(".senha-erro");
-    const boxConfirmarSenhaErro = document.querySelector(".confirmarSenha-erro");
-
-    authForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        limparErros(); // sempre bom limpar antes
-
-        const nome = inputNome.value.trim();
-        const email = inputEmail.value.trim();
-        const senha = inputPassword.value.trim();
-        const confirmarSenha = inputConPassword.value.trim();
-
-        // Nome 
-        if (!nome) {
-            mostrarMensagemErro(mensagens.campo_vazio, boxNomeErro);
-            return;
-        }
-
-        // Email
-        const resultadoEmail = validarEmail(email);
-        if (!resultadoEmail.valido) {
-            mostrarMensagemErro(mensagens[resultadoEmail.erro], boxEmailErro);
-            return;
-        }
-
-        // Senha
-        const resultadoSenha = validarSenha(senha);
-        if (!resultadoSenha.valido) {
-            mostrarMensagemErro(mensagens[resultadoSenha.erro], boxSenhaErro);
-            return;
-        }
-
-        // Confirmar senha
-        if (senha !== confirmarSenha) {
-            mostrarMensagemErro("As senhas não coincidem", boxConfirmarSenhaErro);
-            return;
-        }
-
-        console.log("Cadastro foi no embalo", { nome, email, senha });
-        authForm.submit();
+  eventos() {
+    this.formulario.addEventListener("submit", (e) => {
+      this.handleSubmit(e);
     });
+  }
 
-    function limparErros() {
-        boxNomeErro.textContent = "";
-        boxEmailErro.textContent = "";
-        boxSenhaErro.textContent = "";
-        boxConfirmarSenhaErro.textContent = "";
+  handleSubmit(e) {
+    e.preventDefault();
+    const formValido = this.camposSaoValidos();
+    if (formValido) {
+      console.log("Formulário ok, pode enviar!");
+      this.formulario.submit();
     }
-});
+  }
 
-function mostrarMensagemErro(texto, elemento) {
-    elemento.textContent = texto;
-    elemento.style.color = "red";
+  camposSaoValidos() {
+    let valid = true;
+
+    // remove mensagens antigas
+    for (let errorText of this.formulario.querySelectorAll(".error-text")) {
+      errorText.remove();
+    }
+
+    // percorre inputs
+    for (let campo of this.formulario.querySelectorAll("input")) {
+      // busca o label correspondente pelo atributo `for` (mais robusto que previousElementSibling)
+      const labelEl = this.formulario.querySelector(`label[for="${campo.id}"]`);
+      const label = labelEl ? labelEl.innerText : campo.id || "Campo";
+
+      // Input vazio
+      if (!campo.value.trim()) {
+        this.criaErro(campo, `Campo "${label}" não pode ficar em branco`);
+        valid = false;
+      }
+
+      // Valida usuário (compatível com classes antigas ou id `name`)
+      if (campo.id === "name" || campo.classList.contains("nome")) {
+        const resultado = validaUsuario(campo.value);
+        if (!resultado.valido) {
+          resultado.erros.forEach((msg) => this.criaErro(campo, msg));
+          valid = false;
+        }
+      }
+
+      // valida email (compatível com classes antigas ou id `email`)
+      if (campo.id === "email" || campo.classList.contains("email")) {
+        const resultado = validarEmail(campo.value);
+        if (!resultado.valido) {
+          resultado.erros.forEach((msg) => this.criaErro(campo, msg));
+          valid = false;
+        }
+      }
+
+      // Valida senha (qualquer input do tipo password, id contendo 'password' ou classe 'password')
+      if (campo.type === "password" || campo.id.includes("password") || campo.classList.contains("password")
+      ) {
+        const resultado = validaSenha(campo.value);
+        if (!resultado.valido) {
+          resultado.erros.forEach((msg) => this.criaErro(campo, msg));
+          valid = false;
+        }
+      }
+    }
+
+    return valid;
+  }
+
+  criaErro(campo, mensagem) {
+    const div = document.createElement("div");
+    div.classList.add("error-text");
+    div.innerText = mensagem;
+    campo.insertAdjacentElement("afterend", div);
+  }
 }
+
+const valida = new ValidaForm();
