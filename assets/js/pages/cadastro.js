@@ -1,83 +1,68 @@
-// cadastro.js
-import { validaUsuario, validaSenha, validarEmail } from "../utils/validators.js";
+import { validarEmail, validaSenha, validaUsuario } from "../utils/validators.js";
+import { removeErros, mostraErros, validaCampo } from "../utils/formUtils.js";
+const form = document.querySelector(".auth-box-form");
 
-class ValidaForm {
-  constructor() {
-    this.formulario = document.querySelector(".auth-box-form");
-    this.eventos();
-  }
+form.addEventListener("submit", e => {
+  e.preventDefault();
 
-  eventos() {
-    this.formulario.addEventListener("submit", (e) => {
-      this.handleSubmit(e);
+  let valid = true;
+  let firstInvalidField = null;
+
+
+  const nome = form.querySelector("#name");
+  const email = form.querySelector("#email");
+  const senha = form.querySelector("#password");
+  const confirmar = form.querySelector("#confirm-password");
+
+
+  const campos = [
+    {input: nome, validator: validaUsuario},
+    {input: email, validator: validarEmail},
+    {input: senha, validator: validaSenha}
+  ]
+
+  // Adicionando validação em tempo real
+  campos.forEach(campoObj => {
+  campoObj.input.addEventListener("blur", () => {
+    // 1. Remove os erros anteriores daquele campo específico
+    removeErros(campoObj.input.parentNode); 
+    
+    // 2. Valida o campo
+    validaCampo(campoObj.validator, campoObj.input);
+
     });
+  });
+
+  removeErros(form);
+
+  let resposta;
+
+  if(!validaCampo(validaUsuario, nome)) {
+    if (!firstInvalidField) firstInvalidField = nome;
+    valid = false;
+  }
+  if(!validaCampo(validarEmail, email)) {
+    if (!firstInvalidField) firstInvalidField = email;
+    valid = false;
+  }
+  if(!validaCampo(validaSenha, senha)) {
+    if (!firstInvalidField) firstInvalidField = senha;
+    valid = false;
+  }
+  if (senha.value !== confirmar.value) {
+    mostraErros(confirmar, ["As senhas precisam ser iguais"]);
+    valid = false;
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const formValido = this.camposSaoValidos();
-    if (formValido) {
-      console.log("Formulário ok, pode enviar!");
-      this.formulario.submit();
-    }
+  if (valid) {
+    // AQUI COLOCAR FETCH/AJAX PARA EVITAR REENVIO
+    // form.submit(); é uma desgraça
+    console.log("Formulário Válido! Enviando dados...");
+  } else if (firstInvalidField) {
+    // Foca no primeiro campo com erro
+    firstInvalidField.focus();
   }
+});
 
-  camposSaoValidos() {
-    let valid = true;
 
-    // remove mensagens antigas
-    for (let errorText of this.formulario.querySelectorAll(".error-text")) {
-      errorText.remove();
-    }
-
-    // percorre inputs
-    for (let campo of this.formulario.querySelectorAll("input")) {
-
-      const label = campo.previousElementSibling.innerText;
-
-      // Input vazio
-      if (!campo.value.trim()) {
-        this.criaErro(campo, `Campo "${label}" não pode ficar em branco`);
-        valid = false;
-      }
-
-      // Valida usuário 
-      if (campo.id === "name") {
-        const resultado = validaUsuario(campo.value);
-        if (!resultado.valido) {
-          resultado.erros.forEach((msg) => this.criaErro(campo, msg));
-          valid = false;
-        }
-      }
-
-      // valida email 
-      if (campo.id === "email") {
-        const resultado = validarEmail(campo.value);
-        if (!resultado.valido) {
-          resultado.erros.forEach((msg) => this.criaErro(campo, msg));
-          valid = false;
-        }
-      }
-
-      // Valida senha 
-      if (campo.id.includes("password")) {
-        const resultado = validaSenha(campo.value);
-        if (!resultado.valido) {
-          resultado.erros.forEach((msg) => this.criaErro(campo, msg));
-          valid = false;
-        }
-      }
-    }
-
-    return valid;
-  }
-
-  criaErro(campo, mensagem) {
-    const div = document.createElement("div");
-    div.classList.add("error-text");
-    div.innerText = mensagem;
-    campo.insertAdjacentElement("afterend", div);
-  }
-}
-
-const valida = new ValidaForm();
+// funções utéis
