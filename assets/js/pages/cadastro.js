@@ -36,7 +36,7 @@ class ValidaForm {
 
     // percorre inputs
     for (let campo of this.formulario.querySelectorAll("input")) {
-      // busca o label correspondente pelo atributo `for` (mais robusto que previousElementSibling)
+ 
       const labelEl = this.formulario.querySelector(`label[for="${campo.id}"]`);
       const label = labelEl ? labelEl.innerText : campo.id || "Campo";
 
@@ -46,7 +46,7 @@ class ValidaForm {
         valid = false;
       }
 
-      // Valida usuário (compatível com classes antigas ou id `name`)
+      // Valida usuário 
       if (campo.id === "name" || campo.classList.contains("nome")) {
         const resultado = validaUsuario(campo.value);
         if (!resultado.valido) {
@@ -55,7 +55,7 @@ class ValidaForm {
         }
       }
 
-      // valida email (compatível com classes antigas ou id `email`)
+      // valida email 
       if (campo.id === "email" || campo.classList.contains("email")) {
         const resultado = validarEmail(campo.value);
         if (!resultado.valido) {
@@ -64,7 +64,7 @@ class ValidaForm {
         }
       }
 
-      // Valida senha (qualquer input do tipo password, id contendo 'password' ou classe 'password')
+      // Valida senha 
       if (campo.type === "password" || campo.id.includes("password") || campo.classList.contains("password")
       ) {
         const resultado = validaSenha(campo.value);
