@@ -35,8 +35,6 @@ form.addEventListener("submit", e => {
 
   removeErros(form);
 
-  let resposta;
-
   if(!validaCampo(validaUsuario, nome)) {
     if (!firstInvalidField) firstInvalidField = nome;
     valid = false;
