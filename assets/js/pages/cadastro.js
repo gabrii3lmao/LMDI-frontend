@@ -1,9 +1,5 @@
 // cadastro.js
-import {
-  validaUsuario,
-  validaSenha,
-  validarEmail,
-} from "../utils/validators.js";
+import { validaUsuario, validaSenha, validarEmail } from "../utils/validators.js";
 
 class ValidaForm {
   constructor() {
@@ -36,9 +32,8 @@ class ValidaForm {
 
     // percorre inputs
     for (let campo of this.formulario.querySelectorAll("input")) {
- 
-      const labelEl = this.formulario.querySelector(`label[for="${campo.id}"]`);
-      const label = labelEl ? labelEl.innerText : campo.id || "Campo";
+
+      const label = campo.previousElementSibling.innerText;
 
       // Input vazio
       if (!campo.value.trim()) {
@@ -47,7 +42,7 @@ class ValidaForm {
       }
 
       // Valida usuário 
-      if (campo.id === "name" || campo.classList.contains("nome")) {
+      if (campo.id === "name") {
         const resultado = validaUsuario(campo.value);
         if (!resultado.valido) {
           resultado.erros.forEach((msg) => this.criaErro(campo, msg));
@@ -56,7 +51,7 @@ class ValidaForm {
       }
 
       // valida email 
-      if (campo.id === "email" || campo.classList.contains("email")) {
+      if (campo.id === "email") {
         const resultado = validarEmail(campo.value);
         if (!resultado.valido) {
           resultado.erros.forEach((msg) => this.criaErro(campo, msg));
@@ -65,8 +60,7 @@ class ValidaForm {
       }
 
       // Valida senha 
-      if (campo.type === "password" || campo.id.includes("password") || campo.classList.contains("password")
-      ) {
+      if (campo.id.includes("password")) {
         const resultado = validaSenha(campo.value);
         if (!resultado.valido) {
           resultado.erros.forEach((msg) => this.criaErro(campo, msg));
