@@ -1,48 +1,51 @@
-const request = obj => {
-    return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-    
-        xhr.open(obj.method, obj.url, true);
-        xhr.send();
-    
-        xhr.addEventListener("load", () => {
-            if(xhr.status >= 200 && xhr.status < 300) {
-                resolve(xhr.responseText);
-            } else {
-                reject(xhr.statusText);
-            }
-        });
-    });
+async function request(url, method = "GET") {
+  const res = await fetch(url, { method });
+
+  if (!res.ok) {
+    throw new Error(`Erro HTTP ${res.status}`);
+  }
+
+  return await res.text();
 }
 
+document.addEventListener("click", async (e) => {
+  if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button === 1) {
+    return;
+  }
 
-document.addEventListener("click", e => {
-    const el = e.target;
-    const tag = el.tagName.toLowerCase();
+  const link = e.target.closest("a");
 
-    if(tag === "a") {
-        e.preventDefault();
-        carregarPagina(el);
-    }
+  if (!link) return;
+
+  const href = link.getAttribute("href");
+  const isExternal = link.origin !== location.origin;
+
+  if (isExternal) return;
+  if (href.startsWith("#")) return;
+
+  e.preventDefault();
+  carregarPagina(href);
 });
 
 
-function carregarPagina(elemento) {
-    const href = elemento.getAttribute("href");
-    const objConfig = {
-        method: "GET",
-        url: href
-    };
-
-    request(objConfig).then(response => {
-        carregaResultado(response);
-    }).catch(error => console.log(error));
-
-
+async function carregarPagina(href) {
+  try {
+    const html = await request(href, "GET");
+    carregaResultado(html);
+  } catch (err) {
+    console.error("Erro ao carregar página:", err);
+  }
 }
 
 
-function carregaResultado(result) {
-    const resultado = document.querySelector(".content");
-    resultado.innerHTML = result;
+
+function carregaResultado(html) {
+  const resultado = document.querySelector(".content");
+
+  if (!resultado) {
+    console.error("Elemento .content não encontrado!");
+    return;
+  }
+
+  resultado.innerHTML = html;
 }
