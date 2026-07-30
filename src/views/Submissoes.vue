@@ -42,18 +42,20 @@ const totalItems = ref(0);
 const totalPages = ref(0);
 
 // 1. Query das Turmas (Cache Compartilhado Global)
-const { data: turmas, isLoading: loadingTurmas } = useQuery({
+const { data: rawTurmas, isLoading: loadingTurmas } = useQuery({
   queryKey: ["turmas"],
   queryFn: async () => {
     const res = await turmaService.getAll(1, 100);
     const paginated = res.data as any;
     return paginated?.data || paginated || [];
   },
-  placeholderData: [],
+  placeholderData: (prev) => prev,
 });
 
+const turmas = computed(() => rawTurmas.value ?? []);
+
 // 2. Query das Provas (Dependente da Turma selecionada)
-const { data: exams, isLoading: loadingExams } = useQuery({
+const { data: rawExams, isLoading: loadingExams } = useQuery({
   queryKey: ["provas", selectedClassId],
   queryFn: async () => {
     const res = await examService.listarGabaritosMestre(selectedClassId.value, 1, 100);
@@ -61,11 +63,13 @@ const { data: exams, isLoading: loadingExams } = useQuery({
     return paginated?.data || paginated || [];
   },
   enabled: computed(() => !!selectedClassId.value), // Só executa se tiver turma
-  placeholderData: [],
+  placeholderData: (prev) => prev,
 });
 
+const exams = computed(() => rawExams.value ?? []);
+
 // 3. Query das Submissões (Dependente da Prova selecionada)
-const { data: submissions, isLoading: loadingSubmissions } = useQuery({
+const { data: rawSubmissions, isLoading: loadingSubmissions } = useQuery({
   queryKey: ["submissoes", selectedExamId, selectedStatus, page, limit],
   queryFn: async () => {
     const res = await submissionService.getAllSubmission(
@@ -83,8 +87,10 @@ const { data: submissions, isLoading: loadingSubmissions } = useQuery({
     return paginated || [];
   },
   enabled: computed(() => !!selectedExamId.value), // Só executa se tiver prova
-  placeholderData: [],
+  placeholderData: (prev) => prev,
 });
+
+const submissions = computed(() => rawSubmissions.value ?? []);
 
 // Limpa a prova selecionada ao trocar de turma
 watch(selectedClassId, () => {

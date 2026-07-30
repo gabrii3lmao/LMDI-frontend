@@ -186,7 +186,7 @@ const handleSalvarGabaritoOficial = async (dados: any) => {
               class="w-full appearance-none bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 border border-slate-100 dark:border-slate-600 rounded-xl pl-4 pr-10 py-3 text-sm text-slate-700 dark:text-slate-200 outline-none focus:ring-2 focus:ring-emerald-500 transition-all cursor-pointer shadow-sm"
             >
               <option value="" disabled>1. Selecione uma Turma</option>
-              <option v-for="t in turmas" :key="t._id" :value="t._id">
+              <option v-for="t in turmas ?? []" :key="t._id" :value="t._id">
                 {{ t.name }}
               </option>
             </select>

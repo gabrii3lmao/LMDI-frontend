@@ -35,5 +35,9 @@ coverage
 # Vitest
 __screenshots__/
 
+# Nuxt build
+.nuxt/
+.output/
+
 # Vite
 *.timestamp-*-*.mjs

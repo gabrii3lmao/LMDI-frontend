@@ -1,4 +1,5 @@
 import axios from "axios";
+import { disconnectSocket, connectSocket } from "./socket";
 
 const api = axios.create({
   baseURL: import.meta.env.PROD
@@ -62,12 +63,16 @@ api.interceptors.response.use(
 
         localStorage.setItem("token", newAccessToken);
 
+        disconnectSocket();
+        connectSocket(newAccessToken);
+
         processQueue(null, newAccessToken);
 
         originalRequest.headers["Authorization"] = "Bearer " + newAccessToken;
         return api(originalRequest);
       } catch (error) {
         processQueue(error, null);
+        disconnectSocket();
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         window.location.href = "/signin";

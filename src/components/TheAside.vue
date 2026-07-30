@@ -5,11 +5,21 @@ import { useRoute } from "vue-router";
 import Drawer from "primevue/drawer";
 import Avatar from "primevue/avatar";
 import { useToast } from "primevue/usetoast";
+import { disconnectSocket } from "@/services/socket";
+import { useThemeStore } from "@/stores/theme";
+import logLight from "@/assets/logo1.webp";
+import logDark from "@/assets/logo-white.png";
 
 const route = useRoute();
 const toast = useToast();
+const themeStore = useThemeStore();
 const name = ref("");
+const userPhoto = ref("");
 const isMenuOpen = ref(false);
+
+const logoSrc = computed(() =>
+  themeStore.theme === "dark" ? logDark : logLight,
+);
 
 function showComingSoon() {
   toast.add({
@@ -37,8 +47,11 @@ const handleSignout = async () => {
   } catch (error: any) {
     console.error("Erro ao deslogar:", error.message);
   } finally {
+    disconnectSocket();
     localStorage.removeItem("token");
     localStorage.removeItem("username");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userPhoto");
     window.location.href = "/signin";
   }
 };
@@ -53,6 +66,7 @@ const updateUsername = () => {
   } else {
     name.value = "";
   }
+  userPhoto.value = localStorage.getItem("userPhoto") ?? "";
 };
 
 watch(
@@ -91,13 +105,12 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
         >
           <i class="pi pi-bars text-xl"></i>
         </button>
-        <span class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tighter">
-          LetMe<span class="text-emerald-500">DoIt</span>
-        </span>
+        <img :src="logoSrc" alt="LetMeDoIt" class="h-8 w-auto" />
       </div>
 
       <Avatar
-        :label="name.charAt(0) || 'P'"
+        :image="userPhoto || undefined"
+        :label="userPhoto ? '' : (name.charAt(0) || 'P')"
         shape="circle"
         class="!bg-emerald-100 !text-emerald-600 !border !border-emerald-200 !font-bold"
         style="width: 2rem; height: 2rem"
@@ -116,28 +129,19 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
     >
       <template #container="{ closeCallback }">
         <div
-          class="w-64 h-screen bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 shadow-2xl flex flex-col"
+          class="w-64 h-dvh bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 shadow-2xl flex flex-col overflow-hidden"
         >
           <div
             class="h-20 flex items-center justify-between px-6 border-b border-slate-100 dark:border-slate-700 shrink-0"
           >
             <RouterLink
               to="/dashboard"
-              class="flex flex-col justify-center group outline-none"
+              class="flex items-center gap-3 group outline-none"
               @click="closeCallback"
             >
-              <div class="flex items-baseline gap-1">
-                <span
-                  class="text-2xl font-extrabold tracking-tighter text-slate-800 dark:text-slate-100 transition-colors group-hover:text-slate-950 dark:group-hover:text-white"
-                >
-                  LetMe<span class="text-emerald-500">DoIt</span>
-                </span>
-                <span
-                  class="w-1.5 h-1.5 rounded-full bg-emerald-500 group-hover:bg-emerald-600 group-hover:scale-125 transition-all duration-200"
-                ></span>
-              </div>
+              <img :src="logoSrc" alt="LetMeDoIt" class="h-9 w-auto" />
               <span
-                class="text-[10px] uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 mt-0.5 font-bold"
+                class="text-[10px] uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 font-bold self-end pb-0.5"
               >
                 Painel Docente
               </span>
@@ -151,7 +155,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
             </button>
           </div>
 
-          <nav class="flex-1 overflow-y-auto py-6 px-4 custom-scrollbar min-h-0">
+          <nav class="flex-1 overflow-y-auto py-4 px-4 custom-scrollbar min-h-0">
             <div class="mb-6">
               <h3
                 class="px-4 text-[0.6rem] font-bold text-slate-900 dark:text-slate-200 uppercase tracking-widest mb-3"
@@ -302,7 +306,8 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
         <div class="p-4 border-t border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 shrink-0">
           <div class="flex items-center gap-3 mb-4 px-2">
             <Avatar
-              :label="name.charAt(0) || 'P'"
+              :image="userPhoto || undefined"
+              :label="userPhoto ? '' : (name.charAt(0) || 'P')"
               shape="circle"
               class="!bg-emerald-100 dark:!bg-emerald-900/40 !text-emerald-600 dark:!text-emerald-400 !border !border-emerald-200 dark:!border-emerald-700 !font-bold"
               style="width: 2.25rem; height: 2.25rem"
@@ -335,21 +340,11 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
       >
         <RouterLink
           to="/dashboard"
-          class="flex flex-col justify-center group outline-none"
+          class="flex items-center gap-3 group outline-none"
         >
-          <div class="flex items-baseline gap-1">
-            <span
-              class="text-2xl font-extrabold tracking-tighter text-slate-800 dark:text-slate-100 transition-colors group-hover:text-slate-950 dark:group-hover:text-white"
-            >
-              LetMe<span class="text-emerald-500">DoIt</span>
-            </span>
-            <span
-              class="w-1.5 h-1.5 rounded-full bg-emerald-500 group-hover:bg-emerald-600 group-hover:scale-125 transition-all duration-200"
-            ></span>
-          </div>
-
+          <img :src="logoSrc" alt="LetMeDoIt" class="h-9 w-auto" />
           <span
-            class="text-[10px] uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mt-0.5 font-bold"
+            class="text-[10px] uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 font-bold self-end pb-0.5"
           >
             Painel Docente
           </span>
@@ -501,7 +496,8 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
           <div class="p-4 border-t border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 shrink-0">
         <div class="flex items-center gap-3 mb-4 px-2">
           <Avatar
-            :label="name.charAt(0) || 'P'"
+            :image="userPhoto || undefined"
+            :label="userPhoto ? '' : (name.charAt(0) || 'P')"
             shape="circle"
             class="!bg-emerald-100 dark:!bg-emerald-900/40 !text-emerald-600 dark:!text-emerald-400 !border !border-emerald-200 dark:!border-emerald-700 !font-bold"
             style="width: 2.25rem; height: 2.25rem"

@@ -25,6 +25,7 @@ const callbackGoogle = async (response: any) => {
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("username", res.data.user.name);
     localStorage.setItem("userId", res.data.user.id);
+    localStorage.setItem("userPhoto", res.data.user.avatarUrl || "");
 
     router.push("/dashboard");
   } catch (error) {
@@ -60,7 +61,7 @@ async function handleLogin() {
       password: password.value,
     });
     const token = response.data.token;
-    const { id, name, isVerified: verified } = response.data.user;
+    const { id, name, isVerified: verified, avatarUrl } = response.data.user;
 
     if (!verified) {
       isVerified.value = false;
@@ -71,6 +72,7 @@ async function handleLogin() {
     localStorage.setItem("token", token);
     localStorage.setItem("username", name);
     localStorage.setItem("userId", id);
+    localStorage.setItem("userPhoto", avatarUrl || "");
 
     router.push("/dashboard");
   } catch (error: any) {

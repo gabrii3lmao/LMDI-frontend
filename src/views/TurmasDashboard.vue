@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { turmaService } from "@/services/turmas";
 import TurmaCard from "@/components/Classes/TurmaCard.vue";
 import TurmaModal from "@/components/Classes/TurmaModal.vue";
@@ -17,8 +17,7 @@ const limit = ref(10);
 const totalItems = ref(0);
 const totalPages = ref(0);
 
-// O useQuery substitui o "turmas", "loading", "carregarTurmas" e o "onMounted"
-const { data: turmas, isLoading: loading } = useQuery({
+const { data: rawTurmas, isPending } = useQuery({
   queryKey: ["turmas", page, limit],
   queryFn: async () => {
     const { data } = await turmaService.getAll(page.value, limit.value);
@@ -30,8 +29,10 @@ const { data: turmas, isLoading: loading } = useQuery({
     }
     return paginated || [];
   },
-  placeholderData: [], // Garante que comece como um array vazio e não quebre a tela
+  placeholderData: (prev) => prev,
 });
+
+const turmas = computed(() => rawTurmas.value ?? []);
 
 function changePage(p: number) {
   page.value = p;
@@ -167,7 +168,7 @@ function handleExcluir(id: string) {
         </header>
 
         <div
-          v-if="loading"
+          v-if="isPending"
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6"
         >
           <div
@@ -216,7 +217,7 @@ function handleExcluir(id: string) {
     </div>
 
     <div
-      v-if="!loading && turmas.length > 0"
+      v-if="!isPending && turmas.length > 0"
       class="sticky bottom-0 bg-slate-50 dark:bg-slate-800/95 border-t border-slate-200 dark:border-slate-700 px-6 md:px-10"
     >
       <div class="max-w-6xl 2xl:max-w-[90rem] mx-auto py-3">

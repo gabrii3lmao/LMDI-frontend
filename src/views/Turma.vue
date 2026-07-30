@@ -28,7 +28,7 @@ const { data: turmas } = useQuery({
     const { data } = await turmaService.getAll(1, 100);
     return data?.data || data || [];
   },
-  placeholderData: [],
+  placeholderData: (prev) => prev,
 });
 
 const turmaNome = computed(() => {

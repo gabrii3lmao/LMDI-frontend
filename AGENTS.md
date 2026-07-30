@@ -21,11 +21,18 @@
 
 No tests, no linter, no formatter, no CI (no `.github/workflows`).
 
+## WebSocket (Socket.IO)
+
+- `src/services/socket.ts` — singleton: `connectSocket(token)`, `disconnectSocket()`, `getSocket()`
+- Conecta em `App.vue` via `submission:completed` → invalida queries TanStack (`submissoes`, `analytics`, `dashboard`)
+- Reconecta após refresh de token em `api.ts`
+- Desconecta no logout em `TheAside.vue`
+
 ## Architecture
 
-- **Entrypoint**: `src/main.ts` — registers PrimeVue, Pinia, Router, TanStack Vue Query, vue3-google-login, ToastService, ConfirmationService
+- **Entrypoint**: `src/main.ts` — registers PrimeVue, Pinia, Router, TanStack Vue Query, vue3-google-login, ToastService, ConfirmationService; connects Socket.IO on init
 - **Router**: `src/router/index.ts` — `createWebHistory`, auth guard checks `localStorage.getItem("token")`, public pages use `meta: { hideSidebar: true }`
-- **API**: `src/services/api.ts` — Axios instance, `withCredentials: true`, auto-attaches `Bearer` token from localStorage, 401 interceptor with refresh-token queue
+- **API**: `src/services/api.ts` — Axios instance, `withCredentials: true`, auto-attaches `Bearer` token from localStorage, 401 interceptor with refresh-token queue; reconnects Socket.IO after refresh
 - **Auth**: JWT in localStorage keys: `token`, `username`, `user`; refresh via `POST /auth/refresh-token`
 - **Themes**: Tailwind's `indigo` palette mapped to green (school chalkboard), custom `school` palette for slates; PrimeVue dark mode via `.my-app-dark` class
 - **Fonts**: Inter (sans), Outfit (display), Lora (serif) — loaded via Google Fonts in `src/assets/main.css`

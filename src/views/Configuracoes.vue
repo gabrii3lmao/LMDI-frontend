@@ -5,7 +5,9 @@ import { useThemeStore } from "@/stores/theme"
 import { useConfirm } from "primevue/useconfirm"
 import { useToast } from "primevue/usetoast"
 import api from "@/services/api"
+import axios from "axios"
 import LoadingSpinner from "@/components/common/LoadingSpinner.vue"
+import Avatar from "primevue/avatar"
 
 const themeStore = useThemeStore()
 const router = useRouter()
@@ -14,6 +16,7 @@ const toast = useToast()
 
 const name = ref("")
 const email = ref("")
+const avatarUrl = ref("")
 const editingName = ref(false)
 const editingEmail = ref(false)
 
@@ -23,15 +26,90 @@ const newPassword = ref("")
 const confirmNewPassword = ref("")
 const changingPassword = ref(false)
 
+const uploadingAvatar = ref(false)
+
+interface UploadSignature {
+  signature: string;
+  timestamp: number;
+  apiKey: string;
+  cloudName: string;
+  folder: string;
+}
+
+async function handleAvatarUpload(event: Event) {
+  const input = event.target as HTMLInputElement
+  const file = input.files?.[0]
+  if (!file) return
+
+  uploadingAvatar.value = true
+  try {
+    const { data: signature } = await api.get<UploadSignature>("/submissions/upload-signature")
+
+    const formData = new FormData()
+    formData.append("file", file)
+    formData.append("api_key", signature.apiKey)
+    formData.append("timestamp", String(signature.timestamp))
+    formData.append("signature", signature.signature)
+    formData.append("folder", signature.folder)
+
+    const uploadRes = await axios.post(
+      `https://api.cloudinary.com/v1_1/${signature.cloudName}/image/upload`,
+      formData,
+    )
+    const url = uploadRes.data.secure_url as string
+
+    await api.patch("/auth/avatar", { avatarUrl: url })
+
+    avatarUrl.value = url
+    localStorage.setItem("userPhoto", url)
+
+    toast.add({
+      severity: "success",
+      summary: "Sucesso",
+      detail: "Foto de perfil atualizada!",
+      life: 3000,
+    })
+  } catch {
+    toast.add({
+      severity: "error",
+      summary: "Erro",
+      detail: "Não foi possível enviar a foto. Tente novamente.",
+      life: 4000,
+    })
+  } finally {
+    uploadingAvatar.value = false
+    input.value = ""
+  }
+}
+
+async function handleRemoveAvatar() {
+  avatarUrl.value = ""
+  localStorage.removeItem("userPhoto")
+  try {
+    await api.patch("/auth/avatar", { avatarUrl: "" })
+    toast.add({
+      severity: "info",
+      summary: "Removida",
+      detail: "Foto de perfil removida.",
+      life: 3000,
+    })
+  } catch {
+    // silent
+  }
+}
+
 async function loadUser() {
   carregandoPerfil.value = true
   try {
     const { data } = await api.get("/auth/me")
     name.value = data.name
     email.value = data.email
+    avatarUrl.value = data.avatarUrl || ""
+    localStorage.setItem("userPhoto", avatarUrl.value)
   } catch {
     name.value = localStorage.getItem("username") ?? ""
     email.value = ""
+    avatarUrl.value = localStorage.getItem("userPhoto") ?? ""
   } finally {
     carregandoPerfil.value = false
   }
@@ -185,6 +263,49 @@ onMounted(loadUser)
                 <i class="pi pi-check text-sm"></i>
               </button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Foto do Perfil -->
+      <section class="bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 rounded-2xl p-6 md:p-8 space-y-6">
+        <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+          <i class="pi pi-camera text-emerald-500"></i>
+          Foto do Perfil
+        </h2>
+
+        <div class="flex items-center gap-6">
+          <Avatar
+            :image="avatarUrl || undefined"
+            :label="avatarUrl ? '' : (name.charAt(0).toUpperCase() || 'P')"
+            shape="circle"
+            class="!bg-emerald-100 dark:!bg-emerald-900/40 !text-emerald-600 dark:!text-emerald-400 !border !border-emerald-200 dark:!border-emerald-700 !font-bold !text-2xl"
+            style="width: 5rem; height: 5rem"
+          />
+
+          <div class="flex flex-col gap-2">
+            <label
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-600 text-white font-semibold rounded-xl transition-all cursor-pointer shadow-lg shadow-emerald-600/10 active:scale-95 text-sm"
+            >
+              <i class="pi pi-upload text-xs"></i>
+              <span>{{ uploadingAvatar ? "Enviando..." : "Escolher foto" }}</span>
+              <input
+                type="file"
+                accept="image/*"
+                class="hidden"
+                :disabled="uploadingAvatar"
+                @change="handleAvatarUpload"
+              />
+            </label>
+
+            <button
+              v-if="avatarUrl"
+              @click="handleRemoveAvatar"
+              class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all border border-transparent hover:border-red-100 dark:hover:border-red-900/30"
+            >
+              <i class="pi pi-trash text-xs"></i>
+              Remover foto
+            </button>
           </div>
         </div>
       </section>

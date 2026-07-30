@@ -5,12 +5,13 @@ import router from "./router";
 import PrimeVue from "primevue/config";
 import ToastService from "primevue/toastservice";
 import ConfirmationService from "primevue/confirmationservice";
-import Aura from "@primevue/themes/aura"; 
+import Aura from "@primevue/themes/aura";
 import { createPinia } from "pinia";
 import "primeicons/primeicons.css";
 import vue3GoogleLogin from "vue3-google-login";
 import { VueQueryPlugin } from "@tanstack/vue-query";
 import { useThemeStore } from "@/stores/theme";
+import { connectSocket } from "./services/socket";
 
 const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
@@ -38,5 +39,10 @@ app.use(router);
 
 const themeStore = useThemeStore();
 themeStore.init();
+
+const token = localStorage.getItem("token");
+if (token) {
+  connectSocket(token);
+}
 
 app.mount("#app");
