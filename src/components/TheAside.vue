@@ -105,7 +105,10 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
         >
           <i class="pi pi-bars text-xl"></i>
         </button>
-        <img :src="logoSrc" alt="LetMeDoIt" class="h-8 w-auto" />
+        <img :src="logoSrc" alt="" class="h-7 w-auto" />
+        <span class="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tighter">
+          LetMe<span class="text-emerald-500">DoIt</span>
+        </span>
       </div>
 
       <Avatar
@@ -139,12 +142,15 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
               class="flex items-center gap-3 group outline-none"
               @click="closeCallback"
             >
-              <img :src="logoSrc" alt="LetMeDoIt" class="h-9 w-auto" />
-              <span
-                class="text-[10px] uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 font-bold self-end pb-0.5"
-              >
-                Painel Docente
-              </span>
+              <img :src="logoSrc" alt="" class="h-8 w-auto" />
+              <div class="flex flex-col">
+                <span class="text-lg font-extrabold text-slate-800 dark:text-slate-100 tracking-tighter leading-tight">
+                  LetMe<span class="text-emerald-500">DoIt</span>
+                </span>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 font-bold">
+                  Painel Docente
+                </span>
+              </div>
             </RouterLink>
 
             <button
@@ -342,12 +348,15 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
           to="/dashboard"
           class="flex items-center gap-3 group outline-none"
         >
-          <img :src="logoSrc" alt="LetMeDoIt" class="h-9 w-auto" />
-          <span
-            class="text-[10px] uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 font-bold self-end pb-0.5"
-          >
-            Painel Docente
-          </span>
+          <img :src="logoSrc" alt="" class="h-8 w-auto" />
+          <div class="flex flex-col">
+            <span class="text-lg font-extrabold text-slate-800 dark:text-slate-100 tracking-tighter leading-tight">
+              LetMe<span class="text-emerald-500">DoIt</span>
+            </span>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 font-bold">
+              Painel Docente
+            </span>
+          </div>
         </RouterLink>
       </div>
 

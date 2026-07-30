@@ -18,7 +18,7 @@ const name = ref("")
 const email = ref("")
 const avatarUrl = ref("")
 const editingName = ref(false)
-const editingEmail = ref(false)
+const savingProfile = ref(false)
 
 const carregandoPerfil = ref(true)
 const currentPassword = ref("")
@@ -115,6 +115,78 @@ async function loadUser() {
   }
 }
 
+async function saveProfile() {
+  if (!name.value.trim()) {
+    toast.add({ severity: "warn", summary: "Atenção", detail: "O nome não pode ficar vazio.", life: 3000 })
+    return
+  }
+
+  savingProfile.value = true
+  try {
+    const { data } = await api.patch("/auth/profile", { name: name.value.trim() })
+    name.value = data.name
+    localStorage.setItem("username", data.name)
+    editingName.value = false
+
+    toast.add({
+      severity: "success",
+      summary: "Salvo",
+      detail: "Nome atualizado com sucesso!",
+      life: 3000,
+    })
+  } catch (error: any) {
+    toast.add({
+      severity: "error",
+      summary: "Erro",
+      detail: error.response?.data?.message || "Não foi possível salvar.",
+      life: 4000,
+    })
+  } finally {
+    savingProfile.value = false
+  }
+}
+
+async function handleChangePassword() {
+  if (!currentPassword.value || !newPassword.value || !confirmNewPassword.value) {
+    toast.add({ severity: "warn", summary: "Atenção", detail: "Preencha todos os campos.", life: 3000 })
+    return
+  }
+  if (newPassword.value.length < 6) {
+    toast.add({ severity: "warn", summary: "Atenção", detail: "A nova senha deve ter no mínimo 6 caracteres.", life: 3000 })
+    return
+  }
+  if (newPassword.value !== confirmNewPassword.value) {
+    toast.add({ severity: "warn", summary: "Atenção", detail: "As senhas não coincidem.", life: 3000 })
+    return
+  }
+
+  changingPassword.value = true
+  try {
+    await api.post("/auth/reset-password/token", {
+      currentPassword: currentPassword.value,
+      newPassword: newPassword.value,
+    })
+    currentPassword.value = ""
+    newPassword.value = ""
+    confirmNewPassword.value = ""
+    toast.add({
+      severity: "success",
+      summary: "Sucesso",
+      detail: "Senha alterada com sucesso!",
+      life: 3000,
+    })
+  } catch (error: any) {
+    toast.add({
+      severity: "error",
+      summary: "Erro",
+      detail: error.response?.data?.message || "Não foi possível alterar a senha.",
+      life: 4000,
+    })
+  } finally {
+    changingPassword.value = false
+  }
+}
+
 function handleDeleteAccount() {
   confirm.require({
     message: "Tem certeza que deseja deletar sua conta? Esta ação é irreversível e todos os seus dados serão perdidos.",
@@ -146,40 +218,6 @@ function handleDeleteAccount() {
   })
 }
 
-function saveName() {
-  editingName.value = false
-  toast.add({ severity: "success", summary: "Salvo", detail: "Nome atualizado.", life: 3000 })
-}
-
-function saveEmail() {
-  editingEmail.value = false
-  toast.add({ severity: "success", summary: "Salvo", detail: "E-mail atualizado.", life: 3000 })
-}
-
-function handleChangePassword() {
-  if (!currentPassword.value || !newPassword.value || !confirmNewPassword.value) {
-    toast.add({ severity: "warn", summary: "Atenção", detail: "Preencha todos os campos.", life: 3000 })
-    return
-  }
-  if (newPassword.value.length < 6) {
-    toast.add({ severity: "warn", summary: "Atenção", detail: "A nova senha deve ter no mínimo 6 caracteres.", life: 3000 })
-    return
-  }
-  if (newPassword.value !== confirmNewPassword.value) {
-    toast.add({ severity: "warn", summary: "Atenção", detail: "As senhas não coincidem.", life: 3000 })
-    return
-  }
-  changingPassword.value = true
-  // Simula sucesso — integração com API futura
-  setTimeout(() => {
-    changingPassword.value = false
-    currentPassword.value = ""
-    newPassword.value = ""
-    confirmNewPassword.value = ""
-    toast.add({ severity: "success", summary: "Sucesso", detail: "Senha alterada com sucesso!", life: 3000 })
-  }, 1000)
-}
-
 onMounted(loadUser)
 </script>
 
@@ -201,228 +239,210 @@ onMounted(loadUser)
       <LoadingSpinner v-if="carregandoPerfil" message="Carregando perfil..." />
 
       <template v-else>
-      <!-- Perfil -->
-      <section class="bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 rounded-2xl p-6 md:p-8 space-y-6">
-        <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-          <i class="pi pi-user text-emerald-500"></i>
-          Informações do Usuário
-        </h2>
+        <!-- Perfil -->
+        <section class="bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 rounded-2xl p-6 md:p-8">
+          <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2 mb-6">
+            <i class="pi pi-user text-emerald-500"></i>
+            Perfil
+          </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div>
-            <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1.5">Nome</label>
-            <div class="flex items-center gap-2">
-              <input
-                v-model="name"
-                :disabled="!editingName"
-                class="flex-1 px-4 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 outline-none transition-all"
-                :class="editingName ? 'focus:ring-2 focus:ring-emerald-500 border-emerald-300' : 'cursor-default'"
+          <div class="flex flex-col md:flex-row gap-8">
+            <div class="flex flex-col items-center gap-3 shrink-0">
+              <Avatar
+                :image="avatarUrl || undefined"
+                :label="avatarUrl ? '' : (name.charAt(0).toUpperCase() || 'P')"
+                shape="circle"
+                class="!bg-emerald-100 dark:!bg-emerald-900/40 !text-emerald-600 dark:!text-emerald-400 !border !border-emerald-200 dark:!border-emerald-700 !font-bold !text-3xl"
+                style="width: 6rem; height: 6rem"
               />
-              <button
-                v-if="!editingName"
-                @click="editingName = true"
-                class="p-2.5 text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
-                title="Editar nome"
+
+              <label
+                class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-600 text-white font-semibold rounded-xl transition-all cursor-pointer shadow-lg shadow-emerald-600/10 active:scale-95 text-xs"
               >
-                <i class="pi pi-pencil text-sm"></i>
-              </button>
+                <i class="pi pi-upload text-xs"></i>
+                <span>{{ uploadingAvatar ? "Enviando..." : "Escolher foto" }}</span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  class="hidden"
+                  :disabled="uploadingAvatar"
+                  @change="handleAvatarUpload"
+                />
+              </label>
+
               <button
-                v-else
-                @click="saveName"
-                class="p-2.5 text-emerald-600 hover:text-emerald-700 transition-colors"
-                title="Salvar nome"
+                v-if="avatarUrl"
+                @click="handleRemoveAvatar"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all"
               >
-                <i class="pi pi-check text-sm"></i>
+                <i class="pi pi-trash text-[10px]"></i>
+                Remover
               </button>
             </div>
-          </div>
 
-          <div>
-            <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1.5">E-mail</label>
-            <div class="flex items-center gap-2">
-              <input
-                v-model="email"
-                :disabled="!editingEmail"
-                class="flex-1 px-4 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 outline-none transition-all"
-                :class="editingEmail ? 'focus:ring-2 focus:ring-emerald-500 border-emerald-300' : 'cursor-default'"
-              />
-              <button
-                v-if="!editingEmail"
-                @click="editingEmail = true"
-                class="p-2.5 text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
-                title="Editar e-mail"
-              >
-                <i class="pi pi-pencil text-sm"></i>
-              </button>
-              <button
-                v-else
-                @click="saveEmail"
-                class="p-2.5 text-emerald-600 hover:text-emerald-700 transition-colors"
-                title="Salvar e-mail"
-              >
-                <i class="pi pi-check text-sm"></i>
-              </button>
+            <div class="flex-1 space-y-5">
+              <div>
+                <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">
+                  Nome
+                </label>
+                <div class="flex items-center gap-2">
+                  <input
+                    v-model="name"
+                    :disabled="!editingName"
+                    class="flex-1 px-4 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 outline-none transition-all text-sm"
+                    :class="editingName ? 'focus:ring-2 focus:ring-emerald-500 border-emerald-300' : 'cursor-default opacity-80'"
+                  />
+                  <button
+                    v-if="!editingName"
+                    @click="editingName = true"
+                    class="p-2.5 text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                    title="Editar nome"
+                  >
+                    <i class="pi pi-pencil text-sm"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">
+                  E-mail
+                </label>
+                <input
+                  :value="email"
+                  disabled
+                  class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-500 dark:text-slate-400 outline-none text-sm cursor-not-allowed"
+                />
+              </div>
+
+              <div v-if="editingName" class="flex items-center gap-3 pt-2">
+                <button
+                  @click="saveProfile"
+                  :disabled="savingProfile"
+                  class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-600 text-white font-semibold rounded-xl transition-all disabled:opacity-50 shadow-lg shadow-emerald-600/10 active:scale-95 text-sm"
+                >
+                  <i v-if="savingProfile" class="pi pi-spin pi-spinner text-xs"></i>
+                  <span>{{ savingProfile ? "Salvando..." : "Salvar Alterações" }}</span>
+                </button>
+
+                <button
+                  @click="editingName = false"
+                  class="px-4 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-all"
+                >
+                  Cancelar
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Foto do Perfil -->
-      <section class="bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 rounded-2xl p-6 md:p-8 space-y-6">
-        <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-          <i class="pi pi-camera text-emerald-500"></i>
-          Foto do Perfil
-        </h2>
+        <!-- Segurança -->
+        <section class="bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 rounded-2xl p-6 md:p-8">
+          <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2 mb-6">
+            <i class="pi pi-shield text-emerald-500"></i>
+            Segurança
+          </h2>
 
-        <div class="flex items-center gap-6">
-          <Avatar
-            :image="avatarUrl || undefined"
-            :label="avatarUrl ? '' : (name.charAt(0).toUpperCase() || 'P')"
-            shape="circle"
-            class="!bg-emerald-100 dark:!bg-emerald-900/40 !text-emerald-600 dark:!text-emerald-400 !border !border-emerald-200 dark:!border-emerald-700 !font-bold !text-2xl"
-            style="width: 5rem; height: 5rem"
-          />
+          <div class="space-y-5 max-w-md">
+            <p class="text-sm text-slate-500 dark:text-slate-400 -mt-2">Altere sua senha de acesso ao painel.</p>
 
-          <div class="flex flex-col gap-2">
-            <label
-              class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-600 text-white font-semibold rounded-xl transition-all cursor-pointer shadow-lg shadow-emerald-600/10 active:scale-95 text-sm"
-            >
-              <i class="pi pi-upload text-xs"></i>
-              <span>{{ uploadingAvatar ? "Enviando..." : "Escolher foto" }}</span>
+            <div>
+              <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Senha Atual</label>
               <input
-                type="file"
-                accept="image/*"
-                class="hidden"
-                :disabled="uploadingAvatar"
-                @change="handleAvatarUpload"
+                v-model="currentPassword"
+                type="password"
+                placeholder="Digite sua senha atual"
+                class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 outline-none focus:ring-2 focus:ring-emerald-500 transition-all text-sm"
               />
-            </label>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Nova Senha</label>
+              <input
+                v-model="newPassword"
+                type="password"
+                placeholder="Mínimo de 6 caracteres"
+                class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 outline-none focus:ring-2 focus:ring-emerald-500 transition-all text-sm"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Confirmar Nova Senha</label>
+              <input
+                v-model="confirmNewPassword"
+                type="password"
+                placeholder="Repita a nova senha"
+                class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 outline-none focus:ring-2 focus:ring-emerald-500 transition-all text-sm"
+              />
+            </div>
 
             <button
-              v-if="avatarUrl"
-              @click="handleRemoveAvatar"
-              class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all border border-transparent hover:border-red-100 dark:hover:border-red-900/30"
+              @click="handleChangePassword"
+              :disabled="changingPassword"
+              class="inline-flex items-center gap-2 px-6 py-2.5 bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-600 text-white font-semibold rounded-xl transition-all disabled:opacity-50 shadow-lg shadow-emerald-600/10 active:scale-95 text-sm"
             >
-              <i class="pi pi-trash text-xs"></i>
-              Remover foto
+              <i v-if="changingPassword" class="pi pi-spin pi-spinner text-xs"></i>
+              <span>{{ changingPassword ? "Alterando..." : "Alterar Senha" }}</span>
             </button>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Segurança -->
-      <section class="bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 rounded-2xl p-6 md:p-8 space-y-6">
-        <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-          <i class="pi pi-shield text-emerald-500"></i>
-          Segurança
-        </h2>
+        <!-- Aparência -->
+        <section class="bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 rounded-2xl p-6 md:p-8">
+          <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2 mb-6">
+            <i class="pi pi-palette text-emerald-500"></i>
+            Aparência
+          </h2>
 
-        <p class="text-sm text-slate-500 dark:text-slate-400">Altere sua senha de acesso ao painel.</p>
+          <div class="flex items-center gap-4">
+            <button
+              @click="themeStore.setTheme('light')"
+              :class="[
+                'flex items-center gap-3 px-5 py-3 rounded-xl border-2 transition-all font-medium text-sm',
+                themeStore.theme === 'light'
+                  ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 shadow-sm'
+                  : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-500'
+              ]"
+            >
+              <i class="pi pi-sun text-lg"></i>
+              <span>Claro</span>
+            </button>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Senha Atual</label>
-            <input
-              v-model="currentPassword"
-              type="password"
-              placeholder="••••••••"
-              class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
-            />
+            <button
+              @click="themeStore.setTheme('dark')"
+              :class="[
+                'flex items-center gap-3 px-5 py-3 rounded-xl border-2 transition-all font-medium text-sm',
+                themeStore.theme === 'dark'
+                  ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 shadow-sm'
+                  : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-500'
+              ]"
+            >
+              <i class="pi pi-moon text-lg"></i>
+              <span>Escuro</span>
+            </button>
           </div>
-          <div>
-            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Nova Senha</label>
-            <input
-              v-model="newPassword"
-              type="password"
-              placeholder="••••••••"
-              class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
-            />
-          </div>
-          <div>
-            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Confirmar</label>
-            <input
-              v-model="confirmNewPassword"
-              type="password"
-              placeholder="••••••••"
-              class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
-            />
-          </div>
-        </div>
+        </section>
 
-        <button
-          @click="handleChangePassword"
-          :disabled="changingPassword"
-          class="px-6 py-2.5 bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-600 text-white font-semibold rounded-xl transition-all disabled:opacity-50 shadow-lg shadow-emerald-600/10 active:scale-95 text-sm"
-        >
-          <span v-if="changingPassword" class="flex items-center gap-2">
-            <i class="pi pi-spin pi-spinner"></i> Alterando...
-          </span>
-          <span v-else>Alterar Senha</span>
-        </button>
-      </section>
+        <!-- Zona de Perigo -->
+        <section class="bg-white dark:bg-slate-800 ring-1 ring-red-200 dark:ring-red-900/50 rounded-2xl p-6 md:p-8 border border-red-100 dark:border-red-900/30">
+          <h2 class="text-lg font-bold text-red-600 dark:text-red-400 flex items-center gap-2 mb-3">
+            <i class="pi pi-exclamation-triangle text-red-500"></i>
+            Zona de Perigo
+          </h2>
 
-      <!-- Aparência -->
-      <section class="bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 rounded-2xl p-6 md:p-8 space-y-6">
-        <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-          <i class="pi pi-palette text-emerald-500"></i>
-          Aparência
-        </h2>
-
-        <p class="text-sm text-slate-500 dark:text-slate-400">Escolha o tema de exibição do painel.</p>
-
-        <div class="flex items-center gap-4">
-          <button
-            @click="themeStore.setTheme('light')"
-            :class="[
-              'flex items-center gap-3 px-5 py-3 rounded-xl border-2 transition-all font-medium text-sm',
-              themeStore.theme === 'light'
-                ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 shadow-sm'
-                : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-500'
-            ]"
-          >
-            <i class="pi pi-sun text-lg"></i>
-            <span>Claro</span>
-          </button>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mb-5">
+            Ao deletar sua conta, todos os seus dados serão removidos permanentemente. Esta ação não pode ser desfeita.
+          </p>
 
           <button
-            @click="themeStore.setTheme('dark')"
-            :class="[
-              'flex items-center gap-3 px-5 py-3 rounded-xl border-2 transition-all font-medium text-sm',
-              themeStore.theme === 'dark'
-                ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 shadow-sm'
-                : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-500'
-            ]"
+            @click="handleDeleteAccount"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border-2 border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/40 hover:border-red-300 dark:hover:border-red-700 transition-all font-medium text-sm"
           >
-            <i class="pi pi-moon text-lg"></i>
-            <span>Escuro</span>
+            <i class="pi pi-trash"></i>
+            <span>Deletar minha conta</span>
           </button>
-        </div>
-      </section>
+        </section>
 
-      <section
-        class="bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 rounded-2xl p-6 md:p-8 space-y-6"
-      >
-        <h2
-          class="text-lg font-bold text-red-600 dark:text-red-400 flex items-center gap-2"
-        >
-          <i class="pi pi-trash text-red-500"></i>
-          Zona de Perigo
-        </h2>
-
-        <p class="text-sm text-slate-500 dark:text-slate-400">
-          Ao deletar sua conta, todos os seus dados serão removidos permanentemente. Esta ação não pode ser desfeita.
-        </p>
-
-        <button
-          @click="handleDeleteAccount"
-          class="flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/40 hover:border-red-300 dark:hover:border-red-700 transition-all font-medium text-sm"
-        >
-          <i class="pi pi-trash"></i>
-          <span>Deletar minha conta</span>
-        </button>
-      </section>
-
-      <ConfirmDialog />
+        <ConfirmDialog />
       </template>
     </div>
   </div>
