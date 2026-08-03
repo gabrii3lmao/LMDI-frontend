@@ -1,24 +1,73 @@
 <script setup lang="ts">
+import { ref, computed } from "vue";
 import type { Submission } from "@/types/Submission";
 
-defineProps<{
+const props = defineProps<{
   submissao: Submission;
 }>();
+
+const emit = defineEmits<{
+  details: [submission: Submission];
+  "hover-enter": [submission: Submission, el: HTMLElement];
+  "hover-leave": [];
+}>();
+
+const cardRef = ref<HTMLElement | null>(null);
+
+const totalQuestions = computed(() => {
+  return props.submissao.details?.length ?? 0;
+});
+
+const percentCorrect = computed(() => {
+  if (totalQuestions.value === 0 || props.submissao.totalCorrect === undefined) return null;
+  return Math.round((props.submissao.totalCorrect / totalQuestions.value) * 100);
+});
+
+const glowClass = computed(() => {
+  const { status } = props.submissao;
+  if (status === "pending") return "";
+  if (status === "error") return "hover:shadow-red-500/20 hover:ring-2 hover:ring-red-400/30";
+
+  const pct = percentCorrect.value;
+  if (pct === null) return "";
+  if (pct >= 70) return "hover:shadow-emerald-500/25 hover:ring-2 hover:ring-emerald-400/40";
+  if (pct >= 50) return "hover:shadow-amber-500/25 hover:ring-2 hover:ring-amber-400/40";
+  return "hover:shadow-red-500/25 hover:ring-2 hover:ring-red-400/40";
+});
+
+function handleHoverEnter() {
+  if (cardRef.value) emit("hover-enter", props.submissao, cardRef.value);
+}
+
+function handleHoverLeave() {
+  emit("hover-leave");
+}
+
+function handleClick() {
+  emit("details", props.submissao);
+}
 </script>
 
 <template>
   <div
-    class="bg-white dark:bg-slate-800 border p-5 rounded-2xl flex flex-col justify-between hover:border-emerald-500/30 hover:shadow-lg transition-all shadow-sm relative overflow-hidden"
-    :class="
+    ref="cardRef"
+    class="relative bg-white dark:bg-slate-800 border p-5 rounded-2xl flex flex-col justify-between transition-all shadow-sm hover:shadow-lg hover:-translate-y-0.5 hover:scale-[1.01] cursor-pointer"
+    :class="[
+      glowClass,
       submissao.status === 'pending'
         ? 'border-amber-300 dark:border-amber-700 shadow-amber-500/5'
-        : 'border-slate-200 dark:border-slate-700 shadow-slate-100'
-    "
+        : submissao.status === 'error'
+          ? 'border-red-200 dark:border-red-800 shadow-red-500/5'
+          : 'border-slate-200 dark:border-slate-700 shadow-slate-100',
+    ]"
+    @mouseenter="handleHoverEnter"
+    @mouseleave="handleHoverLeave"
+    @click="handleClick"
   >
-    <!-- Animação de pulso se estiver pendente -->
+    <!-- Barra de pulso para pendentes -->
     <div
       v-if="submissao.status === 'pending'"
-      class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent animate-pulse"
+      class="absolute top-0 left-0 w-full h-1 rounded-t-2xl bg-gradient-to-r from-transparent via-amber-500/50 to-transparent animate-pulse"
     ></div>
 
     <div class="flex justify-between items-start mb-4">

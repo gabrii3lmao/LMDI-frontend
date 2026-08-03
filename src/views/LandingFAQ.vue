@@ -275,7 +275,7 @@ onUnmounted(() => {
           Nossa equipe está pronta para ajudar.
         </p>
         <a
-          href="mailto:oi@letmedoit.app"
+          href="mailto:noreply@letmedoit.app.br"
           class="inline-flex items-center gap-2 px-8 py-3.5 text-base font-bold text-emerald-700 bg-white hover:bg-emerald-50 rounded-xl transition-all shadow-lg shadow-emerald-950/20 active:scale-95"
         >
           <i class="pi pi-envelope"></i>
@@ -316,9 +316,9 @@ onUnmounted(() => {
         <div class="space-y-4">
           <h4 class="text-xs font-bold text-white uppercase tracking-widest">Entre em contato</h4>
           <nav class="flex flex-col gap-3">
-            <a href="mailto:oi@letmedoit.app" class="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2">
+            <a href="mailto:noreply@letmedoit.app.br" class="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2">
               <i class="pi pi-envelope text-xs text-emerald-400"></i>
-              oi@letmedoit.app
+              noreply@letmedoit.app.br
             </a>
             <a href="#" class="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2">
               <i class="pi pi-comments text-xs text-emerald-400"></i>

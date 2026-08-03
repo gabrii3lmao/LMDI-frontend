@@ -134,7 +134,7 @@ const toggleFaq = (index: number) => {
                 </p>
                 <br />
                 <a
-                    href="mailto:suporte@exemplo.com"
+                    href="mailto:noreply@letmedoit.app.br"
                     class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 px-6 py-3 rounded-xl font-bold text-white transition-all"
                 >
                     <i class="pi pi-envelope"></i>

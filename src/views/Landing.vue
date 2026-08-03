@@ -709,11 +709,11 @@ onUnmounted(() => {
           </h4>
           <nav class="flex flex-col gap-3">
             <a
-              href="mailto:oi@letmedoit.app"
+              href="mailto:noreply@letmedoit.app.br"
               class="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2"
             >
               <i class="pi pi-envelope text-xs text-emerald-400"></i>
-              oi@letmedoit.app
+              noreply@letmedoit.app.br
             </a>
             <a
               href="#"
