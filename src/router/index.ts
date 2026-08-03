@@ -122,7 +122,7 @@ router.beforeEach((to, from, next) => {
     return next("/signin");
   }
 
-  const baseTitle = 'Let Me Do It | Gestão de Provas e Submissões';
+  const baseTitle = 'Let Me Do It | Correção de Provas por IA para Escolas e Professores';
   const pageTitle = to.meta.title as string;
   
   document.title = pageTitle ? pageTitle : baseTitle;
