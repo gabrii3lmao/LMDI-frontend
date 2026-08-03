@@ -7,7 +7,7 @@ const props = defineProps({
   provas: Array,
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(["update:modelValue", "download"]);
 
 const hasProvas = computed(() => props.provas && props.provas.length > 0);
 </script>
@@ -44,6 +44,28 @@ const hasProvas = computed(() => props.provas && props.provas.length > 0);
       <p v-else class="text-sm text-slate-400 dark:text-slate-500 font-medium px-2 whitespace-nowrap">
         Nenhuma prova cadastrada
       </p>
+
+      <div
+        v-if="modelValue"
+        class="flex items-center gap-2 ml-2 border-l border-slate-200 dark:border-slate-700 pl-3"
+      >
+        <button
+          @click="emit('download', 'pdf')"
+          title="Baixar folha de respostas em PDF"
+          class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/50 transition-colors cursor-pointer"
+        >
+          <i class="pi pi-file-pdf"></i>
+          PDF
+        </button>
+        <button
+          @click="emit('download', 'docx')"
+          title="Baixar folha de respostas em Word"
+          class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-sky-50 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 hover:bg-sky-100 dark:hover:bg-sky-900/50 transition-colors cursor-pointer"
+        >
+          <i class="pi pi-file-word"></i>
+          Word
+        </button>
+      </div>
     </div>
   </header>
 </template>

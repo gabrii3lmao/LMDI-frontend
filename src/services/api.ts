@@ -3,7 +3,7 @@ import { disconnectSocket, connectSocket } from "./socket";
 
 const api = axios.create({
   baseURL: import.meta.env.PROD
-    ? import.meta.env.VITE_BACKEND_URL
+    ? import.meta.env.VITE_BACKEND_URL + "/api"
     : "http://localhost:3000/api",
   withCredentials: true,
 });

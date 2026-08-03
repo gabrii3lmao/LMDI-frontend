@@ -7,6 +7,7 @@ import { submissionService } from "@/services/submissionService";
 import { useToast } from "primevue/usetoast";
 import { useQueryClient, useQuery } from "@tanstack/vue-query";
 import { turmaService } from "@/services/turmas";
+import api from "@/services/api";
 
 // Componentes Modularizados
 import ExamHeader from "@/components/Exams/ExamHeader.vue";
@@ -44,6 +45,41 @@ const { examIdSelecionado, provasDaTurma, submissoes, enviando, carregandoProvas
 
 const modalGabarito = ref(false);
 const modalAluno = ref(false);
+
+const handleDownloadFolha = async (format) => {
+  if (!examIdSelecionado.value) return;
+
+  try {
+    const response = await api.get(
+      `/exams/${examIdSelecionado.value}/sheet/${format}`,
+      { responseType: "blob" },
+    );
+
+    const url = URL.createObjectURL(response.data);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `folha-de-respostas.${format}`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+
+    toast.add({
+      severity: "success",
+      summary: "Download iniciado",
+      detail: "Folha de respostas gerada com sucesso.",
+      life: 3000,
+    });
+  } catch (error) {
+    console.error("Erro ao baixar folha de respostas:", error);
+    toast.add({
+      severity: "error",
+      summary: "Erro",
+      detail: "Não foi possível gerar a folha de respostas.",
+      life: 4000,
+    });
+  }
+};
 
 const handleSalvarGabarito = async (dados) => {
   enviando.value = true;
@@ -184,6 +220,7 @@ const handleProcessarGabaritoAluno = async (dados) => {
           v-model="examIdSelecionado"
           :class-id="classIdAtual"
           :provas="provasDaTurma"
+          @download="handleDownloadFolha"
         />
 
         <ExamActionCards
