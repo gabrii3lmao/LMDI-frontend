@@ -55,10 +55,11 @@ const handleDownloadFolha = async (format) => {
       { responseType: "blob" },
     );
 
+    const ext = format === "image" ? "png" : format;
     const url = URL.createObjectURL(response.data);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `folha-de-respostas.${format}`;
+    link.download = `folha-de-respostas.${ext}`;
     document.body.appendChild(link);
     link.click();
     link.remove();

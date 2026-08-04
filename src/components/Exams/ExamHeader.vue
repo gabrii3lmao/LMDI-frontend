@@ -67,6 +67,14 @@ const hasProvas = computed(() => props.provas && props.provas.length > 0);
           <i class="pi pi-file-word"></i>
           Word
         </button>
+        <button
+          @click="emit('download', 'image')"
+          title="Baixar folha de respostas como imagem"
+          class="flex flex-1 sm:flex-none items-center justify-center gap-1.5 px-2.5 py-2 sm:py-1.5 rounded-lg text-xs font-bold bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-colors cursor-pointer"
+        >
+          <i class="pi pi-image"></i>
+          Imagem
+        </button>
       </div>
     </div>
   </header>
