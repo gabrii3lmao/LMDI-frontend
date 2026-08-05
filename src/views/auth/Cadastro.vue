@@ -144,7 +144,7 @@ async function handleSignup() {
 
       <div class="relative z-20 mt-auto max-w-lg">
         <div
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-400/10 border border-indigo-400/20 text-indigo-300 text-xs font-semibold mb-6 shadow-sm"
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-400/10 border border-borda-400/20 text-indigo-300 text-xs font-semibold mb-6 shadow-sm"
         >
           <i class="pi pi-sparkles text-[10px]"></i>
           <span>Painel Docente</span>
@@ -203,7 +203,7 @@ async function handleSignup() {
 
           <div
             v-if="successMessage"
-            class="mb-6 flex items-start gap-3 p-4 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-800 text-indigo-700 dark:text-indigo-400"
+            class="mb-6 flex items-start gap-3 p-4 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-borda-100 dark:border-borda-800 text-indigo-700 dark:text-indigo-400"
           >
             <i class="pi pi-check-circle mt-0.5 shrink-0 text-indigo-500"></i>
             <p class="text-sm font-medium">{{ successMessage }}</p>

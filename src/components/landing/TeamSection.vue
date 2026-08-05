@@ -61,7 +61,7 @@ const team: TeamMember[] = [
         <div
           v-for="(member, i) in team"
           :key="member.name"
-          class="reveal group bg-white rounded-2xl overflow-hidden border border-school-200 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-500"
+          class="reveal group bg-white rounded-2xl overflow-hidden border border-school-200 hover:border-borda-200 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-500"
           :style="{ '--delay': i * 130 + 'ms' }"
         >
           <div class="relative overflow-hidden">

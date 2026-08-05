@@ -200,7 +200,7 @@ onUnmounted(() => {
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-200/20 via-transparent to-transparent pointer-events-none"></div>
       <div class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-6 relative z-10">
         <div class="max-w-3xl mx-auto text-center space-y-6">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-sm font-semibold border border-indigo-200 dark:border-indigo-700 hero-fade-in">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-sm font-semibold border border-borda-200 dark:border-borda-700 hero-fade-in">
             <i class="pi pi-tag text-xs"></i>
             Planos para todos os tamanhos
           </div>
@@ -245,8 +245,8 @@ onUnmounted(() => {
             class="reveal relative rounded-2xl border bg-white dark:bg-lousa-800 p-8 transition-all duration-300 hover:shadow-xl"
             :class="
               plano.highlighted
-                ? 'border-indigo-300 dark:border-indigo-600 shadow-lg shadow-indigo-500/10 scale-[1.02] lg:scale-110 z-10'
-                : 'border-school-200 dark:border-lousa-700 hover:border-indigo-200 dark:hover:border-indigo-700'
+                ? 'border-borda-300 dark:border-borda-600 shadow-lg shadow-indigo-500/10 scale-[1.02] lg:scale-110 z-10'
+                : 'border-school-200 dark:border-lousa-700 hover:border-borda-200 dark:hover:border-borda-700'
             "
           >
             <!-- Badge destaque -->
@@ -361,7 +361,7 @@ onUnmounted(() => {
             v-for="(item, i) in faqPrecos"
             :key="i"
             class="bg-school-50 dark:bg-lousa-800/50 border border-school-200 dark:border-lousa-700 rounded-2xl overflow-hidden transition-all duration-300"
-            :class="item.open ? 'border-indigo-200 dark:border-indigo-700 shadow-lg' : ''"
+            :class="item.open ? 'border-borda-200 dark:border-borda-700 shadow-lg' : ''"
           >
             <button
               @click="toggleFaq(i)"

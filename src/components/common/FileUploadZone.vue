@@ -187,8 +187,8 @@ onUnmounted(() => {
       :class="[
         'relative border-2 border-dashed rounded-2xl p-6 sm:p-8 transition-all duration-200 text-center overflow-hidden cursor-pointer',
         isDragOver
-          ? 'border-indigo-500 bg-indigo-500/10 scale-[1.01]'
-          : 'border-school-300 dark:border-lousa-600 hover:border-indigo-400 hover:bg-indigo-500/5 bg-school-50/50 dark:bg-lousa-800/50',
+          ? 'border-borda-500 bg-indigo-500/10 scale-[1.01]'
+          : 'border-school-300 dark:border-lousa-600 hover:border-borda-400 hover:bg-indigo-500/5 bg-school-50/50 dark:bg-lousa-800/50',
       ]"
     >
       <div class="py-4">
@@ -196,7 +196,7 @@ onUnmounted(() => {
           :class="[
             'w-14 h-14 mx-auto rounded-full flex items-center justify-center mb-4 transition-all duration-200',
             isDragOver
-              ? 'bg-indigo-100 scale-110'
+              ? 'bg-school-100 dark:bg-lousa-700 scale-110'
               : 'bg-school-100 dark:bg-lousa-700',
           ]"
         >

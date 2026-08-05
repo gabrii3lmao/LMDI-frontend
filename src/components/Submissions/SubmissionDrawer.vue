@@ -34,7 +34,7 @@ defineEmits(["close"]);
 
       <div class="p-6 flex-1 overflow-y-auto">
         <div
-          class="p-4 bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-100 dark:border-indigo-800 rounded-xl mb-6 flex items-center justify-between shadow-sm"
+          class="p-4 bg-indigo-50 dark:bg-indigo-900/30 border border-borda-100 dark:border-borda-800 rounded-xl mb-6 flex items-center justify-between shadow-sm"
         >
           <span
             class="text-indigo-700 dark:text-indigo-300 font-bold uppercase text-xs tracking-wider"

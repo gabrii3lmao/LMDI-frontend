@@ -99,7 +99,7 @@ onUnmounted(() => {
           <Transition name="slide" mode="out-in">
             <div :key="current" class="space-y-6">
               <span
-                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-700 text-sm font-semibold border border-indigo-200"
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-700 text-sm font-semibold border border-borda-200"
               >
                 <i :class="['pi', slides[current]!.badgeIcon, 'text-xs']"></i>
                 {{ slides[current]!.badge }}
@@ -165,14 +165,10 @@ onUnmounted(() => {
           </div>
 
           <!-- Chips flutuantes -->
-          <div
-            class="hidden md:flex absolute -left-5 top-10 items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-xl border border-school-100"
-          >
             <div
-              class="w-9 h-9 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600"
+              class="hidden md:flex absolute -left-5 top-10 items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-xl border border-school-100"
             >
-              <i class="pi pi-clock text-base"></i>
-            </div>
+              <i class="pi pi-clock text-2xl text-indigo-600"></i>
             <div>
               <p class="text-sm font-extrabold text-school-900">+10h/semana</p>
               <p class="text-xs text-school-500">recuperadas</p>
@@ -181,11 +177,7 @@ onUnmounted(() => {
           <div
             class="hidden md:flex absolute -right-4 bottom-10 items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-xl border border-school-100"
           >
-            <div
-              class="w-9 h-9 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600"
-            >
-              <i class="pi pi-shield text-base"></i>
-            </div>
+            <i class="pi pi-shield text-2xl text-indigo-600"></i>
             <div>
               <p class="text-sm font-extrabold text-school-900">99% de precisão</p>
               <p class="text-xs text-school-500">na correção por IA</p>
@@ -199,7 +191,7 @@ onUnmounted(() => {
         <button
           @click="prev"
           aria-label="Slide anterior"
-          class="w-11 h-11 flex items-center justify-center rounded-full border border-school-200 bg-white text-school-600 hover:text-indigo-600 hover:border-indigo-300 transition-all shadow-sm active:scale-90"
+          class="w-11 h-11 flex items-center justify-center rounded-full border border-school-200 bg-white text-school-600 hover:text-indigo-600 hover:border-borda-300 transition-all shadow-sm active:scale-90"
         >
           <i class="pi pi-arrow-left text-sm"></i>
         </button>
@@ -216,7 +208,7 @@ onUnmounted(() => {
         <button
           @click="next"
           aria-label="Próximo slide"
-          class="w-11 h-11 flex items-center justify-center rounded-full border border-school-200 bg-white text-school-600 hover:text-indigo-600 hover:border-indigo-300 transition-all shadow-sm active:scale-90"
+          class="w-11 h-11 flex items-center justify-center rounded-full border border-school-200 bg-white text-school-600 hover:text-indigo-600 hover:border-borda-300 transition-all shadow-sm active:scale-90"
         >
           <i class="pi pi-arrow-right text-sm"></i>
         </button>

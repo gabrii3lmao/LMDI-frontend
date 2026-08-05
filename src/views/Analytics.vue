@@ -195,10 +195,10 @@ const stats = computed(() => {
   if (!hasData.value) return null;
   const s = (analytics.value as any).stats;
   return [
-    { label: "Média da Turma", value: s.average, icon: "pi pi-calculator", color: "indigo", bg: "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-800", iconBg: "bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400" },
-    { label: "Maior Nota", value: s.highest, icon: "pi pi-arrow-up", color: "indigo", bg: "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-800", iconBg: "bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400" },
-    { label: "Menor Nota", value: s.lowest, icon: "pi pi-arrow-down", color: "red", bg: "bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800", iconBg: "bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400" },
-    { label: "Total de Alunos", value: s.total, icon: "pi pi-users", color: "school", bg: "bg-school-50 dark:bg-lousa-800 border-school-200 dark:border-lousa-700", iconBg: "bg-school-100 dark:bg-lousa-700/40 text-school-600 dark:text-lousa-300" },
+    { label: "Média da Turma", value: s.average, icon: "pi pi-calculator", color: "indigo", bg: "bg-indigo-50 dark:bg-indigo-900/20 border-borda-200 dark:border-borda-800", iconClass: "text-indigo-600 dark:text-indigo-400" },
+    { label: "Maior Nota", value: s.highest, icon: "pi pi-arrow-up", color: "indigo", bg: "bg-indigo-50 dark:bg-indigo-900/20 border-borda-200 dark:border-borda-800", iconClass: "text-indigo-600 dark:text-indigo-400" },
+    { label: "Menor Nota", value: s.lowest, icon: "pi pi-arrow-down", color: "red", bg: "bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800", iconClass: "text-red-600 dark:text-red-400" },
+    { label: "Total de Alunos", value: s.total, icon: "pi pi-users", color: "school", bg: "bg-school-50 dark:bg-lousa-800 border-school-200 dark:border-lousa-700", iconClass: "text-school-600 dark:text-lousa-300" },
   ];
 });
 
@@ -255,12 +255,10 @@ async function downloadReport() {
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
           <div>
             <h1 class="text-2xl sm:text-3xl font-extrabold text-school-800 dark:text-lousa-100 tracking-tight flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-                <i class="pi pi-chart-pie text-sm"></i>
-              </span>
+              <i class="pi pi-chart-pie text-2xl text-indigo-600 dark:text-indigo-400"></i>
               Desempenho
             </h1>
-            <p class="text-school-500 dark:text-lousa-400 text-sm mt-2 ml-11">
+            <p class="text-school-500 dark:text-lousa-400 text-sm mt-2 ml-10">
               Gráficos e estatísticas detalhadas das suas provas.
             </p>
           </div>
@@ -282,9 +280,7 @@ async function downloadReport() {
 
         <Transition name="fade" mode="out-in">
           <div v-if="!selectedExamId" key="empty" class="p-12 sm:p-16 flex flex-col items-center justify-center text-center bg-white dark:bg-lousa-800 rounded-2xl ring-1 ring-school-200/80 dark:ring-lousa-700 border border-school-100 dark:border-lousa-700 shadow-sm">
-            <div class="w-16 h-16 bg-indigo-50 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center mb-5 text-indigo-500 dark:text-indigo-400 ring-1 ring-indigo-200 dark:ring-indigo-700">
-              <i class="pi pi-chart-bar text-2xl"></i>
-            </div>
+            <i class="pi pi-chart-bar text-5xl text-indigo-500 dark:text-indigo-400 mb-5"></i>
             <h3 class="text-lg font-bold text-school-800 dark:text-lousa-100">
               Selecione uma avaliação
             </h3>
@@ -294,9 +290,7 @@ async function downloadReport() {
           </div>
 
           <div v-else-if="selectedExamId && !hasData && !loadingAnalytics" key="nodata" class="p-12 sm:p-16 flex flex-col items-center justify-center text-center bg-white dark:bg-lousa-800 rounded-2xl ring-1 ring-school-200/80 dark:ring-lousa-700 border border-school-100 dark:border-lousa-700 shadow-sm">
-            <div class="w-16 h-16 bg-school-100 dark:bg-lousa-700/50 rounded-2xl flex items-center justify-center mb-5 text-school-400 dark:text-lousa-500 ring-1 ring-school-200 dark:ring-lousa-600">
-              <i class="pi pi-inbox text-2xl"></i>
-            </div>
+            <i class="pi pi-inbox text-5xl text-school-400 dark:text-lousa-500 mb-5"></i>
             <h3 class="text-lg font-bold text-school-800 dark:text-lousa-100">
               Nenhum dado disponível
             </h3>
@@ -312,9 +306,7 @@ async function downloadReport() {
               <div class="bg-white dark:bg-lousa-800 rounded-2xl p-5 sm:p-6 mb-6 ring-1 ring-school-200/80 dark:ring-lousa-700 border border-school-100 dark:border-lousa-700 shadow-sm">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                   <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
-                      <i class="pi pi-file-edit text-lg"></i>
-                    </div>
+                    <i class="pi pi-file-edit text-3xl text-indigo-600 dark:text-indigo-400 shrink-0"></i>
                     <div>
                       <h2 class="text-lg font-bold text-school-800 dark:text-lousa-100">
                         {{ (activeExam as any)?.title || "Prova" }}
@@ -341,9 +333,7 @@ async function downloadReport() {
                     :key="stat.label"
                     :class="`rounded-xl p-4 border ${stat.bg} flex items-center gap-3 transition-shadow hover:shadow-md`"
                   >
-                    <div :class="`w-10 h-10 rounded-lg ${stat.iconBg} flex items-center justify-center shrink-0`">
-                      <i :class="`${stat.icon} text-base`"></i>
-                    </div>
+                    <i :class="`${stat.icon} text-2xl ${stat.iconClass} shrink-0`"></i>
                     <div class="min-w-0">
                       <p class="text-xs font-semibold text-school-500 dark:text-lousa-400 uppercase tracking-wide truncate">
                         {{ stat.label }}

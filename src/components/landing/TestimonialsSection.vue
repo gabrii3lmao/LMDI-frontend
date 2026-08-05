@@ -120,7 +120,7 @@ onUnmounted(() => {
                 <img
                   :src="depoimentos[current]!.photo"
                   :alt="`Foto de ${depoimentos[current]!.author}`"
-                  class="w-14 h-14 rounded-full object-cover border-2 border-indigo-200"
+                  class="w-14 h-14 rounded-full object-cover border-2 border-borda-200"
                   loading="lazy"
                 />
                 <div class="text-left">
@@ -151,14 +151,14 @@ onUnmounted(() => {
         <button
           @click="prev"
           aria-label="Depoimento anterior"
-          class="absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full border border-school-200 bg-white text-school-600 hover:text-indigo-600 hover:border-indigo-300 transition-all shadow-sm active:scale-90"
+          class="absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full border border-school-200 bg-white text-school-600 hover:text-indigo-600 hover:border-borda-300 transition-all shadow-sm active:scale-90"
         >
           <i class="pi pi-arrow-left text-sm"></i>
         </button>
         <button
           @click="next"
           aria-label="Próximo depoimento"
-          class="absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full border border-school-200 bg-white text-school-600 hover:text-indigo-600 hover:border-indigo-300 transition-all shadow-sm active:scale-90"
+          class="absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full border border-school-200 bg-white text-school-600 hover:text-indigo-600 hover:border-borda-300 transition-all shadow-sm active:scale-90"
         >
           <i class="pi pi-arrow-right text-sm"></i>
         </button>

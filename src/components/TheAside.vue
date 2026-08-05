@@ -84,7 +84,7 @@ onMounted(() => {
 const navItemClass =
   "flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-school-500 dark:text-lousa-400 rounded-lg hover:bg-school-50 dark:hover:bg-lousa-700/60 hover:text-school-900 dark:hover:text-lousa-100 group transition-all duration-200 border-l-2 border-transparent";
 
-const activeNavClass = "!text-indigo-600 dark:!text-indigo-400 !bg-indigo-50 dark:!bg-indigo-900/30 !border-indigo-500";
+const activeNavClass = "!text-indigo-600 dark:!text-indigo-400 !bg-indigo-50 dark:!bg-indigo-900/30 !border-borda-500";
 
 const disabledNavItemClass =
   "flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-school-400 dark:text-lousa-500 rounded-lg cursor-default transition-all duration-200 border-l-2 border-transparent w-full text-left";
@@ -115,7 +115,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
         :image="userPhoto || undefined"
         :label="userPhoto ? '' : (name.charAt(0) || 'P')"
         shape="circle"
-        class="!bg-indigo-100 !text-indigo-600 !border !border-indigo-200 !font-bold"
+        class="!bg-indigo-100 !text-indigo-600 !border !border-borda-200 !font-bold"
         style="width: 2rem; height: 2rem"
       />
     </header>
@@ -315,7 +315,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
               :image="userPhoto || undefined"
               :label="userPhoto ? '' : (name.charAt(0) || 'P')"
               shape="circle"
-              class="!bg-indigo-100 dark:!bg-indigo-900/40 !text-indigo-600 dark:!text-indigo-400 !border !border-indigo-200 dark:!border-indigo-700 !font-bold"
+              class="!bg-indigo-100 dark:!bg-indigo-900/40 !text-indigo-600 dark:!text-indigo-400 !border !border-borda-200 dark:!border-borda-700 !font-bold"
               style="width: 2.25rem; height: 2.25rem"
             />
             <div class="flex flex-col min-w-0">
@@ -508,7 +508,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
             :image="userPhoto || undefined"
             :label="userPhoto ? '' : (name.charAt(0) || 'P')"
             shape="circle"
-            class="!bg-indigo-100 dark:!bg-indigo-900/40 !text-indigo-600 dark:!text-indigo-400 !border !border-indigo-200 dark:!border-indigo-700 !font-bold"
+            class="!bg-indigo-100 dark:!bg-indigo-900/40 !text-indigo-600 dark:!text-indigo-400 !border !border-borda-200 dark:!border-borda-700 !font-bold"
             style="width: 2.25rem; height: 2.25rem"
           />
           <div class="flex flex-col min-w-0">

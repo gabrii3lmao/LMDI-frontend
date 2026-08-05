@@ -35,9 +35,7 @@ onMounted(async () => {
       <LoadingSpinner v-if="status === 'loading'" message="Verificando seu email..." />
 
       <div v-else-if="status === 'success'" class="py-8">
-        <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="pi pi-check-circle text-3xl text-indigo-600 dark:text-indigo-400"></i>
-        </div>
+        <i class="pi pi-check-circle text-6xl text-indigo-600 dark:text-indigo-400 block mx-auto mb-4"></i>
         <h1 class="text-2xl font-extrabold text-school-800 dark:text-lousa-100 mb-2">Email Verificado!</h1>
         <p class="text-school-500 dark:text-lousa-400 mb-6">{{ message }}</p>
         <RouterLink

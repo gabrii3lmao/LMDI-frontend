@@ -44,11 +44,9 @@ async function handleForgotPassword() {
       class="relative z-20 w-full max-w-md bg-white/95 dark:bg-lousa-800/95 backdrop-blur-xl border border-school-200/80 dark:border-lousa-700 rounded-3xl p-8 sm:p-10 shadow-2xl"
     >
       <div class="flex flex-col items-center justify-center mb-8">
-        <div
-          class="w-16 h-16 bg-indigo-500/10 border border-indigo-500/20 dark:border-indigo-800 rounded-2xl flex items-center justify-center mb-4"
-        >
-          <i class="pi pi-key text-3xl text-indigo-600 dark:text-indigo-400"></i>
-        </div>
+        <i
+          class="pi pi-key text-5xl text-indigo-600 dark:text-indigo-400 mb-4"
+        ></i>
 
         <h2
           class="text-2xl font-extrabold tracking-tight text-school-800 dark:text-lousa-100 text-center"
@@ -63,13 +61,11 @@ async function handleForgotPassword() {
       <form class="space-y-5" @submit.prevent="handleForgotPassword">
         <div
           v-if="message"
-          class="p-5 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-100 dark:border-indigo-800 text-indigo-800 dark:text-indigo-200 text-sm flex flex-col gap-4 items-center text-center"
+          class="p-5 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 border border-borda-100 dark:border-borda-800 text-indigo-800 dark:text-indigo-200 text-sm flex flex-col gap-4 items-center text-center"
         >
-          <div
-            class="w-12 h-12 bg-indigo-500/10 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400"
-          >
-            <i class="pi pi-send text-xl"></i>
-          </div>
+          <i
+            class="pi pi-send text-3xl text-indigo-600 dark:text-indigo-400"
+          ></i>
           <p class="font-semibold leading-relaxed">{{ message }}</p>
           <RouterLink
             to="/signin"

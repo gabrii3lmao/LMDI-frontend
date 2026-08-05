@@ -54,7 +54,7 @@ const services: Service[] = [
         <div
           v-for="(s, i) in services"
           :key="s.title"
-          class="reveal group relative bg-white rounded-2xl p-8 border border-school-200 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-500 overflow-hidden"
+          class="reveal group relative bg-white rounded-2xl p-8 border border-school-200 hover:border-borda-200 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-500 overflow-hidden"
           :style="{ '--delay': i * 120 + 'ms' }"
         >
           <div
@@ -62,11 +62,9 @@ const services: Service[] = [
           >
             <i :class="['pi', s.bgIcon]"></i>
           </div>
-          <div
-            class="w-14 h-14 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 mb-5 group-hover:bg-indigo-600 group-hover:text-white group-hover:scale-110 transition-all duration-300"
-          >
-            <i :class="['pi text-xl', s.icon]"></i>
-          </div>
+          <i
+            :class="['pi text-4xl text-indigo-600 mb-5 transition-transform duration-300 group-hover:scale-110 block', s.icon]"
+          ></i>
           <h3 class="text-lg font-bold text-school-800 mb-3">{{ s.title }}</h3>
           <p class="text-sm text-school-500 leading-relaxed">{{ s.desc }}</p>
           <div

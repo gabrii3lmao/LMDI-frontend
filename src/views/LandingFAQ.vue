@@ -204,7 +204,7 @@ onUnmounted(() => {
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-200/20 via-transparent to-transparent pointer-events-none"></div>
       <div class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-6 relative z-10">
         <div class="max-w-3xl mx-auto text-center space-y-6">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-sm font-semibold border border-indigo-200 dark:border-indigo-700 hero-fade-in">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-sm font-semibold border border-borda-200 dark:border-borda-700 hero-fade-in">
             <i class="pi pi-question-circle text-xs"></i>
             Tire suas dúvidas
           </div>
@@ -228,9 +228,7 @@ onUnmounted(() => {
           class="reveal mb-12 last:mb-0"
         >
           <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-              <i :class="['pi', cat.icon, 'text-lg']"></i>
-            </div>
+            <i :class="['pi', cat.icon, 'text-3xl text-indigo-600 dark:text-indigo-400']"></i>
             <h2 class="text-xl font-bold text-school-900 dark:text-lousa-100">
               {{ cat.categoria }}
             </h2>
@@ -241,7 +239,7 @@ onUnmounted(() => {
               v-for="(item, itemIndex) in cat.itens"
               :key="item.q"
               class="bg-school-50 dark:bg-lousa-800/50 border border-school-200 dark:border-lousa-700 rounded-2xl overflow-hidden transition-all duration-300"
-              :class="item.open ? 'border-indigo-200 dark:border-indigo-700 shadow-lg shadow-indigo-500/5' : ''"
+              :class="item.open ? 'border-borda-200 dark:border-borda-700 shadow-lg shadow-indigo-500/5' : ''"
             >
               <button
                 @click="toggleFaq(catIndex, itemIndex)"

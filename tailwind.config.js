@@ -33,6 +33,20 @@ export default {
           900: '#0f172a',
           950: '#020617',
         },
+        // Verde desaturado "seco/rúgido" — bordas nos dois temas
+        borda: {
+          50: '#f2f5f2',
+          100: '#e0e6e0',
+          200: '#c5d0c6',
+          300: '#a7b5a9',
+          400: '#8a9a8d',
+          500: '#6f8074',
+          600: '#566559',
+          700: '#434f46',
+          800: '#37423b',
+          900: '#29332d',
+          950: '#151d18',
+        },
         // Tema escuro "Lousa" — neutros verdes-acinzentados (usados via dark:*)
         lousa: {
           50: '#f2f7f4',

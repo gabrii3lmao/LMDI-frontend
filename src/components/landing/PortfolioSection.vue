@@ -88,7 +88,7 @@ const filtered = computed(() =>
           :class="
             activeFilter === f.id
               ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25'
-              : 'bg-white text-school-600 border border-school-200 hover:border-indigo-300 hover:text-indigo-600'
+              : 'bg-white text-school-600 border border-school-200 hover:border-borda-300 hover:text-indigo-600'
           "
         >
           {{ f.label }}

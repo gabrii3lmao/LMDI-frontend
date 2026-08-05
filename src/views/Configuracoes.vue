@@ -252,7 +252,7 @@ onMounted(loadUser)
                 :image="avatarUrl || undefined"
                 :label="avatarUrl ? '' : (name.charAt(0).toUpperCase() || 'P')"
                 shape="circle"
-                class="!bg-indigo-100 dark:!bg-indigo-900/40 !text-indigo-600 dark:!text-indigo-400 !border !border-indigo-200 dark:!border-indigo-700 !font-bold !text-3xl"
+                class="!bg-indigo-100 dark:!bg-indigo-900/40 !text-indigo-600 dark:!text-indigo-400 !border !border-borda-200 dark:!border-borda-700 !font-bold !text-3xl"
                 style="width: 6rem; height: 6rem"
               />
 
@@ -290,7 +290,7 @@ onMounted(loadUser)
                     v-model="name"
                     :disabled="!editingName"
                     class="flex-1 px-4 py-2.5 bg-school-50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-900 dark:text-lousa-100 placeholder-school-400 outline-none transition-all text-sm"
-                    :class="editingName ? 'focus:ring-2 focus:ring-indigo-500 border-indigo-300' : 'cursor-default opacity-80'"
+                    :class="editingName ? 'focus:ring-2 focus:ring-indigo-500 border-borda-300' : 'cursor-default opacity-80'"
                   />
                   <button
                     v-if="!editingName"
@@ -399,7 +399,7 @@ onMounted(loadUser)
               :class="[
                 'flex items-center gap-3 px-5 py-3 rounded-xl border-2 transition-all font-medium text-sm',
                 themeStore.theme === 'light'
-                  ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 shadow-sm'
+                  ? 'border-borda-500 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 shadow-sm'
                   : 'border-school-200 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-600 dark:text-lousa-400 hover:border-school-300 dark:hover:border-lousa-500'
               ]"
             >
@@ -412,7 +412,7 @@ onMounted(loadUser)
               :class="[
                 'flex items-center gap-3 px-5 py-3 rounded-xl border-2 transition-all font-medium text-sm',
                 themeStore.theme === 'dark'
-                  ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 shadow-sm'
+                  ? 'border-borda-500 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 shadow-sm'
                   : 'border-school-200 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-600 dark:text-lousa-400 hover:border-school-300 dark:hover:border-lousa-500'
               ]"
             >

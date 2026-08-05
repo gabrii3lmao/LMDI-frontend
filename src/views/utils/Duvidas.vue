@@ -63,14 +63,10 @@ const toggleFaq = (index: number) => {
         <div class="max-w-3xl 2xl:max-w-4xl mx-auto">
             <!-- HEADER -->
             <header class="text-center mb-12">
-                <div
-                    class="inline-flex items-center justify-center p-6 bg-indigo-50 dark:bg-indigo-900/30 rounded-full mb-6 shadow-sm border border-indigo-100 dark:border-indigo-800"
-                >
-                    <i
-                        class="pi pi-question-circle text-indigo-500 dark:text-indigo-400"
-                        style="font-size: 4rem"
-                    ></i>
-                </div>
+                <i
+                    class="pi pi-question-circle text-indigo-500 dark:text-indigo-400 mb-6"
+                    style="font-size: 4rem"
+                ></i>
 
                 <h1 class="text-3xl font-bold dark:text-lousa-100">
                     Central de <span class="text-indigo-400">Ajuda</span>
@@ -88,7 +84,7 @@ const toggleFaq = (index: number) => {
                     :class="[
                         'bg-school-50 dark:bg-lousa-800 border rounded-2xl overflow-hidden transition-all duration-300 border-l-4 border-l-indigo-500',
                         faq.open
-                            ? 'border-indigo-500/40 shadow-lg shadow-indigo-500/5'
+                            ? 'border-borda-500/40 shadow-lg shadow-indigo-500/5'
                             : 'border-school-200/80 dark:border-lousa-700',
                     ]"
                 >
@@ -120,7 +116,7 @@ const toggleFaq = (index: number) => {
             </div>
 
             <footer
-                class="mt-16 p-8 bg-indigo-600/10 dark:bg-indigo-900/20 border border-indigo-500/20 dark:border-indigo-800 rounded-3xl text-center"
+                class="mt-16 p-8 bg-indigo-600/10 dark:bg-indigo-900/20 border border-borda-500/20 dark:border-borda-800 rounded-3xl text-center"
             >
                 <h3 class="font-bold text-lg mb-2 dark:text-lousa-100">
                     Ainda precisa de suporte?

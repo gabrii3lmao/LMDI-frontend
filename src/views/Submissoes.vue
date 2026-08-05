@@ -375,7 +375,7 @@ const handleBatchReprocess = async () => {
               }}</span>
             </div>
             <div
-              class="flex-1 sm:flex-none bg-indigo-50 dark:bg-indigo-900/30 px-5 py-2.5 rounded-xl border border-indigo-100 dark:border-indigo-800 flex flex-col items-center justify-center animate-pulse-slow"
+              class="flex-1 sm:flex-none bg-indigo-50 dark:bg-indigo-900/30 px-5 py-2.5 rounded-xl border border-borda-100 dark:border-borda-800 flex flex-col items-center justify-center animate-pulse-slow"
             >
               <span
                 class="text-xs text-indigo-700 dark:text-indigo-300 uppercase tracking-wider font-bold"
@@ -435,11 +435,7 @@ const handleBatchReprocess = async () => {
           v-else-if="selectedExamId"
           class="p-16 flex flex-col items-center justify-center text-center bg-white dark:bg-lousa-800 rounded-2xl ring-1 ring-school-200/80 dark:ring-lousa-700 border border-school-100 dark:border-lousa-700 shadow-sm"
         >
-          <div
-            class="w-16 h-16 bg-school-50 dark:bg-lousa-700/50 rounded-full flex items-center justify-center mb-4 border border-school-200 dark:border-lousa-600 text-school-400 dark:text-lousa-500"
-          >
-            <i class="pi pi-inbox text-2xl" style="font-size: 2rem"></i>
-          </div>
+          <i class="pi pi-inbox text-5xl text-school-400 dark:text-lousa-500 mb-4"></i>
           <h3 class="text-lg font-bold text-school-800 dark:text-lousa-100">
             Nenhuma submissão encontrada.
           </h3>
@@ -452,11 +448,7 @@ const handleBatchReprocess = async () => {
           v-else
           class="p-16 flex flex-col items-center justify-center text-center bg-white dark:bg-lousa-800 rounded-2xl ring-1 ring-school-200/80 dark:ring-lousa-700 border border-school-100 dark:border-lousa-700 shadow-sm"
         >
-          <div
-            class="w-16 h-16 bg-indigo-50 dark:bg-indigo-900/40 rounded-full flex items-center justify-center mb-4 text-indigo-600 dark:text-indigo-400"
-          >
-            <i class="pi pi-filter text-2xl" style="font-size: 2rem"></i>
-          </div>
+          <i class="pi pi-filter text-5xl text-indigo-600 dark:text-indigo-400 mb-4"></i>
           <h3 class="text-lg font-bold text-school-800 dark:text-lousa-100">
             Selecione uma avaliação
           </h3>

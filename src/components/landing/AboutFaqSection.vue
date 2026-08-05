@@ -64,7 +64,7 @@ function toggle(index: number) {
               v-for="(item, i) in faqs"
               :key="item.q"
               class="bg-white border border-school-200 rounded-2xl overflow-hidden transition-all duration-300"
-              :class="item.open ? 'border-indigo-200 shadow-lg shadow-indigo-500/5' : 'hover:border-indigo-200'"
+              :class="item.open ? 'border-borda-200 shadow-lg shadow-indigo-500/5' : 'hover:border-borda-200'"
             >
               <button
                 @click="toggle(i)"
@@ -100,11 +100,7 @@ function toggle(index: number) {
             class="absolute -bottom-6 left-6 right-6 sm:right-auto sm:max-w-xs bg-white rounded-2xl p-5 shadow-xl border border-school-100"
           >
             <div class="flex items-center gap-4">
-              <div
-                class="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 shrink-0"
-              >
-                <i class="pi pi-clock text-xl"></i>
-              </div>
+              <i class="pi pi-clock text-3xl text-indigo-600 shrink-0"></i>
               <div>
                 <p class="text-2xl font-extrabold text-school-900">+10h</p>
                 <p class="text-xs text-school-500">por semana devolvidas ao professor</p>

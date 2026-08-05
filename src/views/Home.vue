@@ -127,14 +127,12 @@ onMounted(() => {
               v-for="turma in turmas"
               :key="turma._id"
               :to="`/classes/${turma._id}`"
-              class="bg-white dark:bg-lousa-800 ring-1 ring-school-100 dark:ring-lousa-700 p-4 rounded-xl flex justify-between items-center hover:ring-indigo-500/30 hover:border-indigo-300 hover:bg-school-50 dark:hover:bg-lousa-700/60 hover:shadow-md transition-all group cursor-pointer border border-school-200 dark:border-lousa-700 w-full"
+              class="bg-white dark:bg-lousa-800 ring-1 ring-school-100 dark:ring-lousa-700 p-4 rounded-xl flex justify-between items-center hover:ring-indigo-500/30 hover:border-borda-300 hover:bg-school-50 dark:hover:bg-lousa-700/60 hover:shadow-md transition-all group cursor-pointer border border-school-200 dark:border-lousa-700 w-full"
             >
               <div class="flex items-center gap-4">
-                <div
-                  class="w-10 h-10 bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 rounded-lg flex items-center justify-center group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/60 group-hover:scale-105 transition-all"
-                >
-                  <i class="pi pi-users text-sm"></i>
-                </div>
+                <i
+                  class="pi pi-users text-2xl text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform shrink-0"
+                ></i>
                 <div>
                   <h4
                     class="font-semibold text-school-700 dark:text-lousa-300 group-hover:text-indigo-700 dark:group-hover:text-indigo-400 transition-colors"
@@ -224,14 +222,9 @@ onMounted(() => {
               :key="stat.label"
               class="bg-white dark:bg-lousa-800 ring-1 ring-school-300 dark:ring-lousa-700 p-6 rounded-2xl flex items-center gap-5 hover:shadow-md transition-all"
             >
-              <div
-                class="w-14 h-14 rounded-full flex items-center justify-center shrink-0 bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400"
-              >
-                <i
-                  :class="['pi text-3xl', stat.icon]"
-                  style="font-size: 1.8rem"
-                ></i>
-              </div>
+              <i
+                :class="['pi text-4xl shrink-0 text-indigo-600 dark:text-indigo-400', stat.icon]"
+              ></i>
               <div>
                 <p class="text-sm font-semibold text-school-500 dark:text-lousa-400 mb-1">
                   {{ stat.label }}

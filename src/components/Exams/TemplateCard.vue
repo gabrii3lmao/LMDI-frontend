@@ -29,17 +29,16 @@ const alternativasLetra = computed(() =>
 
 <template>
   <div
-    class="group bg-white dark:bg-lousa-800 border border-school-200 dark:border-lousa-700 ring-1 ring-school-100 dark:ring-lousa-700 p-4 rounded-2xl hover:ring-indigo-500/30 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+    class="group bg-white dark:bg-lousa-800 border border-school-200 dark:border-lousa-700 ring-1 ring-school-100 dark:ring-lousa-700 p-4 rounded-2xl hover:ring-indigo-500/30 hover:border-borda-300 dark:hover:border-borda-700 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
   >
     <!-- Topo do card (Margem reduzida de mb-6 para mb-3) -->
     <div class="flex justify-between items-start mb-3">
       <div class="flex gap-3 items-center">
-        <!-- Ícone menor (w-10 h-10 em vez de w-12 h-12) -->
-        <div
-          class="w-10 h-10 bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform"
-        >
-          <i class="pi pi-file-check" style="font-size: 1.3rem"></i>
-        </div>
+        <!-- Ícone maior, sem caixa -->
+        <i
+          class="pi pi-file-check text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform"
+          style="font-size: 2rem"
+        ></i>
 
         <div
           class="flex gap-3 ml-2 opacity-100 group-hover:opacity-100 transition-opacity"

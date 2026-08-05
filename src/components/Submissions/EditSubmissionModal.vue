@@ -99,7 +99,7 @@ function handleSave() {
             <input
               v-model="studentName"
               type="text"
-              class="w-full px-4 py-2.5 rounded-xl border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
+              class="w-full px-4 py-2.5 rounded-xl border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 focus:ring-2 focus:ring-indigo-500/50 focus:border-borda-500 outline-none transition-all"
             />
           </div>
 
@@ -116,7 +116,7 @@ function handleSave() {
                 min="0"
                 max="10"
                 step="0.1"
-                class="w-full px-4 py-2.5 rounded-xl border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
+                class="w-full px-4 py-2.5 rounded-xl border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 focus:ring-2 focus:ring-indigo-500/50 focus:border-borda-500 outline-none transition-all"
               />
             </div>
             <div>
@@ -129,7 +129,7 @@ function handleSave() {
                 v-model.number="totalCorrect"
                 type="number"
                 min="0"
-                class="w-full px-4 py-2.5 rounded-xl border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
+                class="w-full px-4 py-2.5 rounded-xl border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 focus:ring-2 focus:ring-indigo-500/50 focus:border-borda-500 outline-none transition-all"
               />
             </div>
           </div>
@@ -182,7 +182,7 @@ function handleSave() {
                   <input
                     v-model="det.marked"
                     type="text"
-                    class="w-full px-2.5 py-1.5 rounded-lg border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 text-sm focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
+                    class="w-full px-2.5 py-1.5 rounded-lg border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 text-sm focus:ring-2 focus:ring-indigo-500/50 focus:border-borda-500 outline-none transition-all"
                   />
                 </div>
                 <div>
@@ -194,7 +194,7 @@ function handleSave() {
                   <input
                     v-model="det.correct"
                     type="text"
-                    class="w-full px-2.5 py-1.5 rounded-lg border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 text-sm focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
+                    class="w-full px-2.5 py-1.5 rounded-lg border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 text-sm focus:ring-2 focus:ring-indigo-500/50 focus:border-borda-500 outline-none transition-all"
                   />
                 </div>
                 <div>
@@ -205,7 +205,7 @@ function handleSave() {
                   </label>
                   <select
                     v-model="det.status"
-                    class="w-full px-2.5 py-1.5 rounded-lg border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 text-sm focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
+                    class="w-full px-2.5 py-1.5 rounded-lg border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 text-sm focus:ring-2 focus:ring-indigo-500/50 focus:border-borda-500 outline-none transition-all"
                   >
                     <option value="correct">Correto</option>
                     <option value="incorrect">Incorreto</option>

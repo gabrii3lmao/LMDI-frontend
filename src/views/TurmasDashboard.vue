@@ -182,11 +182,7 @@ function handleExcluir(id: string) {
           v-else-if="turmas.length === 0"
           class="flex flex-col items-center justify-center py-20 bg-white dark:bg-lousa-800 ring-1 ring-school-200/80 dark:ring-lousa-700 rounded-3xl border border-dashed border-school-300 dark:border-lousa-600 shadow-sm"
         >
-          <div
-            class="w-20 h-20 bg-indigo-50 dark:bg-indigo-900/40 rounded-full flex items-center justify-center mb-6 text-indigo-600 dark:text-indigo-400"
-          >
-            <i class="pi pi-folder-open text-3xl" style="font-size: 2rem"></i>
-          </div>
+          <i class="pi pi-folder-open text-5xl text-indigo-600 dark:text-indigo-400 mb-6"></i>
           <h3 class="text-xl font-bold text-school-800 dark:text-lousa-100 mb-2">
             Nenhuma turma encontrada
           </h3>

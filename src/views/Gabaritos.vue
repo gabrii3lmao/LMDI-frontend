@@ -223,11 +223,7 @@ const handleSalvarGabaritoOficial = async (dados: any) => {
         v-else-if="templatesList.length === 0"
         class="flex flex-col items-center justify-center py-20 bg-white dark:bg-lousa-800 ring-1 ring-school-200/80 dark:ring-lousa-700 rounded-3xl border border-dashed border-school-300 dark:border-lousa-600 shadow-sm text-center px-4"
       >
-        <div
-          class="w-16 h-16 bg-indigo-50 dark:bg-indigo-900/40 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4"
-        >
-          <i class="pi pi-file-check text-2xl" style="font-size: 2rem"></i>
-        </div>
+        <i class="pi pi-file-check text-5xl text-indigo-600 dark:text-indigo-400 mb-4"></i>
         <h3 class="text-lg font-bold text-school-800 dark:text-lousa-100 mb-1">
           Nenhum gabarito mestre
         </h3>

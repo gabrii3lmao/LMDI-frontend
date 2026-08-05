@@ -106,8 +106,8 @@ const planos = [
           :style="{ '--delay': i * 130 + 'ms' }"
           :class="
             plano.highlighted
-              ? 'border-indigo-500 shadow-xl shadow-indigo-500/10 lg:scale-[1.03] z-10 lg:-my-3 lg:py-10'
-              : 'border-school-200 hover:border-indigo-200 hover:shadow-lg'
+              ? 'border-borda-500 shadow-xl shadow-indigo-500/10 lg:scale-[1.03] z-10 lg:-my-3 lg:py-10'
+              : 'border-school-200 hover:border-borda-200 hover:shadow-lg'
           "
         >
           <!-- Badge destaque -->

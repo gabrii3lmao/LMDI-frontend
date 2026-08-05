@@ -42,7 +42,7 @@ defineEmits<{
             >
               <div class="flex items-center gap-4">
                 <div
-                  class="w-9 h-9 rounded-full bg-indigo-50 dark:bg-indigo-900/40 border border-indigo-100 dark:border-indigo-800 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-sm font-bold shrink-0"
+                  class="w-9 h-9 rounded-full bg-indigo-50 dark:bg-indigo-900/40 border border-borda-100 dark:border-borda-800 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-sm font-bold shrink-0"
                 >
                   {{
                     sub.studentName
@@ -63,7 +63,7 @@ defineEmits<{
                 :class="[
                   'inline-flex items-center gap-1 text-[10px] font-bold uppercase px-2.5 py-1 rounded',
                   sub.status === 'success'
-                    ? 'bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-800'
+                    ? 'bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border border-borda-100 dark:border-borda-800'
                     : sub.status === 'pending'
                       ? 'bg-amber-50 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border border-amber-100 dark:border-amber-800'
                       : 'bg-red-50 dark:bg-red-900/40 text-red-700 dark:text-red-300 border border-red-100 dark:border-red-800',
@@ -91,7 +91,7 @@ defineEmits<{
             <td class="p-4 px-6 text-right">
               <div
                 v-if="sub.score !== undefined"
-                class="inline-flex items-center justify-center px-3 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-100 dark:border-indigo-800"
+                class="inline-flex items-center justify-center px-3 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 border border-borda-100 dark:border-borda-800"
               >
                 <span class="text-sm font-bold text-indigo-700 dark:text-indigo-300">{{
                   sub.score

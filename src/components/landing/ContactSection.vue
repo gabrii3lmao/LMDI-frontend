@@ -70,11 +70,7 @@ async function handleSubmit() {
               :key="info.label"
               class="flex items-start gap-4 bg-school-50 rounded-2xl p-5 border border-school-100"
             >
-              <div
-                class="w-11 h-11 shrink-0 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600"
-              >
-                <i :class="['pi', info.icon, 'text-lg']"></i>
-              </div>
+              <i :class="['pi', info.icon, 'text-3xl text-indigo-600 shrink-0']"></i>
               <div>
                 <p class="text-sm font-bold text-school-900">{{ info.label }}</p>
                 <p class="text-sm text-school-500 mt-0.5">{{ info.value }}</p>
@@ -125,7 +121,7 @@ async function handleSubmit() {
                 :class="
                   errors.nome
                     ? 'border-red-300 focus:ring-red-200'
-                    : 'border-school-200 focus:border-indigo-500 focus:ring-indigo-500/20'
+                    : 'border-school-200 focus:border-borda-500 focus:ring-indigo-500/20'
                 "
               />
               <p v-if="errors.nome" class="mt-1.5 text-xs text-red-500">
@@ -149,7 +145,7 @@ async function handleSubmit() {
                 :class="
                   errors.email
                     ? 'border-red-300 focus:ring-red-200'
-                    : 'border-school-200 focus:border-indigo-500 focus:ring-indigo-500/20'
+                    : 'border-school-200 focus:border-borda-500 focus:ring-indigo-500/20'
                 "
               />
               <p v-if="errors.email" class="mt-1.5 text-xs text-red-500">
@@ -173,7 +169,7 @@ async function handleSubmit() {
                 :class="
                   errors.mensagem
                     ? 'border-red-300 focus:ring-red-200'
-                    : 'border-school-200 focus:border-indigo-500 focus:ring-indigo-500/20'
+                    : 'border-school-200 focus:border-borda-500 focus:ring-indigo-500/20'
                 "
               ></textarea>
               <p v-if="errors.mensagem" class="mt-1.5 text-xs text-red-500">
@@ -184,7 +180,7 @@ async function handleSubmit() {
             <Transition name="fade">
               <div
                 v-if="status === 'sent'"
-                class="flex items-center gap-3 bg-indigo-50 border border-indigo-200 rounded-xl px-4 py-3"
+                class="flex items-center gap-3 bg-indigo-50 border border-borda-200 rounded-xl px-4 py-3"
               >
                 <i class="pi pi-check-circle text-indigo-600 text-lg"></i>
                 <p class="text-sm font-semibold text-indigo-700">
