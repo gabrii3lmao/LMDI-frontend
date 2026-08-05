@@ -70,21 +70,21 @@ onUnmounted(() => {
 
 <template>
   <section>
-    <h3 class="text-lg font-bold text-school-800 dark:text-school-100 mb-6 flex items-center gap-2">
+    <h3 class="text-lg font-bold text-school-800 dark:text-lousa-100 mb-6 flex items-center gap-2">
       <i class="pi pi-users text-indigo-600 dark:text-indigo-400"></i>
       Alunos Processados
     </h3>
 
     <div
       v-if="!examId"
-      class="bg-white dark:bg-school-800 border border-dashed border-school-400/60 dark:border-school-600 rounded-2xl p-12 text-center text-school-500 dark:text-school-400 font-semibold shadow-sm"
+      class="bg-white dark:bg-lousa-800 border border-dashed border-school-400/60 dark:border-lousa-600 rounded-2xl p-12 text-center text-school-500 dark:text-lousa-400 font-semibold shadow-sm"
     >
       Selecione uma prova acima para visualizar o desempenho da turma.
     </div>
 
     <div
       v-else-if="submissoes.length === 0"
-      class="bg-white dark:bg-school-800 border border-dashed border-school-400/60 dark:border-school-600 rounded-2xl p-12 text-center text-school-500 dark:text-school-400 font-semibold shadow-sm"
+      class="bg-white dark:bg-lousa-800 border border-dashed border-school-400/60 dark:border-lousa-600 rounded-2xl p-12 text-center text-school-500 dark:text-lousa-400 font-semibold shadow-sm"
     >
       Nenhuma submissão encontrada para esta prova.
     </div>

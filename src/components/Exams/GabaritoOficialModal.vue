@@ -97,15 +97,15 @@ function handleSubmit() {
     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-school-900/40 backdrop-blur-sm"
   >
     <div
-      class="bg-white dark:bg-school-800 border border-school-200 dark:border-school-700 w-full max-w-4xl rounded-3xl shadow-2xl p-6 max-h-[90vh] flex flex-col animate-in fade-in zoom-in duration-200"
+      class="bg-white dark:bg-lousa-800 border border-school-200 dark:border-lousa-700 w-full max-w-4xl rounded-3xl shadow-2xl p-6 max-h-[90vh] flex flex-col animate-in fade-in zoom-in duration-200"
     >
       <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-bold text-school-800 dark:text-school-100">
+        <h2 class="text-xl font-bold text-school-800 dark:text-lousa-100">
           {{ props.initialData ? "Editar Gabarito" : "Novo Gabarito Oficial" }}
         </h2>
         <button
           @click="emit('close')"
-          class="text-school-400 dark:text-school-500 hover:text-school-600 dark:hover:text-school-300 p-2 transition-colors hover:bg-school-50 dark:hover:bg-school-700 rounded-lg"
+          class="text-school-400 dark:text-lousa-500 hover:text-school-600 dark:hover:text-lousa-300 p-2 transition-colors hover:bg-school-50 dark:hover:bg-lousa-700 rounded-lg"
         >
           <i class="pi pi-times"></i>
         </button>
@@ -114,34 +114,34 @@ function handleSubmit() {
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div class="flex flex-col gap-1">
           <label
-            class="text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-1 px-1"
+            class="text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-1 px-1"
             >Nome</label
           >
           <input
             v-model="nomeProva"
-            class="bg-school-50/50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl p-2.5 text-sm text-school-800 dark:text-school-100 placeholder-school-400 dark:placeholder-school-500 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors shadow-sm"
+            class="bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl p-2.5 text-sm text-school-800 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors shadow-sm"
             placeholder="Ex: Simulado A"
           />
         </div>
         <div class="flex flex-col gap-1">
           <label
-            class="text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-1 px-1"
+            class="text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-1 px-1"
             >Questões</label
           >
           <input
             v-model.number="qtdQuestoes"
             type="number"
             min="1"
-            class="bg-school-50/50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl p-2.5 text-sm text-school-800 dark:text-school-100 placeholder-school-400 dark:placeholder-school-500 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors shadow-sm"
+            class="bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl p-2.5 text-sm text-school-800 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors shadow-sm"
           />
         </div>
         <div class="flex flex-col gap-1">
           <label
-            class="text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-1 px-1"
+            class="text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-1 px-1"
             >Opções</label
           >
           <div
-            class="flex bg-school-50 dark:bg-school-700 rounded-xl p-1 border border-school-200 dark:border-school-600 shadow-sm"
+            class="flex bg-school-50 dark:bg-lousa-700 rounded-xl p-1 border border-school-200 dark:border-lousa-600 shadow-sm"
           >
             <button
               v-for="n in [4, 5]"
@@ -151,7 +151,7 @@ function handleSubmit() {
                 'flex-1 text-xs py-2 rounded-lg transition-all font-semibold',
                 qtdAlternativas === n
                   ? 'bg-indigo-600 dark:bg-indigo-500 text-white font-bold shadow-md shadow-indigo-600/10'
-                  : 'text-school-500 dark:text-school-400 hover:text-school-800 dark:hover:text-school-200',
+                  : 'text-school-500 dark:text-lousa-400 hover:text-school-800 dark:hover:text-lousa-200',
               ]"
             >
               {{ n }}
@@ -161,15 +161,15 @@ function handleSubmit() {
       </div>
 
       <div
-        class="flex-1 overflow-y-auto custom-scrollbar pr-2 pt-4 border-t border-school-100 dark:border-school-700"
+        class="flex-1 overflow-y-auto custom-scrollbar pr-2 pt-4 border-t border-school-100 dark:border-lousa-700"
       >
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div
             v-for="i in qtdQuestoes"
             :key="i"
-            class="flex items-center justify-between p-2.5 rounded-xl bg-school-50/50 dark:bg-school-700/50 border border-school-200/80 dark:border-school-600 shadow-sm"
+            class="flex items-center justify-between p-2.5 rounded-xl bg-school-50/50 dark:bg-lousa-700/50 border border-school-200/80 dark:border-lousa-600 shadow-sm"
           >
-            <span class="text-xs font-mono font-semibold text-school-400 dark:text-school-500">{{
+            <span class="text-xs font-mono font-semibold text-school-400 dark:text-lousa-500">{{
               String(i).padStart(2, "0")
             }}</span>
             <div class="flex gap-1">
@@ -181,7 +181,7 @@ function handleSubmit() {
                   'w-8 h-8 rounded-lg text-xs font-bold border transition-all flex items-center justify-center',
                   respostas[i - 1] === alt
                     ? 'bg-indigo-600 dark:bg-indigo-500 border-transparent text-white shadow-md shadow-indigo-600/10'
-                    : 'bg-white dark:bg-school-700 border-school-200 dark:border-school-600 text-school-400 dark:text-school-500 hover:bg-school-50 dark:hover:bg-school-600 hover:text-school-600 dark:hover:text-school-300',
+                    : 'bg-white dark:bg-lousa-700 border-school-200 dark:border-lousa-600 text-school-400 dark:text-lousa-500 hover:bg-school-50 dark:hover:bg-lousa-600 hover:text-school-600 dark:hover:text-lousa-300',
                 ]"
               >
                 {{ alt }}
@@ -191,10 +191,10 @@ function handleSubmit() {
         </div>
       </div>
 
-      <div class="flex gap-3 mt-6 pt-6 border-t border-school-100 dark:border-school-700">
+      <div class="flex gap-3 mt-6 pt-6 border-t border-school-100 dark:border-lousa-700">
         <button
           @click="emit('close')"
-          class="flex-1 py-3 text-sm font-semibold text-school-500 dark:text-school-400 hover:text-school-800 dark:hover:text-school-200 transition-colors bg-school-100 dark:bg-school-700 hover:bg-school-200 dark:hover:bg-school-600 rounded-xl"
+          class="flex-1 py-3 text-sm font-semibold text-school-500 dark:text-lousa-400 hover:text-school-800 dark:hover:text-lousa-200 transition-colors bg-school-100 dark:bg-lousa-700 hover:bg-school-200 dark:hover:bg-lousa-600 rounded-xl"
         >
           Cancelar
         </button>

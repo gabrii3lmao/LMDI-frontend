@@ -162,9 +162,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen w-full flex font-sans bg-school-50 dark:bg-school-900 overflow-hidden">
+  <div class="min-h-screen w-full flex font-sans bg-school-50 dark:bg-lousa-900 overflow-hidden">
     <div
-      class="w-full lg:w-1/2 flex flex-col justify-center p-8 sm:p-16 lg:px-24 xl:px-32 relative z-10 shadow-[4px_0_30px_rgba(0,0,0,0.08)] bg-gradient-to-r from-school-50 via-school-50 to-indigo-50/20 dark:from-school-900 dark:via-school-900 dark:to-indigo-950/20"
+      class="w-full lg:w-1/2 flex flex-col justify-center p-8 sm:p-16 lg:px-24 xl:px-32 relative z-10 shadow-[4px_0_30px_rgba(0,0,0,0.08)] bg-gradient-to-r from-school-50 via-school-50 to-indigo-50/20 dark:from-lousa-900 dark:via-lousa-900 dark:to-indigo-950/20"
     >
       <div
         class="absolute top-0 right-0 w-72 h-72 -translate-y-1/3 translate-x-1/3 rounded-full bg-indigo-500/5 blur-3xl pointer-events-none"
@@ -172,16 +172,16 @@ onUnmounted(() => {
 
       <div class="w-full max-w-sm mx-auto relative z-10">
         <div class="flex items-center gap-3 mb-10">
-          <span class="text-5xl font-extrabold text-school-900 dark:text-school-100 tracking-tight">
+          <span class="text-5xl font-extrabold text-school-900 dark:text-lousa-100 tracking-tight">
             Let Me <span class="text-indigo-600 dark:text-indigo-400">Do It!</span>
           </span>
         </div>
 
         <div class="mb-8">
-          <h1 class="text-3xl font-bold text-school-900 dark:text-school-100 mb-2 tracking-tight">
+          <h1 class="text-3xl font-bold text-school-900 dark:text-lousa-100 mb-2 tracking-tight">
             Bem-vindo de volta
           </h1>
-          <p class="text-school-500 dark:text-school-400 text-sm">
+          <p class="text-school-500 dark:text-lousa-400 text-sm">
             Insira suas credenciais para acessar o seu painel de gestão.
           </p>
         </div>
@@ -214,7 +214,7 @@ onUnmounted(() => {
 
         <form class="space-y-5" @submit.prevent="handleLogin">
           <div>
-            <label class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-2">
+            <label class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-2">
               E-mail
             </label>
             <input
@@ -222,7 +222,7 @@ onUnmounted(() => {
               type="email"
               placeholder="seu@email.com"
               required
-              class="w-full px-4 py-3 bg-school-50/50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-900 dark:text-school-100 placeholder-school-400 dark:placeholder-school-500 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all"
+              class="w-full px-4 py-3 bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-900 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all"
               :class="fieldErrors.email ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20 focus:border-red-500' : ''"
             />
             <p v-if="fieldErrors.email" class="mt-1.5 text-xs font-medium text-red-500 dark:text-red-400 flex items-center gap-1">
@@ -233,7 +233,7 @@ onUnmounted(() => {
 
           <div class="space-y-1.5">
             <div class="flex items-center justify-between">
-              <label class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider">
+              <label class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider">
                 Senha
               </label>
               <RouterLink
@@ -249,12 +249,12 @@ onUnmounted(() => {
                 :type="showPassword ? 'text' : 'password'"
                 placeholder="••••••••"
                 required
-                class="w-full px-4 py-3 pr-11 bg-school-50/50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-900 dark:text-school-100 placeholder-school-400 dark:placeholder-school-500 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all"
+                class="w-full px-4 py-3 pr-11 bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-900 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all"
               />
               <button
                 type="button"
                 @click="showPassword = !showPassword"
-                class="absolute right-3 top-1/2 -translate-y-1/2 text-school-400 dark:text-school-500 hover:text-school-600 dark:hover:text-school-300 transition-colors p-1"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-school-400 dark:text-lousa-500 hover:text-school-600 dark:hover:text-lousa-300 transition-colors p-1"
                 :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
               >
                 <i :class="['pi text-sm', showPassword ? 'pi-eye-slash' : 'pi-eye']"></i>
@@ -278,10 +278,10 @@ onUnmounted(() => {
 
         <div class="relative my-8">
           <div class="absolute inset-0 flex items-center">
-            <div class="w-full border-t border-school-200 dark:border-school-700"></div>
+            <div class="w-full border-t border-school-200 dark:border-lousa-700"></div>
           </div>
           <div class="relative flex justify-center text-sm">
-            <span class="px-3 bg-school-50 dark:bg-school-900 text-school-500 dark:text-school-400 font-medium"
+            <span class="px-3 bg-school-50 dark:bg-lousa-900 text-school-500 dark:text-lousa-400 font-medium"
               >Ou</span
             >
           </div>
@@ -293,7 +293,7 @@ onUnmounted(() => {
           <GoogleLogin :callback="callbackGoogle" :button-config="{text: 'continue_with'}"/>
         </div>
 
-        <p class="mt-8 text-center text-sm text-school-500 dark:text-school-400">
+        <p class="mt-8 text-center text-sm text-school-500 dark:text-lousa-400">
           Ainda não tem uma conta?
           <RouterLink
             to="/signup"

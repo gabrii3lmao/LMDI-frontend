@@ -15,7 +15,7 @@
   }
 
   .dark body {
-    @apply bg-school-900 text-school-100;
+    @apply bg-lousa-900 text-lousa-100;
   }
 }
 

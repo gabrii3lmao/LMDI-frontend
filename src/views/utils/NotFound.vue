@@ -3,22 +3,22 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-school-50 dark:bg-school-900 font-sans px-6 py-12">
-    <div class="z-10 w-full max-w-2xl bg-white dark:bg-school-800 p-8 md:p-16 rounded-3xl shadow-sm border border-school-100 dark:border-school-700 text-center">
+  <div class="min-h-screen flex items-center justify-center bg-school-50 dark:bg-lousa-900 font-sans px-6 py-12">
+    <div class="z-10 w-full max-w-2xl bg-white dark:bg-lousa-800 p-8 md:p-16 rounded-3xl shadow-sm border border-school-100 dark:border-lousa-700 text-center">
 
       <div class="relative flex items-center justify-center py-6 md:py-10">
-        <span class="select-none text-[12rem] md:text-[18rem] font-black leading-none text-school-300 dark:text-school-100/20">
+        <span class="select-none text-[12rem] md:text-[18rem] font-black leading-none text-school-300 dark:text-lousa-100/20">
           404
         </span>
         <img class="absolute w-56 md:w-72 confused-cat dark:hidden" src="@/assets/confused-cat.png" alt="gato confuso">
         <img class="absolute w-56 md:w-72 confused-cat hidden dark:block" src="@/assets/confused-car-dark.png" alt="gato confuso escuro">
       </div>
 
-      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-school-950 dark:text-school-100 mt-2 mb-3">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-school-950 dark:text-lousa-100 mt-2 mb-3">
         Página não encontrada
       </h2>
 
-      <p class="text-lg text-school-600 dark:text-school-400 mb-10 leading-relaxed max-w-md mx-auto">
+      <p class="text-lg text-school-600 dark:text-lousa-400 mb-10 leading-relaxed max-w-md mx-auto">
         Não deixe o nosso gatinho confuso assim novamente!  
       </p>
 

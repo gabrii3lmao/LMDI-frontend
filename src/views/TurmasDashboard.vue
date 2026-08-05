@@ -141,7 +141,7 @@ function handleExcluir(id: string) {
 
 <template>
   <div
-    class="sm:ml-64 min-h-screen bg-school-50 dark:bg-school-900 text-school-700 dark:text-school-300 font-sans flex flex-col"
+    class="sm:ml-64 min-h-screen bg-school-50 dark:bg-lousa-900 text-school-700 dark:text-lousa-300 font-sans flex flex-col"
   >
     <div class="flex-1 p-6 md:p-10">
       <div class="max-w-6xl 2xl:max-w-[90rem] mx-auto space-y-8">
@@ -149,10 +149,10 @@ function handleExcluir(id: string) {
           class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
         >
           <div class="space-y-1">
-            <h1 class="text-3xl font-extrabold text-school-800 dark:text-school-100 tracking-tight">
+            <h1 class="text-3xl font-extrabold text-school-800 dark:text-lousa-100 tracking-tight">
               Suas Turmas
             </h1>
-            <p class="text-school-500 dark:text-school-400 text-sm">
+            <p class="text-school-500 dark:text-lousa-400 text-sm">
               Gerencie suas classes e acompanhe os gabaritos processados.
             </p>
           </div>
@@ -174,23 +174,23 @@ function handleExcluir(id: string) {
           <div
             v-for="i in 6"
             :key="i"
-            class="h-44 bg-school-200/50 dark:bg-school-700/40 ring-1 ring-school-200/80 dark:ring-school-700/60 rounded-2xl animate-pulse"
+            class="h-44 bg-school-200/50 dark:bg-lousa-700/40 ring-1 ring-school-200/80 dark:ring-lousa-700/60 rounded-2xl animate-pulse"
           ></div>
         </div>
 
         <div
           v-else-if="turmas.length === 0"
-          class="flex flex-col items-center justify-center py-20 bg-white dark:bg-school-800 ring-1 ring-school-200/80 dark:ring-school-700 rounded-3xl border border-dashed border-school-300 dark:border-school-600 shadow-sm"
+          class="flex flex-col items-center justify-center py-20 bg-white dark:bg-lousa-800 ring-1 ring-school-200/80 dark:ring-lousa-700 rounded-3xl border border-dashed border-school-300 dark:border-lousa-600 shadow-sm"
         >
           <div
             class="w-20 h-20 bg-indigo-50 dark:bg-indigo-900/40 rounded-full flex items-center justify-center mb-6 text-indigo-600 dark:text-indigo-400"
           >
             <i class="pi pi-folder-open text-3xl" style="font-size: 2rem"></i>
           </div>
-          <h3 class="text-xl font-bold text-school-800 dark:text-school-100 mb-2">
+          <h3 class="text-xl font-bold text-school-800 dark:text-lousa-100 mb-2">
             Nenhuma turma encontrada
           </h3>
-          <p class="text-school-500 dark:text-school-400 text-sm mb-6 max-w-sm text-center font-medium">
+          <p class="text-school-500 dark:text-lousa-400 text-sm mb-6 max-w-sm text-center font-medium">
             Você ainda não cadastrou nenhuma turma. Crie sua primeira turma para
             começar a corrigir gabaritos.
           </p>
@@ -218,7 +218,7 @@ function handleExcluir(id: string) {
 
     <div
       v-if="!isPending && turmas.length > 0"
-      class="sticky bottom-0 bg-school-50 dark:bg-school-800/95 border-t border-school-200 dark:border-school-700 px-6 md:px-10"
+      class="sticky bottom-0 bg-school-50 dark:bg-lousa-800/95 border-t border-school-200 dark:border-lousa-700 px-6 md:px-10"
     >
       <div class="max-w-6xl 2xl:max-w-[90rem] mx-auto py-3">
         <Pagination

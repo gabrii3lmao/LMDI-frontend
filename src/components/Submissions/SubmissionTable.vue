@@ -15,12 +15,12 @@ defineEmits<{
 
 <template>
   <div
-    class="bg-white dark:bg-school-800 border border-school-200 dark:border-school-700 rounded-2xl overflow-hidden ring-1 ring-school-300 dark:ring-school-700 shadow-sm"
+    class="bg-white dark:bg-lousa-800 border border-school-200 dark:border-lousa-700 rounded-2xl overflow-hidden ring-1 ring-school-300 dark:ring-lousa-700 shadow-sm"
   >
     <div class="overflow-x-auto">
       <table class="w-full text-left border-collapse">
         <thead
-          class="bg-school-50/75 dark:bg-school-700/50 text-xs uppercase text-school-500 dark:text-school-400 font-bold tracking-wider border-b border-school-400/60 dark:border-school-600"
+          class="bg-school-50/75 dark:bg-lousa-700/50 text-xs uppercase text-school-500 dark:text-lousa-400 font-bold tracking-wider border-b border-school-400/60 dark:border-lousa-600"
         >
           <tr>
             <th class="p-4 px-6 font-semibold">Nome do Aluno</th>
@@ -30,11 +30,11 @@ defineEmits<{
           </tr>
         </thead>
 
-        <tbody class="divide-y divide-school-100 dark:divide-school-700">
+        <tbody class="divide-y divide-school-100 dark:divide-lousa-700">
           <tr
             v-for="sub in submissions"
             :key="sub._id"
-            class="hover:bg-school-50/50 dark:hover:bg-school-700/30 transition-colors group"
+            class="hover:bg-school-50/50 dark:hover:bg-lousa-700/30 transition-colors group"
           >
             <td
               class="p-4 px-6 cursor-pointer"
@@ -51,7 +51,7 @@ defineEmits<{
                   }}
                 </div>
                 <span
-                  class="text-school-700 dark:text-school-300 font-semibold"
+                  class="text-school-700 dark:text-lousa-300 font-semibold"
                 >
                   {{ sub.studentName }}
                 </span>
@@ -100,9 +100,9 @@ defineEmits<{
 
               <div
                 v-else
-                class="inline-flex items-center justify-center px-3 py-1 rounded-lg bg-school-100 dark:bg-school-700 border border-school-200 dark:border-school-600"
+                class="inline-flex items-center justify-center px-3 py-1 rounded-lg bg-school-100 dark:bg-lousa-700 border border-school-200 dark:border-lousa-600"
               >
-                <span class="text-xs font-semibold text-school-500 dark:text-school-400"
+                <span class="text-xs font-semibold text-school-500 dark:text-lousa-400"
                   >-</span
                 >
               </div>
@@ -114,21 +114,21 @@ defineEmits<{
                   v-if="sub.status === 'error'"
                   @click.stop="$emit('reprocess', sub)"
                   title="Reenviar para IA"
-                  class="p-2 rounded-lg text-school-400 dark:text-school-500 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/30 transition-all"
+                  class="p-2 rounded-lg text-school-400 dark:text-lousa-500 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/30 transition-all"
                 >
                   <i class="pi pi-refresh text-sm"></i>
                 </button>
                 <button
                   @click.stop="$emit('edit', sub)"
                   title="Editar"
-                  class="p-2 rounded-lg text-school-400 dark:text-school-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition-all"
+                  class="p-2 rounded-lg text-school-400 dark:text-lousa-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition-all"
                 >
                   <i class="pi pi-pencil text-sm"></i>
                 </button>
                 <button
                   @click.stop="$emit('delete', sub)"
                   title="Excluir"
-                  class="p-2 rounded-lg text-school-400 dark:text-school-500 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 transition-all"
+                  class="p-2 rounded-lg text-school-400 dark:text-lousa-500 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 transition-all"
                 >
                   <i class="pi pi-trash text-sm"></i>
                 </button>

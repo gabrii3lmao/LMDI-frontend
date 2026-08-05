@@ -153,14 +153,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-white dark:bg-school-900 font-sans">
+  <div class="min-h-screen bg-white dark:bg-lousa-900 font-sans">
     <!-- Navbar -->
     <header
       class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       :class="
         scrolled
-          ? 'bg-white/95 dark:bg-school-900/95 backdrop-blur-xl shadow-lg shadow-school-900/5 dark:shadow-black/30 border-b border-school-200/50 dark:border-school-700/50'
-          : 'bg-white/80 dark:bg-school-900/80 backdrop-blur-md border-b border-transparent'
+          ? 'bg-white/95 dark:bg-lousa-900/95 backdrop-blur-xl shadow-lg shadow-school-900/5 dark:shadow-black/30 border-b border-school-200/50 dark:border-lousa-700/50'
+          : 'bg-white/80 dark:bg-lousa-900/80 backdrop-blur-md border-b border-transparent'
       "
     >
       <div
@@ -174,12 +174,12 @@ onUnmounted(() => {
               alt="LetMeDoIt"
               class="h-8 sm:h-9 w-auto"
             />
-            <p class="text-base sm:text-xl font-extrabold text-school-900 dark:text-school-100 tracking-tight whitespace-nowrap">Let me <span class="text-indigo-600 dark:text-indigo-400">Do it</span></p>
+            <p class="text-base sm:text-xl font-extrabold text-school-900 dark:text-lousa-100 tracking-tight whitespace-nowrap">Let me <span class="text-indigo-600 dark:text-indigo-400">Do it</span></p>
           </RouterLink>
           <nav class="flex items-center gap-1.5 sm:gap-3">
             <RouterLink
               to="/signin"
-              class="px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-school-600 dark:text-school-400 hover:text-school-900 dark:hover:text-school-100 transition-colors whitespace-nowrap"
+              class="px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-school-600 dark:text-lousa-400 hover:text-school-900 dark:hover:text-lousa-100 transition-colors whitespace-nowrap"
             >
               Entrar
             </RouterLink>
@@ -195,7 +195,7 @@ onUnmounted(() => {
     </header>
 
     <!-- Hero -->
-    <section class="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-gradient-to-b from-indigo-50/60 to-white dark:from-school-800 dark:to-school-900">
+    <section class="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-gradient-to-b from-indigo-50/60 to-white dark:from-lousa-800 dark:to-lousa-900">
       <div class="hero-glow"></div>
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-200/20 via-transparent to-transparent pointer-events-none"></div>
       <div class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-6 relative z-10">
@@ -204,11 +204,11 @@ onUnmounted(() => {
             <i class="pi pi-tag text-xs"></i>
             Planos para todos os tamanhos
           </div>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-school-900 dark:text-school-100 tracking-tight leading-tight hero-fade-in" style="animation-delay: 0.1s">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-school-900 dark:text-lousa-100 tracking-tight leading-tight hero-fade-in" style="animation-delay: 0.1s">
             Invista no que
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-indigo-700">realmente importa</span>
           </h1>
-          <p class="text-lg md:text-xl text-school-500 dark:text-school-400 max-w-2xl mx-auto hero-fade-in" style="animation-delay: 0.2s">
+          <p class="text-lg md:text-xl text-school-500 dark:text-lousa-400 max-w-2xl mx-auto hero-fade-in" style="animation-delay: 0.2s">
             Escolha o plano ideal para sua realidade. Do professor individual à
             instituição de ensino.
           </p>
@@ -219,14 +219,14 @@ onUnmounted(() => {
           <button
             @click="selectedPlan = 'monthly'"
             class="text-sm font-semibold transition-colors"
-            :class="selectedPlan === 'monthly' ? 'text-school-900 dark:text-school-100' : 'text-school-400 dark:text-school-500'"
+            :class="selectedPlan === 'monthly' ? 'text-school-900 dark:text-lousa-100' : 'text-school-400 dark:text-lousa-500'"
           >
             Mensal
           </button>
           <button
             @click="selectedPlan = 'annual'"
             class="relative inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all"
-            :class="selectedPlan === 'annual' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25' : 'bg-school-100 dark:bg-school-800 text-school-600 dark:text-school-400'"
+            :class="selectedPlan === 'annual' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25' : 'bg-school-100 dark:bg-lousa-800 text-school-600 dark:text-lousa-400'"
           >
             Anual
             <span class="text-[10px] font-bold bg-indigo-500 px-1.5 py-0.5 rounded-full text-white">-17%</span>
@@ -242,11 +242,11 @@ onUnmounted(() => {
           <div
             v-for="plano in planos"
             :key="plano.name"
-            class="reveal relative rounded-2xl border bg-white dark:bg-school-800 p-8 transition-all duration-300 hover:shadow-xl"
+            class="reveal relative rounded-2xl border bg-white dark:bg-lousa-800 p-8 transition-all duration-300 hover:shadow-xl"
             :class="
               plano.highlighted
                 ? 'border-indigo-300 dark:border-indigo-600 shadow-lg shadow-indigo-500/10 scale-[1.02] lg:scale-110 z-10'
-                : 'border-school-200 dark:border-school-700 hover:border-indigo-200 dark:hover:border-indigo-700'
+                : 'border-school-200 dark:border-lousa-700 hover:border-indigo-200 dark:hover:border-indigo-700'
             "
           >
             <!-- Badge destaque -->
@@ -258,22 +258,22 @@ onUnmounted(() => {
             </div>
 
             <div class="text-center mb-6">
-              <h3 class="text-xl font-bold text-school-900 dark:text-school-100">
+              <h3 class="text-xl font-bold text-school-900 dark:text-lousa-100">
                 {{ plano.name }}
               </h3>
-              <p class="text-sm text-school-500 dark:text-school-400 mt-1">
+              <p class="text-sm text-school-500 dark:text-lousa-400 mt-1">
                 {{ plano.subtitle }}
               </p>
             </div>
 
             <div class="text-center mb-6">
-              <span class="text-5xl font-extrabold text-school-900 dark:text-school-100">
+              <span class="text-5xl font-extrabold text-school-900 dark:text-lousa-100">
                 <template v-if="plano.monthlyPrice === 0">Grátis</template>
                 <template v-else>
                   R$ {{ selectedPlan === 'monthly' ? plano.monthlyPrice : plano.annualPrice }}
                 </template>
               </span>
-              <span v-if="plano.monthlyPrice > 0" class="text-school-400 dark:text-school-500 text-lg font-medium">
+              <span v-if="plano.monthlyPrice > 0" class="text-school-400 dark:text-lousa-500 text-lg font-medium">
                 {{ plano.period }}
               </span>
             </div>
@@ -282,7 +282,7 @@ onUnmounted(() => {
               <li
                 v-for="feature in plano.features"
                 :key="feature"
-                class="flex items-start gap-3 text-sm text-school-600 dark:text-school-300"
+                class="flex items-start gap-3 text-sm text-school-600 dark:text-lousa-300"
               >
                 <i class="pi pi-check-circle text-indigo-500 mt-0.5 text-base shrink-0"></i>
                 {{ feature }}
@@ -295,7 +295,7 @@ onUnmounted(() => {
               :class="
                 plano.highlighted
                   ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-500/25'
-                  : 'bg-school-100 dark:bg-school-700 hover:bg-school-200 dark:hover:bg-school-600 text-school-700 dark:text-school-200'
+                  : 'bg-school-100 dark:bg-lousa-700 hover:bg-school-200 dark:hover:bg-lousa-600 text-school-700 dark:text-lousa-200'
               "
             >
               {{ plano.cta }}
@@ -306,14 +306,14 @@ onUnmounted(() => {
     </section>
 
     <!-- Comparison Table -->
-    <section class="py-20 md:py-28 bg-school-50 dark:bg-school-800/50">
+    <section class="py-20 md:py-28 bg-school-50 dark:bg-lousa-800/50">
       <div class="max-w-5xl mx-auto px-6">
         <div class="text-center max-w-2xl mx-auto mb-16">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-school-900 dark:text-school-100 tracking-tight mb-4">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-school-900 dark:text-lousa-100 tracking-tight mb-4">
             Compare os
             <span class="text-indigo-600 dark:text-indigo-400">planos</span>
           </h2>
-          <p class="text-school-500 dark:text-school-400 text-lg">
+          <p class="text-school-500 dark:text-lousa-400 text-lg">
             Todos os detalhes para você escolher com confiança.
           </p>
         </div>
@@ -321,24 +321,24 @@ onUnmounted(() => {
         <div class="overflow-x-auto reveal">
           <table class="w-full text-left border-collapse">
             <thead>
-              <tr class="border-b border-school-200 dark:border-school-700">
-                <th class="py-4 pr-6 text-sm font-bold text-school-500 dark:text-school-400 uppercase tracking-wider">Recurso</th>
-                <th class="py-4 px-6 text-sm font-bold text-school-700 dark:text-school-300 uppercase tracking-wider text-center">Grátis</th>
+              <tr class="border-b border-school-200 dark:border-lousa-700">
+                <th class="py-4 pr-6 text-sm font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider">Recurso</th>
+                <th class="py-4 px-6 text-sm font-bold text-school-700 dark:text-lousa-300 uppercase tracking-wider text-center">Grátis</th>
                 <th class="py-4 px-6 text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider text-center bg-indigo-50 dark:bg-indigo-900/20 rounded-t-2xl">Profissional</th>
-                <th class="py-4 px-6 text-sm font-bold text-school-700 dark:text-school-300 uppercase tracking-wider text-center">Empresarial</th>
+                <th class="py-4 px-6 text-sm font-bold text-school-700 dark:text-lousa-300 uppercase tracking-wider text-center">Empresarial</th>
               </tr>
             </thead>
             <tbody>
               <tr
                 v-for="(item, i) in comparativo"
                 :key="item.feature"
-                class="border-b border-school-100 dark:border-school-700/50"
-                :class="i % 2 === 0 ? 'bg-white dark:bg-school-900' : 'bg-school-50/50 dark:bg-school-800/30'"
+                class="border-b border-school-100 dark:border-lousa-700/50"
+                :class="i % 2 === 0 ? 'bg-white dark:bg-lousa-900' : 'bg-school-50/50 dark:bg-lousa-800/30'"
               >
-                <td class="py-4 pr-6 text-sm font-medium text-school-700 dark:text-school-300">{{ item.feature }}</td>
-                <td class="py-4 px-6 text-sm text-school-500 dark:text-school-400 text-center">{{ item.gratis }}</td>
-                <td class="py-4 px-6 text-sm font-semibold text-school-800 dark:text-school-200 text-center bg-indigo-50 dark:bg-indigo-900/10">{{ item.prof }}</td>
-                <td class="py-4 px-6 text-sm text-school-500 dark:text-school-400 text-center">{{ item.empres }}</td>
+                <td class="py-4 pr-6 text-sm font-medium text-school-700 dark:text-lousa-300">{{ item.feature }}</td>
+                <td class="py-4 px-6 text-sm text-school-500 dark:text-lousa-400 text-center">{{ item.gratis }}</td>
+                <td class="py-4 px-6 text-sm font-semibold text-school-800 dark:text-lousa-200 text-center bg-indigo-50 dark:bg-indigo-900/10">{{ item.prof }}</td>
+                <td class="py-4 px-6 text-sm text-school-500 dark:text-lousa-400 text-center">{{ item.empres }}</td>
               </tr>
             </tbody>
           </table>
@@ -347,10 +347,10 @@ onUnmounted(() => {
     </section>
 
     <!-- FAQ Preços -->
-    <section class="py-20 md:py-28 bg-white dark:bg-school-900">
+    <section class="py-20 md:py-28 bg-white dark:bg-lousa-900">
       <div class="max-w-3xl mx-auto px-6">
         <div class="text-center max-w-2xl mx-auto mb-14">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-school-900 dark:text-school-100 tracking-tight mb-4">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-school-900 dark:text-lousa-100 tracking-tight mb-4">
             Dúvidas sobre
             <span class="text-indigo-600 dark:text-indigo-400">planos</span>
           </h2>
@@ -360,14 +360,14 @@ onUnmounted(() => {
           <div
             v-for="(item, i) in faqPrecos"
             :key="i"
-            class="bg-school-50 dark:bg-school-800/50 border border-school-200 dark:border-school-700 rounded-2xl overflow-hidden transition-all duration-300"
+            class="bg-school-50 dark:bg-lousa-800/50 border border-school-200 dark:border-lousa-700 rounded-2xl overflow-hidden transition-all duration-300"
             :class="item.open ? 'border-indigo-200 dark:border-indigo-700 shadow-lg' : ''"
           >
             <button
               @click="toggleFaq(i)"
-              class="w-full p-5 text-left flex items-center justify-between gap-4 hover:bg-school-100 dark:hover:bg-school-700/50 transition-colors"
+              class="w-full p-5 text-left flex items-center justify-between gap-4 hover:bg-school-100 dark:hover:bg-lousa-700/50 transition-colors"
             >
-              <span class="font-semibold text-school-800 dark:text-school-200">{{ item.q }}</span>
+              <span class="font-semibold text-school-800 dark:text-lousa-200">{{ item.q }}</span>
               <i
                 class="pi pi-chevron-down text-indigo-500 transition-transform duration-300 shrink-0"
                 :class="{ 'rotate-180': item.open }"
@@ -375,7 +375,7 @@ onUnmounted(() => {
             </button>
             <Transition name="accordion">
               <div v-if="item.open" class="px-5 pb-5">
-                <p class="text-sm text-school-500 dark:text-school-400 leading-relaxed">{{ item.a }}</p>
+                <p class="text-sm text-school-500 dark:text-lousa-400 leading-relaxed">{{ item.a }}</p>
               </div>
             </Transition>
           </div>

@@ -51,14 +51,14 @@ function handleClick() {
 <template>
   <div
     ref="cardRef"
-    class="relative bg-white dark:bg-school-800 border p-5 rounded-2xl flex flex-col justify-between transition-all shadow-sm hover:shadow-lg hover:-translate-y-0.5 hover:scale-[1.01] cursor-pointer"
+    class="relative bg-white dark:bg-lousa-800 border p-5 rounded-2xl flex flex-col justify-between transition-all shadow-sm hover:shadow-lg hover:-translate-y-0.5 hover:scale-[1.01] cursor-pointer"
     :class="[
       glowClass,
       submissao.status === 'pending'
         ? 'border-amber-300 dark:border-amber-700 shadow-amber-500/5'
         : submissao.status === 'error'
           ? 'border-red-200 dark:border-red-800 shadow-red-500/5'
-          : 'border-school-200 dark:border-school-700 shadow-school-100',
+          : 'border-school-200 dark:border-lousa-700 shadow-school-100',
     ]"
     @mouseenter="handleHoverEnter"
     @mouseleave="handleHoverLeave"
@@ -72,7 +72,7 @@ function handleClick() {
 
     <div class="flex justify-between items-start mb-4">
       <div>
-        <h4 class="font-bold text-school-800 dark:text-school-100 truncate max-w-[150px]">
+        <h4 class="font-bold text-school-800 dark:text-lousa-100 truncate max-w-[150px]">
           {{ submissao.studentName }}
         </h4>
         <span
@@ -106,10 +106,10 @@ function handleClick() {
       </div>
 
       <div class="text-right">
-        <p class="text-[10px] text-school-400 dark:text-school-500 uppercase font-bold">Nota</p>
+        <p class="text-[10px] text-school-400 dark:text-lousa-500 uppercase font-bold">Nota</p>
         <p
           v-if="submissao.status === 'pending'"
-          class="text-2xl font-black text-school-400 dark:text-school-500"
+          class="text-2xl font-black text-school-400 dark:text-lousa-500"
         >
           -.-
         </p>
@@ -128,16 +128,16 @@ function handleClick() {
     </div>
 
     <div
-      class="pt-4 border-t flex justify-between items-center text-[11px] text-school-400 dark:text-school-500 border-school-100 dark:border-school-700"
+      class="pt-4 border-t flex justify-between items-center text-[11px] text-school-400 dark:text-lousa-500 border-school-100 dark:border-lousa-700"
     >
       <span v-if="submissao.status === 'pending'" class="italic font-medium">
         Aguardando IA...
       </span>
-      <span v-else class="font-medium text-school-500 dark:text-school-400">
-        Acertos: <b class="text-school-800 dark:text-school-100 font-extrabold">{{ submissao.totalCorrect ?? 0 }}</b>
+      <span v-else class="font-medium text-school-500 dark:text-lousa-400">
+        Acertos: <b class="text-school-800 dark:text-lousa-100 font-extrabold">{{ submissao.totalCorrect ?? 0 }}</b>
       </span>
 
-      <span class="font-mono text-school-400 dark:text-school-500">
+      <span class="font-mono text-school-400 dark:text-lousa-500">
         ID: {{ submissao._id.slice(-4).toUpperCase() }}
       </span>
     </div>

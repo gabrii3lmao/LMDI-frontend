@@ -204,17 +204,17 @@ const handleProcessarGabaritoAluno = async (dados) => {
 
 <template>
   <div
-    class="sm:ml-64 min-h-screen bg-school-50 dark:bg-school-900 text-school-700 dark:text-school-300 font-sans flex flex-col"
+    class="sm:ml-64 min-h-screen bg-school-50 dark:bg-lousa-900 text-school-700 dark:text-lousa-300 font-sans flex flex-col"
   >
     <div class="flex-1 p-6 md:p-10">
       <div class="max-w-6xl 2xl:max-w-[90rem] mx-auto space-y-8">
         <!-- Breadcrumb -->
-        <nav class="flex items-center gap-2 text-sm text-school-500 dark:text-school-400">
+        <nav class="flex items-center gap-2 text-sm text-school-500 dark:text-lousa-400">
           <RouterLink to="/classes" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-semibold">
             Turmas
           </RouterLink>
           <i class="pi pi-chevron-right text-[10px] text-school-400"></i>
-          <span class="text-school-800 dark:text-school-200 font-bold truncate">{{ turmaNome }}</span>
+          <span class="text-school-800 dark:text-lousa-200 font-bold truncate">{{ turmaNome }}</span>
         </nav>
 
         <ExamHeader
@@ -247,7 +247,7 @@ const handleProcessarGabaritoAluno = async (dados) => {
 
     <div
       v-if="examIdSelecionado && submissoes.length > 0"
-      class="sticky bottom-0 bg-school-50 dark:bg-school-800/95 border-t border-school-200 dark:border-school-700 px-6 md:px-10"
+      class="sticky bottom-0 bg-school-50 dark:bg-lousa-800/95 border-t border-school-200 dark:border-lousa-700 px-6 md:px-10"
     >
       <div class="max-w-6xl 2xl:max-w-[90rem] mx-auto py-3">
         <Pagination

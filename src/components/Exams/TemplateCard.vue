@@ -29,7 +29,7 @@ const alternativasLetra = computed(() =>
 
 <template>
   <div
-    class="group bg-white dark:bg-school-800 border border-school-200 dark:border-school-700 ring-1 ring-school-100 dark:ring-school-700 p-4 rounded-2xl hover:ring-indigo-500/30 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+    class="group bg-white dark:bg-lousa-800 border border-school-200 dark:border-lousa-700 ring-1 ring-school-100 dark:ring-lousa-700 p-4 rounded-2xl hover:ring-indigo-500/30 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
   >
     <!-- Topo do card (Margem reduzida de mb-6 para mb-3) -->
     <div class="flex justify-between items-start mb-3">
@@ -46,7 +46,7 @@ const alternativasLetra = computed(() =>
         >
           <button
             @click="emit('edit', template)"
-            class="p-1.5 text-school-600 dark:text-school-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors rounded-lg hover:bg-school-50 dark:hover:bg-school-700"
+            class="p-1.5 text-school-600 dark:text-lousa-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors rounded-lg hover:bg-school-50 dark:hover:bg-lousa-700"
             title="Editar Gabarito"
           >
             <i class="pi pi-pencil" style="font-size: 1.1rem"></i>
@@ -54,7 +54,7 @@ const alternativasLetra = computed(() =>
 
           <button
             @click="emit('delete', template._id)"
-            class="p-1.5 text-school-600 dark:text-school-400 hover:text-red-600 dark:hover:text-red-400 transition-colors rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20"
+            class="p-1.5 text-school-600 dark:text-lousa-400 hover:text-red-600 dark:hover:text-red-400 transition-colors rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20"
             title="Deletar Gabarito"
           >
             <i class="pi pi-trash" style="font-size: 1.1rem"></i>
@@ -64,10 +64,10 @@ const alternativasLetra = computed(() =>
 
       <!-- Badge de turma com padding vertical ligeiramente menor -->
       <div
-        class="bg-school-50 dark:bg-school-700 border border-school-200 dark:border-school-600 px-3 py-1 rounded-lg max-w-[150px]"
+        class="bg-school-50 dark:bg-lousa-700 border border-school-200 dark:border-lousa-600 px-3 py-1 rounded-lg max-w-[150px]"
       >
         <p
-          class="text-xs font-semibold text-school-600 dark:text-school-300 truncate"
+          class="text-xs font-semibold text-school-600 dark:text-lousa-300 truncate"
           :title="turmaName"
         >
           {{ turmaName }}
@@ -78,12 +78,12 @@ const alternativasLetra = computed(() =>
     <!-- Título -->
     <div class="mb-4">
       <h3
-        class="text-base font-bold text-school-800 dark:text-school-100 line-clamp-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"
+        class="text-base font-bold text-school-800 dark:text-lousa-100 line-clamp-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"
       >
         {{ template.title }}
       </h3>
       <p
-        class="text-[11px] text-school-400 dark:text-school-500 mt-1 font-mono uppercase tracking-wider"
+        class="text-[11px] text-school-400 dark:text-lousa-500 mt-1 font-mono uppercase tracking-wider"
       >
         REF: #{{ idRef }}
       </p>
@@ -92,26 +92,26 @@ const alternativasLetra = computed(() =>
     <!-- Estatísticas inferiores -->
     <div class="flex gap-2">
       <div
-        class="flex-1 bg-school-50 dark:bg-school-700/50 border border-school-100 dark:border-school-600 ring-1 ring-school-100 dark:ring-school-700 px-3 py-2 rounded-xl flex flex-col items-center justify-center"
+        class="flex-1 bg-school-50 dark:bg-lousa-700/50 border border-school-100 dark:border-lousa-600 ring-1 ring-school-100 dark:ring-lousa-700 px-3 py-2 rounded-xl flex flex-col items-center justify-center"
       >
         <span
           class="text-indigo-600 dark:text-indigo-400 font-extrabold text-base leading-none mb-1"
           >{{ template.questionsCount }}</span
         >
         <span
-          class="text-[9px] text-school-500 dark:text-school-400 uppercase font-bold tracking-wider"
+          class="text-[9px] text-school-500 dark:text-lousa-400 uppercase font-bold tracking-wider"
           >Questões</span
         >
       </div>
       <div
-        class="flex-1 bg-school-50 dark:bg-school-700/50 border border-school-100 dark:border-school-600 ring-1 ring-school-100 dark:ring-school-700 px-3 py-2 rounded-xl flex flex-col items-center justify-center"
+        class="flex-1 bg-school-50 dark:bg-lousa-700/50 border border-school-100 dark:border-lousa-600 ring-1 ring-school-100 dark:ring-lousa-700 px-3 py-2 rounded-xl flex flex-col items-center justify-center"
       >
         <span
           class="text-indigo-600 dark:text-indigo-400 font-extrabold text-base leading-none mb-1"
           >A-{{ alternativasLetra }}</span
         >
         <span
-          class="text-[9px] text-school-500 dark:text-school-400 uppercase font-bold tracking-wider"
+          class="text-[9px] text-school-500 dark:text-lousa-400 uppercase font-bold tracking-wider"
           >Alternativas</span
         >
       </div>

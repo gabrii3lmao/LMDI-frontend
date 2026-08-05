@@ -64,10 +64,10 @@ onUnmounted(() => {
   <div
     ref="popEl"
     :style="style"
-    class="fixed z-50 w-72 max-w-[calc(100vw-2rem)] pointer-events-none bg-white dark:bg-school-800 rounded-xl shadow-xl ring-1 ring-school-200 dark:ring-school-700 border border-school-200 dark:border-school-700 p-3"
+    class="fixed z-50 w-72 max-w-[calc(100vw-2rem)] pointer-events-none bg-white dark:bg-lousa-800 rounded-xl shadow-xl ring-1 ring-school-200 dark:ring-lousa-700 border border-school-200 dark:border-lousa-700 p-3"
   >
     <!-- Foto da folha -->
-    <div v-if="submission.imageUrl" class="mb-2 rounded-lg overflow-hidden ring-1 ring-school-100 dark:ring-school-700">
+    <div v-if="submission.imageUrl" class="mb-2 rounded-lg overflow-hidden ring-1 ring-school-100 dark:ring-lousa-700">
       <img
         :src="submission.imageUrl"
         :alt="`Folha de ${submission.studentName}`"
@@ -79,17 +79,17 @@ onUnmounted(() => {
     <!-- Detalhes -->
     <div class="space-y-1.5">
       <div class="flex items-center justify-between text-[11px]">
-        <span class="text-school-400 dark:text-school-500 font-medium">Acertos</span>
-        <span class="font-bold text-school-800 dark:text-school-100">
+        <span class="text-school-400 dark:text-lousa-500 font-medium">Acertos</span>
+        <span class="font-bold text-school-800 dark:text-lousa-100">
           {{ submission.totalCorrect ?? 0 }}
-          <span v-if="totalQuestions > 0" class="font-normal text-school-400 dark:text-school-500">
+          <span v-if="totalQuestions > 0" class="font-normal text-school-400 dark:text-lousa-500">
             / {{ totalQuestions }}
           </span>
         </span>
       </div>
 
       <div v-if="percentCorrect !== null" class="flex items-center justify-between text-[11px]">
-        <span class="text-school-400 dark:text-school-500 font-medium">% Acerto</span>
+        <span class="text-school-400 dark:text-lousa-500 font-medium">% Acerto</span>
         <span
           class="font-bold"
           :class="
@@ -105,8 +105,8 @@ onUnmounted(() => {
       </div>
 
       <div class="flex items-center justify-between text-[11px]">
-        <span class="text-school-400 dark:text-school-500 font-medium">Data</span>
-        <span class="text-school-600 dark:text-school-300 font-medium">{{ formattedDate }}</span>
+        <span class="text-school-400 dark:text-lousa-500 font-medium">Data</span>
+        <span class="text-school-600 dark:text-lousa-300 font-medium">{{ formattedDate }}</span>
       </div>
     </div>
   </div>

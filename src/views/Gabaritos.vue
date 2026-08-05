@@ -162,17 +162,17 @@ const handleSalvarGabaritoOficial = async (dados: any) => {
 
 <template>
   <div
-    class="sm:ml-64 min-h-screen bg-school-50 dark:bg-school-900 text-school-700 dark:text-school-300 p-6 md:p-10 font-sans"
+    class="sm:ml-64 min-h-screen bg-school-50 dark:bg-lousa-900 text-school-700 dark:text-lousa-300 p-6 md:p-10 font-sans"
   >
     <div class="max-w-6xl 2xl:max-w-[90rem] mx-auto space-y-8">
       <header
         class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6"
       >
         <div class="space-y-1">
-          <h1 class="text-3xl font-extrabold text-school-800 dark:text-school-100 tracking-tight">
+          <h1 class="text-3xl font-extrabold text-school-800 dark:text-lousa-100 tracking-tight">
             Gabaritos Mestres
           </h1>
-          <p class="text-school-500 dark:text-school-400 text-sm">
+          <p class="text-school-500 dark:text-lousa-400 text-sm">
             Gerencie e crie as referências oficiais para a correção por IA.
           </p>
         </div>
@@ -183,7 +183,7 @@ const handleSalvarGabaritoOficial = async (dados: any) => {
           <div class="relative w-full sm:w-64">
             <select
               v-model="classIdSelecionadaParaNovoGabarito"
-              class="w-full appearance-none bg-white dark:bg-school-800 ring-1 ring-school-200 dark:ring-school-700 border border-school-100 dark:border-school-600 rounded-xl pl-4 pr-10 py-3 text-sm text-school-700 dark:text-school-200 outline-none focus:ring-2 focus:ring-indigo-500 transition-all cursor-pointer shadow-sm"
+              class="w-full appearance-none bg-white dark:bg-lousa-800 ring-1 ring-school-200 dark:ring-lousa-700 border border-school-100 dark:border-lousa-600 rounded-xl pl-4 pr-10 py-3 text-sm text-school-700 dark:text-lousa-200 outline-none focus:ring-2 focus:ring-indigo-500 transition-all cursor-pointer shadow-sm"
             >
               <option value="" disabled>1. Selecione uma Turma</option>
               <option v-for="t in turmas ?? []" :key="t._id" :value="t._id">
@@ -191,14 +191,14 @@ const handleSalvarGabaritoOficial = async (dados: any) => {
               </option>
             </select>
             <i
-              class="pi pi-chevron-down text-xs absolute right-4 top-1/2 -translate-y-1/2 text-school-400 dark:text-school-500 pointer-events-none"
+              class="pi pi-chevron-down text-xs absolute right-4 top-1/2 -translate-y-1/2 text-school-400 dark:text-lousa-500 pointer-events-none"
             ></i>
           </div>
 
           <button
             @click="openModalParaCriar"
             :disabled="!classIdSelecionadaParaNovoGabarito"
-            class="group relative inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white transition-all bg-indigo-600 dark:bg-indigo-500 rounded-xl disabled:bg-school-200 dark:disabled:bg-school-700 disabled:text-school-400 dark:disabled:text-school-500 disabled:cursor-not-allowed hover:bg-indigo-700 dark:hover:bg-indigo-600 shadow-lg shadow-indigo-600/10 disabled:shadow-none whitespace-nowrap active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+            class="group relative inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white transition-all bg-indigo-600 dark:bg-indigo-500 rounded-xl disabled:bg-school-200 dark:disabled:bg-lousa-700 disabled:text-school-400 dark:disabled:text-lousa-500 disabled:cursor-not-allowed hover:bg-indigo-700 dark:hover:bg-indigo-600 shadow-lg shadow-indigo-600/10 disabled:shadow-none whitespace-nowrap active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
           >
             <i
               class="pi pi-plus text-xs transition-transform group-hover:rotate-90"
@@ -215,23 +215,23 @@ const handleSalvarGabaritoOficial = async (dados: any) => {
         <div
           v-for="i in 4"
           :key="i"
-          class="h-48 bg-school-200/50 dark:bg-school-700/40 ring-1 ring-school-200/80 dark:ring-school-700/60 rounded-2xl animate-pulse"
+          class="h-48 bg-school-200/50 dark:bg-lousa-700/40 ring-1 ring-school-200/80 dark:ring-lousa-700/60 rounded-2xl animate-pulse"
         ></div>
       </div>
 
       <div
         v-else-if="templatesList.length === 0"
-        class="flex flex-col items-center justify-center py-20 bg-white dark:bg-school-800 ring-1 ring-school-200/80 dark:ring-school-700 rounded-3xl border border-dashed border-school-300 dark:border-school-600 shadow-sm text-center px-4"
+        class="flex flex-col items-center justify-center py-20 bg-white dark:bg-lousa-800 ring-1 ring-school-200/80 dark:ring-lousa-700 rounded-3xl border border-dashed border-school-300 dark:border-lousa-600 shadow-sm text-center px-4"
       >
         <div
           class="w-16 h-16 bg-indigo-50 dark:bg-indigo-900/40 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4"
         >
           <i class="pi pi-file-check text-2xl" style="font-size: 2rem"></i>
         </div>
-        <h3 class="text-lg font-bold text-school-800 dark:text-school-100 mb-1">
+        <h3 class="text-lg font-bold text-school-800 dark:text-lousa-100 mb-1">
           Nenhum gabarito mestre
         </h3>
-        <p class="text-school-500 dark:text-school-400 text-sm max-w-xs font-medium">
+        <p class="text-school-500 dark:text-lousa-400 text-sm max-w-xs font-medium">
           Selecione uma turma e clique em "Novo Modelo" para criar a prova de
           referência.
         </p>

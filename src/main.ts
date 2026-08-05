@@ -6,6 +6,7 @@ import PrimeVue from "primevue/config";
 import ToastService from "primevue/toastservice";
 import ConfirmationService from "primevue/confirmationservice";
 import Aura from "@primevue/themes/aura";
+import { definePreset } from "@primevue/themes";
 import { createPinia } from "pinia";
 import "primeicons/primeicons.css";
 import vue3GoogleLogin from "vue3-google-login";
@@ -14,6 +15,30 @@ import { useThemeStore } from "@/stores/theme";
 import { connectSocket } from "./services/socket";
 
 const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+
+// Tema escuro "Lousa" — neutros verdes-acinzentados (mesmos hexes da paleta `lousa` do tailwind.config.js)
+const lousaDark = {
+  0: "#e6efea",
+  50: "#f2f7f4",
+  100: "#e6efea",
+  200: "#c9d9d0",
+  300: "#a9bcb2",
+  400: "#8aa096",
+  500: "#6e857a",
+  600: "#4e6459",
+  700: "#22312c",
+  800: "#131c19",
+  900: "#0b1210",
+  950: "#060c09",
+};
+
+const LousaPreset = definePreset(Aura, {
+  semantic: {
+    colorScheme: {
+      dark: { surface: lousaDark },
+    },
+  },
+});
 
 const app = createApp(App);
 const pinia = createPinia();
@@ -28,7 +53,7 @@ app.use(ToastService);
 app.use(pinia);
 app.use(PrimeVue, {
   theme: {
-    preset: Aura,
+    preset: LousaPreset,
     options: {
       darkModeSelector: ".my-app-dark",
     },

@@ -157,14 +157,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-white dark:bg-school-900 font-sans">
+  <div class="min-h-screen bg-white dark:bg-lousa-900 font-sans">
     <!-- Navbar -->
     <header
       class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       :class="
         scrolled
-          ? 'bg-white/95 dark:bg-school-900/95 backdrop-blur-xl shadow-lg shadow-school-900/5 dark:shadow-black/30 border-b border-school-200/50 dark:border-school-700/50'
-          : 'bg-white/80 dark:bg-school-900/80 backdrop-blur-md border-b border-transparent'
+          ? 'bg-white/95 dark:bg-lousa-900/95 backdrop-blur-xl shadow-lg shadow-school-900/5 dark:shadow-black/30 border-b border-school-200/50 dark:border-lousa-700/50'
+          : 'bg-white/80 dark:bg-lousa-900/80 backdrop-blur-md border-b border-transparent'
       "
     >
       <div
@@ -178,12 +178,12 @@ onUnmounted(() => {
               alt="LetMeDoIt"
               class="h-8 sm:h-9 w-auto"
             />
-            <p class="text-base sm:text-xl font-extrabold text-school-900 dark:text-school-100 tracking-tight whitespace-nowrap">Let me <span class="text-indigo-600 dark:text-indigo-400">Do it</span></p>
+            <p class="text-base sm:text-xl font-extrabold text-school-900 dark:text-lousa-100 tracking-tight whitespace-nowrap">Let me <span class="text-indigo-600 dark:text-indigo-400">Do it</span></p>
           </RouterLink>
           <nav class="flex items-center gap-1.5 sm:gap-3">
             <RouterLink
               to="/signin"
-              class="px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-school-600 dark:text-school-400 hover:text-school-900 dark:hover:text-school-100 transition-colors whitespace-nowrap"
+              class="px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-school-600 dark:text-lousa-400 hover:text-school-900 dark:hover:text-lousa-100 transition-colors whitespace-nowrap"
             >
               Entrar
             </RouterLink>
@@ -199,7 +199,7 @@ onUnmounted(() => {
     </header>
 
     <!-- Hero -->
-    <section class="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-gradient-to-b from-indigo-50/60 to-white dark:from-school-800 dark:to-school-900">
+    <section class="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-gradient-to-b from-indigo-50/60 to-white dark:from-lousa-800 dark:to-lousa-900">
       <div class="hero-glow"></div>
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-200/20 via-transparent to-transparent pointer-events-none"></div>
       <div class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-6 relative z-10">
@@ -208,11 +208,11 @@ onUnmounted(() => {
             <i class="pi pi-question-circle text-xs"></i>
             Tire suas dúvidas
           </div>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-school-900 dark:text-school-100 tracking-tight leading-tight hero-fade-in" style="animation-delay: 0.1s">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-school-900 dark:text-lousa-100 tracking-tight leading-tight hero-fade-in" style="animation-delay: 0.1s">
             Perguntas
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-indigo-700">Frequentes</span>
           </h1>
-          <p class="text-lg md:text-xl text-school-500 dark:text-school-400 max-w-2xl mx-auto hero-fade-in" style="animation-delay: 0.2s">
+          <p class="text-lg md:text-xl text-school-500 dark:text-lousa-400 max-w-2xl mx-auto hero-fade-in" style="animation-delay: 0.2s">
             Tudo o que você precisa saber sobre o LetMeDoIt.
           </p>
         </div>
@@ -231,7 +231,7 @@ onUnmounted(() => {
             <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
               <i :class="['pi', cat.icon, 'text-lg']"></i>
             </div>
-            <h2 class="text-xl font-bold text-school-900 dark:text-school-100">
+            <h2 class="text-xl font-bold text-school-900 dark:text-lousa-100">
               {{ cat.categoria }}
             </h2>
           </div>
@@ -240,14 +240,14 @@ onUnmounted(() => {
             <div
               v-for="(item, itemIndex) in cat.itens"
               :key="item.q"
-              class="bg-school-50 dark:bg-school-800/50 border border-school-200 dark:border-school-700 rounded-2xl overflow-hidden transition-all duration-300"
+              class="bg-school-50 dark:bg-lousa-800/50 border border-school-200 dark:border-lousa-700 rounded-2xl overflow-hidden transition-all duration-300"
               :class="item.open ? 'border-indigo-200 dark:border-indigo-700 shadow-lg shadow-indigo-500/5' : ''"
             >
               <button
                 @click="toggleFaq(catIndex, itemIndex)"
-                class="w-full p-5 text-left flex items-center justify-between gap-4 hover:bg-school-100 dark:hover:bg-school-700/50 transition-colors"
+                class="w-full p-5 text-left flex items-center justify-between gap-4 hover:bg-school-100 dark:hover:bg-lousa-700/50 transition-colors"
               >
-                <span class="font-semibold text-school-800 dark:text-school-200">{{ item.q }}</span>
+                <span class="font-semibold text-school-800 dark:text-lousa-200">{{ item.q }}</span>
                 <i
                   class="pi pi-chevron-down text-indigo-500 transition-transform duration-300 shrink-0"
                   :class="{ 'rotate-180': item.open }"
@@ -255,7 +255,7 @@ onUnmounted(() => {
               </button>
               <Transition name="accordion">
                 <div v-if="item.open" class="px-5 pb-5">
-                  <p class="text-sm text-school-500 dark:text-school-400 leading-relaxed">{{ item.a }}</p>
+                  <p class="text-sm text-school-500 dark:text-lousa-400 leading-relaxed">{{ item.a }}</p>
                 </div>
               </Transition>
             </div>

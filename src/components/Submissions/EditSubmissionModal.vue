@@ -73,17 +73,17 @@ function handleSave() {
       class="relative min-h-screen flex items-center justify-center p-4"
     >
       <div
-        class="relative bg-white dark:bg-school-800 rounded-2xl shadow-2xl w-full max-w-2xl border border-school-200 dark:border-school-700 max-h-[90vh] flex flex-col"
+        class="relative bg-white dark:bg-lousa-800 rounded-2xl shadow-2xl w-full max-w-2xl border border-school-200 dark:border-lousa-700 max-h-[90vh] flex flex-col"
       >
         <div
-          class="p-6 border-b border-school-200 dark:border-school-700 flex justify-between items-center shrink-0"
+          class="p-6 border-b border-school-200 dark:border-lousa-700 flex justify-between items-center shrink-0"
         >
-          <h2 class="text-xl font-bold text-school-800 dark:text-school-100">
+          <h2 class="text-xl font-bold text-school-800 dark:text-lousa-100">
             Editar Submissão
           </h2>
           <button
             @click="$emit('close')"
-            class="text-school-400 dark:text-school-500 hover:text-school-600 dark:hover:text-school-300 p-2 transition-colors hover:bg-school-50 dark:hover:bg-school-700 rounded-lg"
+            class="text-school-400 dark:text-lousa-500 hover:text-school-600 dark:hover:text-lousa-300 p-2 transition-colors hover:bg-school-50 dark:hover:bg-lousa-700 rounded-lg"
           >
             <i class="pi pi-times"></i>
           </button>
@@ -92,21 +92,21 @@ function handleSave() {
         <div class="p-6 overflow-y-auto flex-1 space-y-6">
           <div>
             <label
-              class="block text-sm font-bold text-school-600 dark:text-school-400 mb-1.5 uppercase tracking-wider"
+              class="block text-sm font-bold text-school-600 dark:text-lousa-400 mb-1.5 uppercase tracking-wider"
             >
               Nome do Aluno
             </label>
             <input
               v-model="studentName"
               type="text"
-              class="w-full px-4 py-2.5 rounded-xl border border-school-300 dark:border-school-600 bg-white dark:bg-school-700 text-school-800 dark:text-school-100 focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
+              class="w-full px-4 py-2.5 rounded-xl border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
             />
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label
-                class="block text-sm font-bold text-school-600 dark:text-school-400 mb-1.5 uppercase tracking-wider"
+                class="block text-sm font-bold text-school-600 dark:text-lousa-400 mb-1.5 uppercase tracking-wider"
               >
                 Nota (0-10)
               </label>
@@ -116,12 +116,12 @@ function handleSave() {
                 min="0"
                 max="10"
                 step="0.1"
-                class="w-full px-4 py-2.5 rounded-xl border border-school-300 dark:border-school-600 bg-white dark:bg-school-700 text-school-800 dark:text-school-100 focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
+                class="w-full px-4 py-2.5 rounded-xl border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
               />
             </div>
             <div>
               <label
-                class="block text-sm font-bold text-school-600 dark:text-school-400 mb-1.5 uppercase tracking-wider"
+                class="block text-sm font-bold text-school-600 dark:text-lousa-400 mb-1.5 uppercase tracking-wider"
               >
                 Total de Acertos
               </label>
@@ -129,7 +129,7 @@ function handleSave() {
                 v-model.number="totalCorrect"
                 type="number"
                 min="0"
-                class="w-full px-4 py-2.5 rounded-xl border border-school-300 dark:border-school-600 bg-white dark:bg-school-700 text-school-800 dark:text-school-100 focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
+                class="w-full px-4 py-2.5 rounded-xl border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
               />
             </div>
           </div>
@@ -137,7 +137,7 @@ function handleSave() {
           <div>
             <div class="flex items-center justify-between mb-3">
               <label
-                class="text-sm font-bold text-school-600 dark:text-school-400 uppercase tracking-wider"
+                class="text-sm font-bold text-school-600 dark:text-lousa-400 uppercase tracking-wider"
               >
                 Respostas (Detalhes)
               </label>
@@ -152,9 +152,9 @@ function handleSave() {
 
             <div
               v-if="details.length === 0"
-              class="text-center p-6 bg-school-50 dark:bg-school-700/30 rounded-xl border border-dashed border-school-300 dark:border-school-600"
+              class="text-center p-6 bg-school-50 dark:bg-lousa-700/30 rounded-xl border border-dashed border-school-300 dark:border-lousa-600"
             >
-              <p class="text-sm text-school-500 dark:text-school-400 font-medium">
+              <p class="text-sm text-school-500 dark:text-lousa-400 font-medium">
                 Nenhum detalhe de questão registrado.
               </p>
             </div>
@@ -162,11 +162,11 @@ function handleSave() {
             <div
               v-for="(det, index) in details"
               :key="index"
-              class="flex items-start gap-3 p-3 mb-2 bg-school-50 dark:bg-school-700/30 rounded-xl border border-school-200 dark:border-school-600"
+              class="flex items-start gap-3 p-3 mb-2 bg-school-50 dark:bg-lousa-700/30 rounded-xl border border-school-200 dark:border-lousa-600"
             >
               <div class="w-10 shrink-0 pt-1">
                 <span
-                  class="text-xs font-bold text-school-500 dark:text-school-400 bg-school-200 dark:bg-school-600 w-8 h-8 rounded-full flex items-center justify-center"
+                  class="text-xs font-bold text-school-500 dark:text-lousa-400 bg-school-200 dark:bg-lousa-600 w-8 h-8 rounded-full flex items-center justify-center"
                 >
                   {{ det.question }}
                 </span>
@@ -175,37 +175,37 @@ function handleSave() {
               <div class="flex-1 grid grid-cols-3 gap-2">
                 <div>
                   <label
-                    class="block text-[10px] font-bold text-school-500 dark:text-school-400 uppercase mb-1"
+                    class="block text-[10px] font-bold text-school-500 dark:text-lousa-400 uppercase mb-1"
                   >
                     Marcada
                   </label>
                   <input
                     v-model="det.marked"
                     type="text"
-                    class="w-full px-2.5 py-1.5 rounded-lg border border-school-300 dark:border-school-600 bg-white dark:bg-school-700 text-school-800 dark:text-school-100 text-sm focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
+                    class="w-full px-2.5 py-1.5 rounded-lg border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 text-sm focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
                   />
                 </div>
                 <div>
                   <label
-                    class="block text-[10px] font-bold text-school-500 dark:text-school-400 uppercase mb-1"
+                    class="block text-[10px] font-bold text-school-500 dark:text-lousa-400 uppercase mb-1"
                   >
                     Correta
                   </label>
                   <input
                     v-model="det.correct"
                     type="text"
-                    class="w-full px-2.5 py-1.5 rounded-lg border border-school-300 dark:border-school-600 bg-white dark:bg-school-700 text-school-800 dark:text-school-100 text-sm focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
+                    class="w-full px-2.5 py-1.5 rounded-lg border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 text-sm focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
                   />
                 </div>
                 <div>
                   <label
-                    class="block text-[10px] font-bold text-school-500 dark:text-school-400 uppercase mb-1"
+                    class="block text-[10px] font-bold text-school-500 dark:text-lousa-400 uppercase mb-1"
                   >
                     Status
                   </label>
                   <select
                     v-model="det.status"
-                    class="w-full px-2.5 py-1.5 rounded-lg border border-school-300 dark:border-school-600 bg-white dark:bg-school-700 text-school-800 dark:text-school-100 text-sm focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
+                    class="w-full px-2.5 py-1.5 rounded-lg border border-school-300 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-800 dark:text-lousa-100 text-sm focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
                   >
                     <option value="correct">Correto</option>
                     <option value="incorrect">Incorreto</option>
@@ -226,11 +226,11 @@ function handleSave() {
         </div>
 
         <div
-          class="p-6 border-t border-school-200 dark:border-school-700 flex justify-end gap-3 shrink-0"
+          class="p-6 border-t border-school-200 dark:border-lousa-700 flex justify-end gap-3 shrink-0"
         >
           <button
             @click="$emit('close')"
-            class="px-5 py-2.5 rounded-xl border border-school-300 dark:border-school-600 text-school-700 dark:text-school-300 font-semibold text-sm hover:bg-school-50 dark:hover:bg-school-700 transition-all"
+            class="px-5 py-2.5 rounded-xl border border-school-300 dark:border-lousa-600 text-school-700 dark:text-lousa-300 font-semibold text-sm hover:bg-school-50 dark:hover:bg-lousa-700 transition-all"
           >
             Cancelar
           </button>

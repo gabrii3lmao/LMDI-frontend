@@ -188,7 +188,7 @@ onUnmounted(() => {
         'relative border-2 border-dashed rounded-2xl p-6 sm:p-8 transition-all duration-200 text-center overflow-hidden cursor-pointer',
         isDragOver
           ? 'border-indigo-500 bg-indigo-500/10 scale-[1.01]'
-          : 'border-school-300 dark:border-school-600 hover:border-indigo-400 hover:bg-indigo-500/5 bg-school-50/50 dark:bg-school-800/50',
+          : 'border-school-300 dark:border-lousa-600 hover:border-indigo-400 hover:bg-indigo-500/5 bg-school-50/50 dark:bg-lousa-800/50',
       ]"
     >
       <div class="py-4">
@@ -197,20 +197,20 @@ onUnmounted(() => {
             'w-14 h-14 mx-auto rounded-full flex items-center justify-center mb-4 transition-all duration-200',
             isDragOver
               ? 'bg-indigo-100 scale-110'
-              : 'bg-school-100 dark:bg-school-700',
+              : 'bg-school-100 dark:bg-lousa-700',
           ]"
         >
           <i
             :class="[
               'pi pi-cloud-upload text-2xl transition-colors duration-200',
-              isDragOver ? 'text-indigo-600' : 'text-school-400 dark:text-school-500',
+              isDragOver ? 'text-indigo-600' : 'text-school-400 dark:text-lousa-500',
             ]"
           />
         </div>
-        <p class="text-sm font-bold text-school-700 dark:text-school-200 mb-1">
+        <p class="text-sm font-bold text-school-700 dark:text-lousa-200 mb-1">
           Arraste os arquivos aqui ou clique para selecionar
         </p>
-        <p class="text-xs text-school-400 dark:text-school-500 font-medium">
+        <p class="text-xs text-school-400 dark:text-lousa-500 font-medium">
           Imagens (JPG, PNG, WEBP) &mdash; múltiplos arquivos
         </p>
       </div>
@@ -221,7 +221,7 @@ onUnmounted(() => {
       <button
         type="button"
         @click="fileInput?.click()"
-        class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-school-100 dark:bg-school-700 hover:bg-school-200 dark:hover:bg-school-600 text-school-700 dark:text-school-200 text-sm font-semibold transition-colors"
+        class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-school-100 dark:bg-lousa-700 hover:bg-school-200 dark:hover:bg-lousa-600 text-school-700 dark:text-lousa-200 text-sm font-semibold transition-colors"
       >
         <i class="pi pi-folder-open text-sm" />
         Escolher arquivos
@@ -229,7 +229,7 @@ onUnmounted(() => {
       <button
         type="button"
         @click="triggerCamera"
-        class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-school-100 dark:bg-school-700 hover:bg-school-200 dark:hover:bg-school-600 text-school-700 dark:text-school-200 text-sm font-semibold transition-colors"
+        class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-school-100 dark:bg-lousa-700 hover:bg-school-200 dark:hover:bg-lousa-600 text-school-700 dark:text-lousa-200 text-sm font-semibold transition-colors"
       >
         <i class="pi pi-camera text-sm" />
         Usar câmera
@@ -238,7 +238,7 @@ onUnmounted(() => {
 
     <!-- File list -->
     <div v-if="modelValue.length > 0" class="space-y-2 pt-2">
-      <p class="text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider px-1">
+      <p class="text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider px-1">
         {{ modelValue.length }} arquivo{{ modelValue.length !== 1 ? "s" : "" }} selecionado{{
           modelValue.length !== 1 ? "s" : ""
         }}
@@ -247,11 +247,11 @@ onUnmounted(() => {
       <div
         v-for="item in modelValue"
         :key="item.id"
-        class="group flex items-center gap-3 p-3 bg-white dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl hover:border-school-300 dark:hover:border-school-500 transition-colors"
+        class="group flex items-center gap-3 p-3 bg-white dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl hover:border-school-300 dark:hover:border-lousa-500 transition-colors"
       >
         <!-- Thumbnail / icon -->
         <div
-          class="w-11 h-11 rounded-lg overflow-hidden bg-school-100 dark:bg-school-700 border border-school-200 dark:border-school-600 flex-shrink-0"
+          class="w-11 h-11 rounded-lg overflow-hidden bg-school-100 dark:bg-lousa-700 border border-school-200 dark:border-lousa-600 flex-shrink-0"
         >
           <img
             v-if="item.previewUrl"
@@ -261,7 +261,7 @@ onUnmounted(() => {
           />
           <div
             v-else
-            class="w-full h-full flex items-center justify-center bg-school-100 dark:bg-school-700"
+            class="w-full h-full flex items-center justify-center bg-school-100 dark:bg-lousa-700"
           >
             <i class="pi pi-image text-lg text-school-400" />
           </div>
@@ -275,14 +275,14 @@ onUnmounted(() => {
           "
           type="text"
           placeholder="Nome do aluno"
-          class="flex-1 min-w-0 px-3 py-1.5 bg-school-50/50 dark:bg-school-800 border border-school-200 dark:border-school-600 rounded-lg text-sm text-school-800 dark:text-school-100 placeholder-school-400 dark:placeholder-school-500 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+          class="flex-1 min-w-0 px-3 py-1.5 bg-school-50/50 dark:bg-lousa-800 border border-school-200 dark:border-lousa-600 rounded-lg text-sm text-school-800 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
         />
 
         <!-- Remove -->
         <button
           type="button"
           @click="removeItem(item.id)"
-          class="w-8 h-8 flex items-center justify-center rounded-lg text-school-400 dark:text-school-500 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors flex-shrink-0 opacity-0 group-hover:opacity-100 focus:opacity-100"
+          class="w-8 h-8 flex items-center justify-center rounded-lg text-school-400 dark:text-lousa-500 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors flex-shrink-0 opacity-0 group-hover:opacity-100 focus:opacity-100"
         >
           <i class="pi pi-times text-xs" />
         </button>

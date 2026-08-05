@@ -223,15 +223,15 @@ onMounted(loadUser)
 
 <template>
   <div
-    class="sm:ml-64 min-h-screen bg-school-50 text-school-700 p-6 md:p-10 font-sans dark:bg-school-900 dark:text-school-300"
+    class="sm:ml-64 min-h-screen bg-school-50 text-school-700 p-6 md:p-10 font-sans dark:bg-lousa-900 dark:text-lousa-300"
   >
     <div class="max-w-3xl mx-auto space-y-8">
       <header>
-        <h1 class="text-3xl font-extrabold text-school-800 dark:text-school-100 tracking-tight">
+        <h1 class="text-3xl font-extrabold text-school-800 dark:text-lousa-100 tracking-tight">
           <i class="pi pi-cog text-indigo-500 mr-2"></i>
           Configurações
         </h1>
-        <p class="text-school-500 dark:text-school-400 text-sm mt-1">
+        <p class="text-school-500 dark:text-lousa-400 text-sm mt-1">
           Gerencie suas preferências e informações da conta.
         </p>
       </header>
@@ -240,8 +240,8 @@ onMounted(loadUser)
 
       <template v-else>
         <!-- Perfil -->
-        <section class="bg-white dark:bg-school-800 ring-1 ring-school-200 dark:ring-school-700 rounded-2xl p-6 md:p-8">
-          <h2 class="text-lg font-bold text-school-800 dark:text-school-100 flex items-center gap-2 mb-6">
+        <section class="bg-white dark:bg-lousa-800 ring-1 ring-school-200 dark:ring-lousa-700 rounded-2xl p-6 md:p-8">
+          <h2 class="text-lg font-bold text-school-800 dark:text-lousa-100 flex items-center gap-2 mb-6">
             <i class="pi pi-user text-indigo-500"></i>
             Perfil
           </h2>
@@ -282,14 +282,14 @@ onMounted(loadUser)
 
             <div class="flex-1 space-y-5">
               <div>
-                <label class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-1.5">
+                <label class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-1.5">
                   Nome
                 </label>
                 <div class="flex items-center gap-2">
                   <input
                     v-model="name"
                     :disabled="!editingName"
-                    class="flex-1 px-4 py-2.5 bg-school-50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-900 dark:text-school-100 placeholder-school-400 outline-none transition-all text-sm"
+                    class="flex-1 px-4 py-2.5 bg-school-50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-900 dark:text-lousa-100 placeholder-school-400 outline-none transition-all text-sm"
                     :class="editingName ? 'focus:ring-2 focus:ring-indigo-500 border-indigo-300' : 'cursor-default opacity-80'"
                   />
                   <button
@@ -304,13 +304,13 @@ onMounted(loadUser)
               </div>
 
               <div>
-                <label class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-1.5">
+                <label class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-1.5">
                   E-mail
                 </label>
                 <input
                   :value="email"
                   disabled
-                  class="w-full px-4 py-2.5 bg-school-50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-500 dark:text-school-400 outline-none text-sm cursor-not-allowed"
+                  class="w-full px-4 py-2.5 bg-school-50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-500 dark:text-lousa-400 outline-none text-sm cursor-not-allowed"
                 />
               </div>
 
@@ -326,7 +326,7 @@ onMounted(loadUser)
 
                 <button
                   @click="editingName = false"
-                  class="px-4 py-2.5 text-sm font-medium text-school-500 dark:text-school-400 hover:bg-school-100 dark:hover:bg-school-700 rounded-xl transition-all"
+                  class="px-4 py-2.5 text-sm font-medium text-school-500 dark:text-lousa-400 hover:bg-school-100 dark:hover:bg-lousa-700 rounded-xl transition-all"
                 >
                   Cancelar
                 </button>
@@ -336,42 +336,42 @@ onMounted(loadUser)
         </section>
 
         <!-- Segurança -->
-        <section class="bg-white dark:bg-school-800 ring-1 ring-school-200 dark:ring-school-700 rounded-2xl p-6 md:p-8">
-          <h2 class="text-lg font-bold text-school-800 dark:text-school-100 flex items-center gap-2 mb-6">
+        <section class="bg-white dark:bg-lousa-800 ring-1 ring-school-200 dark:ring-lousa-700 rounded-2xl p-6 md:p-8">
+          <h2 class="text-lg font-bold text-school-800 dark:text-lousa-100 flex items-center gap-2 mb-6">
             <i class="pi pi-shield text-indigo-500"></i>
             Segurança
           </h2>
 
           <div class="space-y-5 max-w-md">
-            <p class="text-sm text-school-500 dark:text-school-400 -mt-2">Altere sua senha de acesso ao painel.</p>
+            <p class="text-sm text-school-500 dark:text-lousa-400 -mt-2">Altere sua senha de acesso ao painel.</p>
 
             <div>
-              <label class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-1.5">Senha Atual</label>
+              <label class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-1.5">Senha Atual</label>
               <input
                 v-model="currentPassword"
                 type="password"
                 placeholder="Digite sua senha atual"
-                class="w-full px-4 py-2.5 bg-school-50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-900 dark:text-school-100 placeholder-school-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
+                class="w-full px-4 py-2.5 bg-school-50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-900 dark:text-lousa-100 placeholder-school-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
               />
             </div>
 
             <div>
-              <label class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-1.5">Nova Senha</label>
+              <label class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-1.5">Nova Senha</label>
               <input
                 v-model="newPassword"
                 type="password"
                 placeholder="Mínimo de 6 caracteres"
-                class="w-full px-4 py-2.5 bg-school-50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-900 dark:text-school-100 placeholder-school-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
+                class="w-full px-4 py-2.5 bg-school-50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-900 dark:text-lousa-100 placeholder-school-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
               />
             </div>
 
             <div>
-              <label class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-1.5">Confirmar Nova Senha</label>
+              <label class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-1.5">Confirmar Nova Senha</label>
               <input
                 v-model="confirmNewPassword"
                 type="password"
                 placeholder="Repita a nova senha"
-                class="w-full px-4 py-2.5 bg-school-50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-900 dark:text-school-100 placeholder-school-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
+                class="w-full px-4 py-2.5 bg-school-50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-900 dark:text-lousa-100 placeholder-school-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
               />
             </div>
 
@@ -387,8 +387,8 @@ onMounted(loadUser)
         </section>
 
         <!-- Aparência -->
-        <section class="bg-white dark:bg-school-800 ring-1 ring-school-200 dark:ring-school-700 rounded-2xl p-6 md:p-8">
-          <h2 class="text-lg font-bold text-school-800 dark:text-school-100 flex items-center gap-2 mb-6">
+        <section class="bg-white dark:bg-lousa-800 ring-1 ring-school-200 dark:ring-lousa-700 rounded-2xl p-6 md:p-8">
+          <h2 class="text-lg font-bold text-school-800 dark:text-lousa-100 flex items-center gap-2 mb-6">
             <i class="pi pi-palette text-indigo-500"></i>
             Aparência
           </h2>
@@ -400,7 +400,7 @@ onMounted(loadUser)
                 'flex items-center gap-3 px-5 py-3 rounded-xl border-2 transition-all font-medium text-sm',
                 themeStore.theme === 'light'
                   ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 shadow-sm'
-                  : 'border-school-200 dark:border-school-600 bg-white dark:bg-school-700 text-school-600 dark:text-school-400 hover:border-school-300 dark:hover:border-school-500'
+                  : 'border-school-200 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-600 dark:text-lousa-400 hover:border-school-300 dark:hover:border-lousa-500'
               ]"
             >
               <i class="pi pi-sun text-lg"></i>
@@ -413,7 +413,7 @@ onMounted(loadUser)
                 'flex items-center gap-3 px-5 py-3 rounded-xl border-2 transition-all font-medium text-sm',
                 themeStore.theme === 'dark'
                   ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 shadow-sm'
-                  : 'border-school-200 dark:border-school-600 bg-white dark:bg-school-700 text-school-600 dark:text-school-400 hover:border-school-300 dark:hover:border-school-500'
+                  : 'border-school-200 dark:border-lousa-600 bg-white dark:bg-lousa-700 text-school-600 dark:text-lousa-400 hover:border-school-300 dark:hover:border-lousa-500'
               ]"
             >
               <i class="pi pi-moon text-lg"></i>
@@ -423,13 +423,13 @@ onMounted(loadUser)
         </section>
 
         <!-- Zona de Perigo -->
-        <section class="bg-white dark:bg-school-800 ring-1 ring-red-200 dark:ring-red-900/50 rounded-2xl p-6 md:p-8 border border-red-100 dark:border-red-900/30">
+        <section class="bg-white dark:bg-lousa-800 ring-1 ring-red-200 dark:ring-red-900/50 rounded-2xl p-6 md:p-8 border border-red-100 dark:border-red-900/30">
           <h2 class="text-lg font-bold text-red-600 dark:text-red-400 flex items-center gap-2 mb-3">
             <i class="pi pi-exclamation-triangle text-red-500"></i>
             Zona de Perigo
           </h2>
 
-          <p class="text-sm text-school-500 dark:text-school-400 mb-5">
+          <p class="text-sm text-school-500 dark:text-lousa-400 mb-5">
             Ao deletar sua conta, todos os seus dados serão removidos permanentemente. Esta ação não pode ser desfeita.
           </p>
 

@@ -33,6 +33,20 @@ export default {
           900: '#0f172a',
           950: '#020617',
         },
+        // Tema escuro "Lousa" — neutros verdes-acinzentados (usados via dark:*)
+        lousa: {
+          50: '#f2f7f4',
+          100: '#e6efea',
+          200: '#c9d9d0',
+          300: '#a9bcb2',
+          400: '#8aa096',
+          500: '#6e857a',
+          600: '#4e6459',
+          700: '#22312c',
+          800: '#131c19',
+          900: '#0b1210',
+          950: '#060c09',
+        },
         // Superfície clara (light) / escura (dark) semânticas
         surface: {
           DEFAULT: '#ffffff',           // bg branco

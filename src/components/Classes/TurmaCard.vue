@@ -30,7 +30,7 @@ const shortCode = computed(() => props.turma._id.slice(-5).toUpperCase());
 
 <template>
   <div
-  class="aspect-[2/1] w-full group bg-white dark:bg-school-800 border border-school-200 dark:border-school-700 ring-2 ring-school-100 dark:ring-school-700 rounded-2xl p-4 hover:ring-indigo-500/30 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+  class="aspect-[2/1] w-full group bg-white dark:bg-lousa-800 border border-school-200 dark:border-lousa-700 ring-2 ring-school-100 dark:ring-lousa-700 rounded-2xl p-4 hover:ring-indigo-500/30 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
   >
     <!-- Header -->
     <div class="flex justify-between items-start mb-4">
@@ -49,7 +49,7 @@ const shortCode = computed(() => props.turma._id.slice(-5).toUpperCase());
       >
         <button
           @click="emit('edit', props.turma)"
-          class="p-2 text-school-600 dark:text-school-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-school-100 dark:hover:bg-school-700 rounded-lg transition-colors"
+          class="p-2 text-school-600 dark:text-lousa-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-school-100 dark:hover:bg-lousa-700 rounded-lg transition-colors"
           title="Editar Turma"
         >
           <i class="pi pi-pencil text-sm"></i>
@@ -57,7 +57,7 @@ const shortCode = computed(() => props.turma._id.slice(-5).toUpperCase());
 
         <button
           @click="emit('delete', props.turma._id)"
-          class="p-2 text-school-600 dark:text-school-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+          class="p-2 text-school-600 dark:text-lousa-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
           title="Excluir Turma"
         >
           <i class="pi pi-trash text-sm"></i>
@@ -68,13 +68,13 @@ const shortCode = computed(() => props.turma._id.slice(-5).toUpperCase());
     <!-- Content -->
     <div class="mb-5">
       <h3
-        class="text-lg font-bold text-school-800 dark:text-school-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-2"
+        class="text-lg font-bold text-school-800 dark:text-lousa-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-2"
       >
         {{ props.turma.name }}
       </h3>
 
       <p
-        class="text-[11px] text-school-400 dark:text-school-500 mt-1 font-mono uppercase tracking-wider"
+        class="text-[11px] text-school-400 dark:text-lousa-500 mt-1 font-mono uppercase tracking-wider"
       >
         REF: #{{ shortCode }}
       </p>
@@ -83,7 +83,7 @@ const shortCode = computed(() => props.turma._id.slice(-5).toUpperCase());
     <!-- Footer -->
     <RouterLink
       :to="`/classes/${props.turma._id}`"
-      class="w-full bg-school-50 dark:bg-school-700 border border-school-200 dark:border-school-600 hover:bg-indigo-600 dark:hover:bg-indigo-500 text-school-600 dark:text-school-300 hover:text-white text-sm font-semibold py-2 px-4 rounded-xl hover:border-transparent transition-all flex justify-center items-center gap-2"
+      class="w-full bg-school-50 dark:bg-lousa-700 border border-school-200 dark:border-lousa-600 hover:bg-indigo-600 dark:hover:bg-indigo-500 text-school-600 dark:text-lousa-300 hover:text-white text-sm font-semibold py-2 px-4 rounded-xl hover:border-transparent transition-all flex justify-center items-center gap-2"
     >
       Acessar Turma
 

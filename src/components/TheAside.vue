@@ -82,31 +82,31 @@ onMounted(() => {
 });
 
 const navItemClass =
-  "flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-school-500 dark:text-school-400 rounded-lg hover:bg-school-50 dark:hover:bg-school-700/60 hover:text-school-900 dark:hover:text-school-100 group transition-all duration-200 border-l-2 border-transparent";
+  "flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-school-500 dark:text-lousa-400 rounded-lg hover:bg-school-50 dark:hover:bg-lousa-700/60 hover:text-school-900 dark:hover:text-lousa-100 group transition-all duration-200 border-l-2 border-transparent";
 
 const activeNavClass = "!text-indigo-600 dark:!text-indigo-400 !bg-indigo-50 dark:!bg-indigo-900/30 !border-indigo-500";
 
 const disabledNavItemClass =
-  "flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-school-400 dark:text-school-500 rounded-lg cursor-default transition-all duration-200 border-l-2 border-transparent w-full text-left";
+  "flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-school-400 dark:text-lousa-500 rounded-lg cursor-default transition-all duration-200 border-l-2 border-transparent w-full text-left";
 
-const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider text-school-400 dark:text-school-500 bg-school-100 dark:bg-school-700 px-1.5 py-0.5 rounded";
+const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider text-school-400 dark:text-lousa-500 bg-school-100 dark:bg-lousa-700 px-1.5 py-0.5 rounded";
 </script>
 
 <template>
   <div v-if="showSidebar">
     <header
-      class="fixed top-0 left-0 right-0 h-16 bg-white dark:bg-school-800 border-b border-school-200 dark:border-school-700 z-40 flex items-center justify-between px-4 sm:hidden"
+      class="fixed top-0 left-0 right-0 h-16 bg-white dark:bg-lousa-800 border-b border-school-200 dark:border-lousa-700 z-40 flex items-center justify-between px-4 sm:hidden"
     >
       <div class="flex items-center gap-3">
         <button
           @click="toggleMenu"
           type="button"
-          class="p-2 text-school-500 dark:text-school-400 hover:bg-school-100 dark:hover:bg-school-700 rounded-xl transition-all focus:outline-none"
+          class="p-2 text-school-500 dark:text-lousa-400 hover:bg-school-100 dark:hover:bg-lousa-700 rounded-xl transition-all focus:outline-none"
         >
           <i class="pi pi-bars text-xl"></i>
         </button>
         <img :src="logoSrc" alt="" class="h-7 w-auto" />
-        <span class="text-sm font-bold text-school-900 dark:text-school-100 tracking-tighter">
+        <span class="text-sm font-bold text-school-900 dark:text-lousa-100 tracking-tighter">
           LetMe<span class="text-indigo-500">DoIt</span>
         </span>
       </div>
@@ -127,15 +127,15 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
       :showCloseIcon="false"
       class="sm:hidden !border-none !p-0 !bg-transparent !shadow-none"
       :pt="{
-        mask: { class: 'bg-school-900/50 dark:bg-school-950/70 backdrop-blur-sm' },
+        mask: { class: 'bg-school-900/50 dark:bg-lousa-950/70 backdrop-blur-sm' },
       }"
     >
       <template #container="{ closeCallback }">
         <div
-          class="w-64 h-dvh bg-white dark:bg-school-800 border-r border-school-200 dark:border-school-700 shadow-2xl flex flex-col overflow-hidden"
+          class="w-64 h-dvh bg-white dark:bg-lousa-800 border-r border-school-200 dark:border-lousa-700 shadow-2xl flex flex-col overflow-hidden"
         >
           <div
-            class="h-20 flex items-center justify-between px-6 border-b border-school-100 dark:border-school-700 shrink-0"
+            class="h-20 flex items-center justify-between px-6 border-b border-school-100 dark:border-lousa-700 shrink-0"
           >
             <RouterLink
               to="/dashboard"
@@ -144,10 +144,10 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
             >
               <img :src="logoSrc" alt="" class="h-8 w-auto" />
               <div class="flex flex-col">
-                <span class="text-lg font-extrabold text-school-800 dark:text-school-100 tracking-tighter leading-tight">
+                <span class="text-lg font-extrabold text-school-800 dark:text-lousa-100 tracking-tighter leading-tight">
                   LetMe<span class="text-indigo-500">DoIt</span>
                 </span>
-                <span class="text-[10px] uppercase tracking-[0.2em] text-school-400 dark:text-school-500 font-bold">
+                <span class="text-[10px] uppercase tracking-[0.2em] text-school-400 dark:text-lousa-500 font-bold">
                   Painel Docente
                 </span>
               </div>
@@ -155,7 +155,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
 
             <button
               @click="closeCallback"
-              class="text-school-400 hover:text-school-600 dark:text-school-500 dark:hover:text-school-300 p-2"
+              class="text-school-400 hover:text-school-600 dark:text-lousa-500 dark:hover:text-lousa-300 p-2"
             >
               <i class="pi pi-times text-lg"></i>
             </button>
@@ -164,7 +164,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
           <nav class="flex-1 overflow-y-auto py-4 px-4 custom-scrollbar min-h-0">
             <div class="mb-6">
               <h3
-                class="px-4 text-[0.6rem] font-bold text-school-900 dark:text-school-200 uppercase tracking-widest mb-3"
+                class="px-4 text-[0.6rem] font-bold text-school-900 dark:text-lousa-200 uppercase tracking-widest mb-3"
               >
                 Principal
               </h3>
@@ -196,7 +196,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
 
             <div class="mb-6">
               <h3
-                class="px-4 text-[0.6rem] font-bold text-school-900 dark:text-school-200 uppercase tracking-widest mb-3"
+                class="px-4 text-[0.6rem] font-bold text-school-900 dark:text-lousa-200 uppercase tracking-widest mb-3"
               >
                 Gestão de Provas
               </h3>
@@ -228,7 +228,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
 
             <div class="mb-6">
               <h3
-                class="px-4 text-[0.6rem] font-bold text-school-900 dark:text-school-200 uppercase tracking-widest mb-3"
+                class="px-4 text-[0.6rem] font-bold text-school-900 dark:text-lousa-200 uppercase tracking-widest mb-3"
               >
                 Análise
               </h3>
@@ -258,7 +258,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
 
             <div class="mb-6">
               <h3
-                class="px-4 text-[0.6rem] font-bold text-school-900 dark:text-school-200 uppercase tracking-widest mb-3"
+                class="px-4 text-[0.6rem] font-bold text-school-900 dark:text-lousa-200 uppercase tracking-widest mb-3"
               >
                 Suporte
               </h3>
@@ -289,7 +289,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
 
             <div class="mb-6">
               <h3
-                class="px-4 text-[0.6rem] font-bold text-school-900 dark:text-school-200 uppercase tracking-widest mb-3"
+                class="px-4 text-[0.6rem] font-bold text-school-900 dark:text-lousa-200 uppercase tracking-widest mb-3"
               >
                 Conta
               </h3>
@@ -309,7 +309,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
             </div>
           </nav>
 
-        <div class="p-4 border-t border-school-100 dark:border-school-700 bg-school-50 dark:bg-school-800/50 shrink-0">
+        <div class="p-4 border-t border-school-100 dark:border-lousa-700 bg-school-50 dark:bg-lousa-800/50 shrink-0">
           <div class="flex items-center gap-3 mb-4 px-2">
             <Avatar
               :image="userPhoto || undefined"
@@ -319,16 +319,16 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
               style="width: 2.25rem; height: 2.25rem"
             />
             <div class="flex flex-col min-w-0">
-              <span class="text-school-800 dark:text-school-100 text-sm font-semibold truncate">
+              <span class="text-school-800 dark:text-lousa-100 text-sm font-semibold truncate">
                 {{ name || "Professor" }}
               </span>
-              <span class="text-school-500 dark:text-school-400 text-xs"> Docente </span>
+              <span class="text-school-500 dark:text-lousa-400 text-xs"> Docente </span>
             </div>
           </div>
 
           <button
             @click="handleSignout"
-            class="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-medium text-school-500 dark:text-school-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all border border-transparent hover:border-red-100 dark:hover:border-red-900/30"
+            class="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-medium text-school-500 dark:text-lousa-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all border border-transparent hover:border-red-100 dark:hover:border-red-900/30"
           >
               <i class="pi pi-sign-out"></i>
               <span>Encerrar Sessão</span>
@@ -339,10 +339,10 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
     </Drawer>
 
     <aside
-      class="hidden sm:flex fixed top-0 left-0 z-50 w-64 h-screen bg-white dark:bg-school-800 border-r border-school-200 dark:border-school-700 shadow-sm flex-col"
+      class="hidden sm:flex fixed top-0 left-0 z-50 w-64 h-screen bg-white dark:bg-lousa-800 border-r border-school-200 dark:border-lousa-700 shadow-sm flex-col"
     >
       <div
-        class="h-20 flex items-center justify-between px-6 border-b border-school-100 dark:border-school-700 shrink-0"
+        class="h-20 flex items-center justify-between px-6 border-b border-school-100 dark:border-lousa-700 shrink-0"
       >
         <RouterLink
           to="/dashboard"
@@ -350,10 +350,10 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
         >
           <img :src="logoSrc" alt="" class="h-8 w-auto" />
           <div class="flex flex-col">
-            <span class="text-lg font-extrabold text-school-800 dark:text-school-100 tracking-tighter leading-tight">
+            <span class="text-lg font-extrabold text-school-800 dark:text-lousa-100 tracking-tighter leading-tight">
               LetMe<span class="text-indigo-500">DoIt</span>
             </span>
-            <span class="text-[10px] uppercase tracking-[0.2em] text-school-400 dark:text-school-500 font-bold">
+            <span class="text-[10px] uppercase tracking-[0.2em] text-school-400 dark:text-lousa-500 font-bold">
               Painel Docente
             </span>
           </div>
@@ -363,7 +363,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
       <nav class="flex-1 overflow-y-auto py-6 px-4 custom-scrollbar min-h-0">
         <div class="mb-6">
           <h3
-            class="px-4 text-[10px] font-bold text-school-900 dark:text-school-200 uppercase tracking-widest mb-3"
+            class="px-4 text-[10px] font-bold text-school-900 dark:text-lousa-200 uppercase tracking-widest mb-3"
           >
             Principal
           </h3>
@@ -393,7 +393,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
 
         <div class="mb-6">
           <h3
-            class="px-4 text-[10px] font-bold text-school-900 dark:text-school-200 uppercase tracking-widest mb-3"
+            class="px-4 text-[10px] font-bold text-school-900 dark:text-lousa-200 uppercase tracking-widest mb-3"
           >
             Gestão de Provas
           </h3>
@@ -423,7 +423,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
 
         <div class="mb-6">
           <h3
-            class="px-4 text-[10px] font-bold text-school-900 dark:text-school-200 uppercase tracking-widest mb-3"
+            class="px-4 text-[10px] font-bold text-school-900 dark:text-lousa-200 uppercase tracking-widest mb-3"
           >
             Análise
           </h3>
@@ -453,7 +453,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
 
             <div class="mb-6">
               <h3
-                class="px-4 text-[10px] font-bold text-school-900 dark:text-school-200 uppercase tracking-widest mb-3"
+                class="px-4 text-[10px] font-bold text-school-900 dark:text-lousa-200 uppercase tracking-widest mb-3"
               >
                 Suporte
               </h3>
@@ -483,7 +483,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
 
             <div class="mb-6">
               <h3
-                class="px-4 text-[10px] font-bold text-school-900 dark:text-school-200 uppercase tracking-widest mb-3"
+                class="px-4 text-[10px] font-bold text-school-900 dark:text-lousa-200 uppercase tracking-widest mb-3"
               >
                 Conta
               </h3>
@@ -502,7 +502,7 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
             </div>
           </nav>
 
-          <div class="p-4 border-t border-school-100 dark:border-school-700 bg-school-50 dark:bg-school-800/50 shrink-0">
+          <div class="p-4 border-t border-school-100 dark:border-lousa-700 bg-school-50 dark:bg-lousa-800/50 shrink-0">
         <div class="flex items-center gap-3 mb-4 px-2">
           <Avatar
             :image="userPhoto || undefined"
@@ -512,16 +512,16 @@ const comingSoonBadge = "ml-auto text-[9px] font-bold uppercase tracking-wider t
             style="width: 2.25rem; height: 2.25rem"
           />
           <div class="flex flex-col min-w-0">
-            <span class="text-school-800 dark:text-school-100 text-sm font-semibold truncate">
+            <span class="text-school-800 dark:text-lousa-100 text-sm font-semibold truncate">
               {{ name || "Professor" }}
             </span>
-            <span class="text-school-500 dark:text-school-400 text-xs"> Docente </span>
+            <span class="text-school-500 dark:text-lousa-400 text-xs"> Docente </span>
           </div>
         </div>
 
         <button
           @click="handleSignout"
-          class="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-medium text-school-500 dark:text-school-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all border border-transparent hover:border-red-100 dark:hover:border-red-900/30"
+          class="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-medium text-school-500 dark:text-lousa-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all border border-transparent hover:border-red-100 dark:hover:border-red-900/30"
         >
           <i class="pi pi-sign-out"></i>
           <span>Encerrar Sessão</span>

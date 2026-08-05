@@ -15,7 +15,7 @@ const emit = defineEmits<{
     v-if="totalPages > 0"
     class="flex flex-col sm:flex-row items-center justify-between gap-2 py-2"
   >
-    <span class="text-xs text-school-500 dark:text-school-400 font-medium">
+    <span class="text-xs text-school-500 dark:text-lousa-400 font-medium">
       Página {{ currentPage }} de {{ totalPages }}
       ({{ totalItems }} {{ totalItems === 1 ? "registro" : "registros" }})
     </span>
@@ -24,7 +24,7 @@ const emit = defineEmits<{
       <button
         :disabled="currentPage <= 1"
         @click="emit('page-change', currentPage - 1)"
-        class="inline-flex items-center justify-center w-7 h-7 rounded-md text-xs font-medium transition-all disabled:opacity-30 disabled:cursor-not-allowed enabled:hover:bg-school-200 dark:enabled:hover:bg-school-700 enabled:text-school-600 dark:enabled:text-school-300"
+        class="inline-flex items-center justify-center w-7 h-7 rounded-md text-xs font-medium transition-all disabled:opacity-30 disabled:cursor-not-allowed enabled:hover:bg-school-200 dark:enabled:hover:bg-lousa-700 enabled:text-school-600 dark:enabled:text-lousa-300"
       >
         <i class="pi pi-chevron-left text-[10px]"></i>
       </button>
@@ -41,7 +41,7 @@ const emit = defineEmits<{
             'inline-flex items-center justify-center w-7 h-7 rounded-md text-xs font-semibold transition-all',
             p === currentPage
               ? 'bg-indigo-600 dark:bg-indigo-500 text-white'
-              : 'text-school-600 dark:text-school-300 hover:bg-school-100 dark:hover:bg-school-700',
+              : 'text-school-600 dark:text-lousa-300 hover:bg-school-100 dark:hover:bg-lousa-700',
           ]"
         >
           {{ p }}
@@ -50,7 +50,7 @@ const emit = defineEmits<{
         <span
           v-else-if="p === currentPage - 2 || p === currentPage + 2"
           :key="'ellipsis-' + p"
-          class="text-school-400 dark:text-school-500 text-[11px] px-0.5 select-none"
+          class="text-school-400 dark:text-lousa-500 text-[11px] px-0.5 select-none"
         >
           ...
         </span>
@@ -59,7 +59,7 @@ const emit = defineEmits<{
       <button
         :disabled="currentPage >= totalPages"
         @click="emit('page-change', currentPage + 1)"
-        class="inline-flex items-center justify-center w-7 h-7 rounded-md text-xs font-medium transition-all disabled:opacity-30 disabled:cursor-not-allowed enabled:hover:bg-school-200 dark:enabled:hover:bg-school-700 enabled:text-school-600 dark:enabled:text-school-300"
+        class="inline-flex items-center justify-center w-7 h-7 rounded-md text-xs font-medium transition-all disabled:opacity-30 disabled:cursor-not-allowed enabled:hover:bg-school-200 dark:enabled:hover:bg-lousa-700 enabled:text-school-600 dark:enabled:text-lousa-300"
       >
         <i class="pi pi-chevron-right text-[10px]"></i>
       </button>
