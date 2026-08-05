@@ -38,13 +38,13 @@ const services: Service[] = [
   <section id="servicos" class="scroll-mt-20 py-20 md:py-28 bg-white">
     <div class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6">
       <div class="text-center max-w-2xl mx-auto mb-14 md:mb-16 reveal">
-        <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3">
+        <p class="text-sm font-bold text-indigo-600 uppercase tracking-widest mb-3">
           Nossos Serviços
         </p>
-        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
-          Tudo o que a sua <span class="text-emerald-600">escola</span> precisa
+        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-school-900 tracking-tight mb-4">
+          Tudo o que a sua <span class="text-indigo-600">escola</span> precisa
         </h2>
-        <p class="text-lg text-slate-500">
+        <p class="text-lg text-school-500">
           Uma plataforma completa para professores e instituições que querem economizar horas e ter
           controle total sobre o desempenho dos alunos.
         </p>
@@ -54,23 +54,23 @@ const services: Service[] = [
         <div
           v-for="(s, i) in services"
           :key="s.title"
-          class="reveal group relative bg-white rounded-2xl p-8 border border-slate-200 hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-500 overflow-hidden"
+          class="reveal group relative bg-white rounded-2xl p-8 border border-school-200 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-500 overflow-hidden"
           :style="{ '--delay': i * 120 + 'ms' }"
         >
           <div
-            class="absolute -top-8 -right-8 text-7xl text-emerald-500/5 group-hover:text-emerald-500/10 transition-all duration-700 rotate-12 group-hover:rotate-0"
+            class="absolute -top-8 -right-8 text-7xl text-indigo-500/5 group-hover:text-indigo-500/10 transition-all duration-700 rotate-12 group-hover:rotate-0"
           >
             <i :class="['pi', s.bgIcon]"></i>
           </div>
           <div
-            class="w-14 h-14 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 mb-5 group-hover:bg-emerald-600 group-hover:text-white group-hover:scale-110 transition-all duration-300"
+            class="w-14 h-14 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 mb-5 group-hover:bg-indigo-600 group-hover:text-white group-hover:scale-110 transition-all duration-300"
           >
             <i :class="['pi text-xl', s.icon]"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-800 mb-3">{{ s.title }}</h3>
-          <p class="text-sm text-slate-500 leading-relaxed">{{ s.desc }}</p>
+          <h3 class="text-lg font-bold text-school-800 mb-3">{{ s.title }}</h3>
+          <p class="text-sm text-school-500 leading-relaxed">{{ s.desc }}</p>
           <div
-            class="mt-5 flex items-center gap-1.5 text-sm font-semibold text-emerald-600 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0"
+            class="mt-5 flex items-center gap-1.5 text-sm font-semibold text-indigo-600 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0"
           >
             <span>Saiba mais</span>
             <i class="pi pi-arrow-right text-xs"></i>

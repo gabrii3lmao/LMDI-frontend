@@ -46,16 +46,16 @@ async function handleSubmit() {
     <div class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6">
       <div class="text-center max-w-2xl mx-auto mb-14 md:mb-16 reveal">
         <p
-          class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3"
+          class="text-sm font-bold text-indigo-600 uppercase tracking-widest mb-3"
         >
           Contato
         </p>
         <h2
-          class="font-display text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4"
+          class="font-display text-3xl md:text-4xl font-extrabold text-school-900 tracking-tight mb-4"
         >
-          Vamos <span class="text-emerald-600">conversar?</span>
+          Vamos <span class="text-indigo-600">conversar?</span>
         </h2>
-        <p class="text-lg text-slate-500">
+        <p class="text-lg text-school-500">
           Tem dúvidas ou quer levar a plataforma para a sua escola? Fale com a
           gente.
         </p>
@@ -68,43 +68,43 @@ async function handleSubmit() {
             <div
               v-for="info in contactInfo"
               :key="info.label"
-              class="flex items-start gap-4 bg-slate-50 rounded-2xl p-5 border border-slate-100"
+              class="flex items-start gap-4 bg-school-50 rounded-2xl p-5 border border-school-100"
             >
               <div
-                class="w-11 h-11 shrink-0 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600"
+                class="w-11 h-11 shrink-0 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600"
               >
                 <i :class="['pi', info.icon, 'text-lg']"></i>
               </div>
               <div>
-                <p class="text-sm font-bold text-slate-900">{{ info.label }}</p>
-                <p class="text-sm text-slate-500 mt-0.5">{{ info.value }}</p>
+                <p class="text-sm font-bold text-school-900">{{ info.label }}</p>
+                <p class="text-sm text-school-500 mt-0.5">{{ info.value }}</p>
               </div>
             </div>
           </div>
 
           <!-- Mapa placeholder -->
           <div
-            class="relative rounded-2xl overflow-hidden border border-slate-200 h-64 map-grid"
+            class="relative rounded-2xl overflow-hidden border border-school-200 h-64 map-grid"
           >
             <div
               class="absolute inset-0 flex flex-col items-center justify-center"
             >
               <div
-                class="w-14 h-14 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-500/40 animate-bounce"
+                class="w-14 h-14 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-lg shadow-indigo-500/40 animate-bounce"
               >
                 <i class="pi pi-map-marker text-xl"></i>
               </div>
-              <p class="mt-3 text-sm font-bold text-slate-700">
+              <p class="mt-3 text-sm font-bold text-school-700">
                 Teresina · Piauí · Brasil
               </p>
-              <p class="text-xs text-slate-400">Mapa ilustrativo</p>
+              <p class="text-xs text-school-400">Mapa ilustrativo</p>
             </div>
           </div>
         </div>
 
         <!-- Formulário -->
         <form
-          class="reveal bg-slate-50 rounded-3xl p-6 md:p-8 border border-slate-100"
+          class="reveal bg-school-50 rounded-3xl p-6 md:p-8 border border-school-100"
           novalidate
           @submit.prevent="handleSubmit"
         >
@@ -112,7 +112,7 @@ async function handleSubmit() {
             <div>
               <label
                 for="contato-nome"
-                class="block text-sm font-semibold text-slate-700 mb-1.5"
+                class="block text-sm font-semibold text-school-700 mb-1.5"
               >
                 Nome
               </label>
@@ -121,11 +121,11 @@ async function handleSubmit() {
                 v-model="form.nome"
                 type="text"
                 placeholder="Seu nome completo"
-                class="w-full px-4 py-3 rounded-xl border bg-white text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all"
+                class="w-full px-4 py-3 rounded-xl border bg-white text-sm text-school-900 placeholder:text-school-400 focus:outline-none focus:ring-2 transition-all"
                 :class="
                   errors.nome
                     ? 'border-red-300 focus:ring-red-200'
-                    : 'border-slate-200 focus:border-emerald-500 focus:ring-emerald-500/20'
+                    : 'border-school-200 focus:border-indigo-500 focus:ring-indigo-500/20'
                 "
               />
               <p v-if="errors.nome" class="mt-1.5 text-xs text-red-500">
@@ -136,7 +136,7 @@ async function handleSubmit() {
             <div>
               <label
                 for="contato-email"
-                class="block text-sm font-semibold text-slate-700 mb-1.5"
+                class="block text-sm font-semibold text-school-700 mb-1.5"
               >
                 E-mail
               </label>
@@ -145,11 +145,11 @@ async function handleSubmit() {
                 v-model="form.email"
                 type="email"
                 placeholder="voce@escola.edu.br"
-                class="w-full px-4 py-3 rounded-xl border bg-white text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all"
+                class="w-full px-4 py-3 rounded-xl border bg-white text-sm text-school-900 placeholder:text-school-400 focus:outline-none focus:ring-2 transition-all"
                 :class="
                   errors.email
                     ? 'border-red-300 focus:ring-red-200'
-                    : 'border-slate-200 focus:border-emerald-500 focus:ring-emerald-500/20'
+                    : 'border-school-200 focus:border-indigo-500 focus:ring-indigo-500/20'
                 "
               />
               <p v-if="errors.email" class="mt-1.5 text-xs text-red-500">
@@ -160,7 +160,7 @@ async function handleSubmit() {
             <div>
               <label
                 for="contato-mensagem"
-                class="block text-sm font-semibold text-slate-700 mb-1.5"
+                class="block text-sm font-semibold text-school-700 mb-1.5"
               >
                 Mensagem
               </label>
@@ -169,11 +169,11 @@ async function handleSubmit() {
                 v-model="form.mensagem"
                 rows="5"
                 placeholder="Como podemos ajudar?"
-                class="w-full px-4 py-3 rounded-xl border bg-white text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all resize-none"
+                class="w-full px-4 py-3 rounded-xl border bg-white text-sm text-school-900 placeholder:text-school-400 focus:outline-none focus:ring-2 transition-all resize-none"
                 :class="
                   errors.mensagem
                     ? 'border-red-300 focus:ring-red-200'
-                    : 'border-slate-200 focus:border-emerald-500 focus:ring-emerald-500/20'
+                    : 'border-school-200 focus:border-indigo-500 focus:ring-indigo-500/20'
                 "
               ></textarea>
               <p v-if="errors.mensagem" class="mt-1.5 text-xs text-red-500">
@@ -184,10 +184,10 @@ async function handleSubmit() {
             <Transition name="fade">
               <div
                 v-if="status === 'sent'"
-                class="flex items-center gap-3 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3"
+                class="flex items-center gap-3 bg-indigo-50 border border-indigo-200 rounded-xl px-4 py-3"
               >
-                <i class="pi pi-check-circle text-emerald-600 text-lg"></i>
-                <p class="text-sm font-semibold text-emerald-700">
+                <i class="pi pi-check-circle text-indigo-600 text-lg"></i>
+                <p class="text-sm font-semibold text-indigo-700">
                   Mensagem enviada! Em breve entraremos em contato.
                 </p>
               </div>
@@ -196,7 +196,7 @@ async function handleSubmit() {
             <button
               type="submit"
               :disabled="status === 'sending'"
-              class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-base font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-500/25 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
+              class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-base font-bold text-white bg-indigo-600 hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-500/25 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               <i
                 v-if="status === 'sending'"

@@ -11,7 +11,7 @@ function scrollTop() {
 </script>
 
 <template>
-  <footer class="bg-slate-900 text-slate-400">
+  <footer class="bg-school-900 text-school-400">
     <div
       class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
     >
@@ -20,7 +20,7 @@ function scrollTop() {
         <a href="#inicio" class="flex items-center gap-2" @click.prevent="scrollTop">
           <img :src="logoWhite" alt="Logo LetMeDoIt" class="h-8 w-auto" />
         </a>
-        <p class="text-sm text-slate-500 leading-relaxed max-w-xs">
+        <p class="text-sm text-school-500 leading-relaxed max-w-xs">
           Plataforma inteligente para correção automática de provas e gestão de submissões
           escolares.
         </p>
@@ -28,21 +28,21 @@ function scrollTop() {
           <a
             href="https://www.instagram.com/letmedoit_ifpi"
             aria-label="Instagram"
-            class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-400 hover:text-white transition-all"
+            class="w-9 h-9 rounded-lg bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all"
           >
             <i class="pi pi-instagram text-sm"></i>
           </a>
           <a
             href="#"
             aria-label="YouTube"
-            class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-400 hover:text-white transition-all"
+            class="w-9 h-9 rounded-lg bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all"
           >
             <i class="pi pi-youtube text-sm"></i>
           </a>
           <a
             href="#"
             aria-label="LinkedIn"
-            class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-400 hover:text-white transition-all"
+            class="w-9 h-9 rounded-lg bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all"
           >
             <i class="pi pi-linkedin text-sm"></i>
           </a>
@@ -56,28 +56,28 @@ function scrollTop() {
           <a
             href="#servicos"
             @click.prevent="scrollTo('servicos')"
-            class="text-sm text-slate-400 hover:text-white transition-colors"
+            class="text-sm text-school-400 hover:text-white transition-colors"
           >
             Serviços
           </a>
           <a
             href="#portfolio"
             @click.prevent="scrollTo('portfolio')"
-            class="text-sm text-slate-400 hover:text-white transition-colors"
+            class="text-sm text-school-400 hover:text-white transition-colors"
           >
             Portfólio
           </a>
           <a
             href="#precos"
             @click.prevent="scrollTo('precos')"
-            class="text-sm text-slate-400 hover:text-white transition-colors"
+            class="text-sm text-school-400 hover:text-white transition-colors"
           >
             Preços
           </a>
           <a
             href="#sobre"
             @click.prevent="scrollTo('sobre')"
-            class="text-sm text-slate-400 hover:text-white transition-colors"
+            class="text-sm text-school-400 hover:text-white transition-colors"
           >
             FAQ
           </a>
@@ -91,19 +91,19 @@ function scrollTop() {
           <a
             href="#sobre"
             @click.prevent="scrollTo('sobre')"
-            class="text-sm text-slate-400 hover:text-white transition-colors"
+            class="text-sm text-school-400 hover:text-white transition-colors"
           >
             Sobre Nós
           </a>
           <a
             href="#equipe"
             @click.prevent="scrollTo('equipe')"
-            class="text-sm text-slate-400 hover:text-white transition-colors"
+            class="text-sm text-school-400 hover:text-white transition-colors"
           >
             Equipe
           </a>
-          <a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">Blog</a>
-          <a href="#" class="text-sm text-slate-400 hover:text-white transition-colors">
+          <a href="#" class="text-sm text-school-400 hover:text-white transition-colors">Blog</a>
+          <a href="#" class="text-sm text-school-400 hover:text-white transition-colors">
             Termos de Uso
           </a>
         </nav>
@@ -115,24 +115,24 @@ function scrollTop() {
         <nav class="flex flex-col gap-3">
           <a
             href="mailto:contato@letmedoit.app.br"
-            class="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2"
+            class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
           >
-            <i class="pi pi-envelope text-xs text-emerald-400"></i>
+            <i class="pi pi-envelope text-xs text-indigo-400"></i>
             contato@letmedoit.app.br
           </a>
           <a
             href="tel:+5586900000000"
-            class="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2"
+            class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
           >
-            <i class="pi pi-phone text-xs text-emerald-400"></i>
+            <i class="pi pi-phone text-xs text-indigo-400"></i>
             +55 (86) 90000-0000
           </a>
           <a
             href="#contato"
             @click.prevent="scrollTo('contato')"
-            class="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2"
+            class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
           >
-            <i class="pi pi-map-marker text-xs text-emerald-400"></i>
+            <i class="pi pi-map-marker text-xs text-indigo-400"></i>
             Picos · Piauí
           </a>
         </nav>
@@ -140,19 +140,19 @@ function scrollTop() {
     </div>
 
     <!-- Créditos -->
-    <div class="border-t border-slate-800 py-6">
+    <div class="border-t border-school-800 py-6">
       <div
         class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3"
       >
-        <p class="text-xs text-slate-600">&copy; 2026 LetMeDoIt. Todos os direitos reservados.</p>
+        <p class="text-xs text-school-600">&copy; 2026 LetMeDoIt. Todos os direitos reservados.</p>
         <div class="flex items-center gap-4">
-          <a href="#" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">
+          <a href="#" class="text-xs text-school-600 hover:text-school-400 transition-colors">
             Privacidade
           </a>
-          <a href="#" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">
+          <a href="#" class="text-xs text-school-600 hover:text-school-400 transition-colors">
             Termos
           </a>
-          <a href="#" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">
+          <a href="#" class="text-xs text-school-600 hover:text-school-400 transition-colors">
             Cookies
           </a>
         </div>

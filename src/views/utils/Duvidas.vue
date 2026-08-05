@@ -58,7 +58,7 @@ const toggleFaq = (index: number) => {
 </script>
 <template>
     <div
-        class="sm:ml-64 min-h-screen bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 p-8 overflow-y-auto"
+        class="sm:ml-64 min-h-screen bg-white dark:bg-school-900 text-school-800 dark:text-school-200 p-8 overflow-y-auto"
     >
         <div class="max-w-3xl 2xl:max-w-4xl mx-auto">
             <!-- HEADER -->
@@ -72,11 +72,11 @@ const toggleFaq = (index: number) => {
                     ></i>
                 </div>
 
-                <h1 class="text-3xl font-bold dark:text-slate-100">
+                <h1 class="text-3xl font-bold dark:text-school-100">
                     Central de <span class="text-indigo-400">Ajuda</span>
                 </h1>
 
-                <p class="text-gray-500 dark:text-slate-400 mt-2">
+                <p class="text-school-500 dark:text-school-400 mt-2">
                     Tudo o que você precisa saber para dominar o Let me do it.
                 </p>
             </header>
@@ -86,17 +86,17 @@ const toggleFaq = (index: number) => {
                     v-for="(faq, index) in faqs"
                     :key="index"
                     :class="[
-                        'bg-slate-50 dark:bg-slate-800 border rounded-2xl overflow-hidden transition-all duration-300 border-l-4 border-l-indigo-500',
+                        'bg-school-50 dark:bg-school-800 border rounded-2xl overflow-hidden transition-all duration-300 border-l-4 border-l-indigo-500',
                         faq.open
                             ? 'border-indigo-500/40 shadow-lg shadow-indigo-500/5'
-                            : 'border-slate-200/80 dark:border-slate-700',
+                            : 'border-school-200/80 dark:border-school-700',
                     ]"
                 >
                     <button
                         @click="toggleFaq(index)"
-                        class="w-full p-5 text-left flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
+                        class="w-full p-5 text-left flex justify-between items-center hover:bg-school-50 dark:hover:bg-school-700/50 transition-colors"
                     >
-                        <span class="font-semibold text-slate-800 dark:text-slate-200">
+                        <span class="font-semibold text-school-800 dark:text-school-200">
                             {{ faq.question }}
                         </span>
 
@@ -109,9 +109,9 @@ const toggleFaq = (index: number) => {
                     <Transition name="accordion">
                         <div
                             v-if="faq.open"
-                            class="px-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed overflow-hidden"
+                            class="px-5 text-school-600 dark:text-school-400 text-sm leading-relaxed overflow-hidden"
                         >
-                            <div class="pt-4 pb-5 border-t border-slate-200/80 dark:border-slate-700">
+                            <div class="pt-4 pb-5 border-t border-school-200/80 dark:border-school-700">
                                 {{ faq.answer }}
                             </div>
                         </div>
@@ -122,12 +122,12 @@ const toggleFaq = (index: number) => {
             <footer
                 class="mt-16 p-8 bg-indigo-600/10 dark:bg-indigo-900/20 border border-indigo-500/20 dark:border-indigo-800 rounded-3xl text-center"
             >
-                <h3 class="font-bold text-lg mb-2 dark:text-slate-100">
+                <h3 class="font-bold text-lg mb-2 dark:text-school-100">
                     Ainda precisa de suporte?
                 </h3>
 
                 <p
-                    class=" text-gray-750 dark:text-slate-300 text-sm mb-6 px-4 py-1 mt-2"
+                    class=" text-school-400 dark:text-school-300 text-sm mb-6 px-4 py-1 mt-2"
                 >
                     Se sua dúvida não foi respondida, nossa equipe técnica pode
                     te ajudar.
@@ -163,9 +163,5 @@ const toggleFaq = (index: number) => {
     opacity: 1;
     transform: translateY(0);
     max-height: 300px;
-}
-
-.bg-gray-750 {
-    background-color: rgba(55, 65, 81, 0.5);
 }
 </style>

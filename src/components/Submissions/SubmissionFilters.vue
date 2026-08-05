@@ -16,7 +16,7 @@ defineEmits(["update:selectedClassId", "update:selectedExamId", "update:selected
 
 <template>
   <div
-    class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 ring-1 ring-slate-300 dark:ring-slate-700 rounded-2xl p-4 flex flex-col sm:flex-row gap-5 mb-6 shadow-sm"
+    class="bg-white dark:bg-school-800 border border-school-200 dark:border-school-700 ring-1 ring-school-300 dark:ring-school-700 rounded-2xl p-4 flex flex-col sm:flex-row gap-5 mb-6 shadow-sm"
   >
     <select
       :value="selectedClassId"
@@ -27,7 +27,7 @@ defineEmits(["update:selectedClassId", "update:selectedExamId", "update:selected
         )
       "
       :disabled="loadingTurmas"
-      class="flex-1 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 rounded-xl px-4 py-3 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus:border-transparent transition-all cursor-pointer"
+      class="flex-1 bg-school-50 dark:bg-school-700 border border-school-200 dark:border-school-600 text-school-700 dark:text-school-200 rounded-xl px-4 py-3 outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus:border-transparent transition-all cursor-pointer"
     >
       <option value="" disabled>Selecione a Turma</option>
       <option v-for="t in turmas" :key="t._id" :value="t._id">
@@ -44,7 +44,7 @@ defineEmits(["update:selectedClassId", "update:selectedExamId", "update:selected
         )
       "
       :disabled="!selectedClassId || loadingExams"
-      class="flex-1 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+      class="flex-1 bg-school-50 dark:bg-school-700 border border-school-200 dark:border-school-600 text-school-700 dark:text-school-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
     >
       <option value="" disabled>Selecione a Prova</option>
       <option v-for="e in exams" :key="e._id" :value="e._id">
@@ -61,7 +61,7 @@ defineEmits(["update:selectedClassId", "update:selectedExamId", "update:selected
         )
       "
       :disabled="!selectedExamId"
-      class="flex-1 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+      class="flex-1 bg-school-50 dark:bg-school-700 border border-school-200 dark:border-school-600 text-school-700 dark:text-school-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
     >
       <option value="">Todas</option>
       <option value="pending">Pendente</option>

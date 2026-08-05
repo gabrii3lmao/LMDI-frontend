@@ -80,27 +80,27 @@ onUnmounted(() => {
   <section class="py-20 md:py-28 bg-white">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
       <div class="reveal mb-12">
-        <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3">Depoimentos</p>
-        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
-          Quem usa, <span class="text-emerald-600">recomenda</span>
+        <p class="text-sm font-bold text-indigo-600 uppercase tracking-widest mb-3">Depoimentos</p>
+        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-school-900 tracking-tight mb-4">
+          Quem usa, <span class="text-indigo-600">recomenda</span>
         </h2>
-        <p class="text-lg text-slate-500 max-w-xl mx-auto">
+        <p class="text-lg text-school-500 max-w-xl mx-auto">
           Veja o que professores estão falando sobre o LetMeDoIt.
         </p>
       </div>
 
       <div class="relative mt-8 reveal">
         <!-- Barra de progresso do autoplay -->
-        <div class="h-1 bg-slate-200 rounded-full overflow-hidden mb-8">
+        <div class="h-1 bg-school-200 rounded-full overflow-hidden mb-8">
           <div
-            class="h-full bg-emerald-500 rounded-full"
+            class="h-full bg-indigo-500 rounded-full"
             :style="{ animation: 'progressBar 5s linear infinite' }"
           ></div>
         </div>
 
-        <div class="relative bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-100 shadow-sm">
+        <div class="relative bg-school-50 rounded-3xl p-8 md:p-12 border border-school-100 shadow-sm">
           <div
-            class="absolute -top-5 left-8 w-11 h-11 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-500/25"
+            class="absolute -top-5 left-8 w-11 h-11 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-lg shadow-indigo-500/25"
           >
             <i class="pi pi-quote-left text-lg"></i>
           </div>
@@ -112,7 +112,7 @@ onUnmounted(() => {
           <Transition name="testimonial" mode="out-in">
             <div :key="current">
               <p
-                class="text-xl md:text-2xl text-slate-700 font-medium leading-relaxed italic mb-8"
+                class="text-xl md:text-2xl text-school-700 font-medium leading-relaxed italic mb-8"
               >
                 "{{ depoimentos[current]!.quote }}"
               </p>
@@ -120,12 +120,12 @@ onUnmounted(() => {
                 <img
                   :src="depoimentos[current]!.photo"
                   :alt="`Foto de ${depoimentos[current]!.author}`"
-                  class="w-14 h-14 rounded-full object-cover border-2 border-emerald-200"
+                  class="w-14 h-14 rounded-full object-cover border-2 border-indigo-200"
                   loading="lazy"
                 />
                 <div class="text-left">
-                  <p class="text-lg font-bold text-slate-900">{{ depoimentos[current]!.author }}</p>
-                  <p class="text-sm text-slate-500">{{ depoimentos[current]!.role }}</p>
+                  <p class="text-lg font-bold text-school-900">{{ depoimentos[current]!.author }}</p>
+                  <p class="text-sm text-school-500">{{ depoimentos[current]!.role }}</p>
                 </div>
               </div>
             </div>
@@ -140,8 +140,8 @@ onUnmounted(() => {
               class="rounded-full transition-all duration-500"
               :class="
                 i === current
-                  ? 'w-8 h-2.5 bg-emerald-500'
-                  : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400'
+                  ? 'w-8 h-2.5 bg-indigo-500'
+                  : 'w-2.5 h-2.5 bg-school-300 hover:bg-school-400'
               "
             ></button>
           </div>
@@ -151,14 +151,14 @@ onUnmounted(() => {
         <button
           @click="prev"
           aria-label="Depoimento anterior"
-          class="absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 hover:text-emerald-600 hover:border-emerald-300 transition-all shadow-sm active:scale-90"
+          class="absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full border border-school-200 bg-white text-school-600 hover:text-indigo-600 hover:border-indigo-300 transition-all shadow-sm active:scale-90"
         >
           <i class="pi pi-arrow-left text-sm"></i>
         </button>
         <button
           @click="next"
           aria-label="Próximo depoimento"
-          class="absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 hover:text-emerald-600 hover:border-emerald-300 transition-all shadow-sm active:scale-90"
+          class="absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full border border-school-200 bg-white text-school-600 hover:text-indigo-600 hover:border-indigo-300 transition-all shadow-sm active:scale-90"
         >
           <i class="pi pi-arrow-right text-sm"></i>
         </button>

@@ -42,23 +42,23 @@ function handleSubmit() {
 <template>
   <div
     v-if="isOpen"
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-school-900/40 backdrop-blur-sm"
   >
     <div
-      class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 w-full max-w-md rounded-3xl shadow-2xl p-6 sm:p-8 max-h-[90vh] flex flex-col animate-in fade-in zoom-in duration-200"
+      class="bg-white dark:bg-school-800 border border-school-200 dark:border-school-700 w-full max-w-md rounded-3xl shadow-2xl p-6 sm:p-8 max-h-[90vh] flex flex-col animate-in fade-in zoom-in duration-200"
     >
       <div class="flex justify-between items-center mb-6 flex-shrink-0">
         <div>
-          <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">
-            Corrigir <span class="text-emerald-600 dark:text-emerald-400">Gabarito</span>
+          <h2 class="text-xl font-bold text-school-800 dark:text-school-100">
+            Corrigir <span class="text-indigo-600 dark:text-indigo-400">Gabarito</span>
           </h2>
-          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
+          <p class="text-xs text-school-500 dark:text-school-400 mt-1 font-medium">
             Anexe a foto da prova do aluno.
           </p>
         </div>
         <button
           @click="emit('close')"
-          class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 dark:text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+          class="w-8 h-8 flex items-center justify-center rounded-lg text-school-400 dark:text-school-500 hover:bg-school-50 dark:hover:bg-school-700 hover:text-school-600 dark:hover:text-school-300 transition-colors"
         >
           <i class="pi pi-times"></i>
         </button>
@@ -69,7 +69,7 @@ function handleSubmit() {
           <div class="space-y-6">
             <div>
               <label
-                class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 px-1"
+                class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-2 px-1"
               >
                 Gabaritos dos Alunos
               </label>
@@ -78,18 +78,18 @@ function handleSubmit() {
           </div>
         </div>
 
-        <div class="flex gap-3 pt-4 mt-4 border-t border-slate-100 dark:border-slate-700 flex-shrink-0">
+        <div class="flex gap-3 pt-4 mt-4 border-t border-school-100 dark:border-school-700 flex-shrink-0">
           <button
             type="button"
             @click="emit('close')"
-            class="flex-1 px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-semibold transition-colors"
+            class="flex-1 px-4 py-3 rounded-xl bg-school-100 dark:bg-school-700 hover:bg-school-200 dark:hover:bg-school-600 text-school-700 dark:text-school-200 font-semibold transition-colors"
           >
             Cancelar
           </button>
           <button
             type="submit"
             :disabled="enviando || itensUpload.length === 0"
-            class="flex-1 px-4 py-3 rounded-xl bg-emerald-600 dark:bg-emerald-500 text-white font-semibold disabled:opacity-50 hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors flex justify-center items-center gap-2 shadow-lg shadow-emerald-600/10"
+            class="flex-1 px-4 py-3 rounded-xl bg-indigo-600 dark:bg-indigo-500 text-white font-semibold disabled:opacity-50 hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-colors flex justify-center items-center gap-2 shadow-lg shadow-indigo-600/10"
           >
             <i v-if="enviando" class="pi pi-spin pi-spinner animate-spin"></i>
             {{

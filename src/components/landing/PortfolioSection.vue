@@ -66,14 +66,14 @@ const filtered = computed(() =>
 </script>
 
 <template>
-  <section id="portfolio" class="scroll-mt-20 py-20 md:py-28 bg-slate-50">
+  <section id="portfolio" class="scroll-mt-20 py-20 md:py-28 bg-school-50">
     <div class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6">
       <div class="text-center max-w-2xl mx-auto mb-10 md:mb-12 reveal">
-        <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3">Portfólio</p>
-        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
-          Trabalhos em <span class="text-emerald-600">destaque</span>
+        <p class="text-sm font-bold text-indigo-600 uppercase tracking-widest mb-3">Portfólio</p>
+        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-school-900 tracking-tight mb-4">
+          Trabalhos em <span class="text-indigo-600">destaque</span>
         </h2>
-        <p class="text-lg text-slate-500">
+        <p class="text-lg text-school-500">
           Da correção à gestão, veja como a plataforma transforma o dia a dia das escolas.
         </p>
       </div>
@@ -87,8 +87,8 @@ const filtered = computed(() =>
           class="px-5 py-2 rounded-full text-sm font-semibold transition-all active:scale-95"
           :class="
             activeFilter === f.id
-              ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/25'
-              : 'bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
+              ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25'
+              : 'bg-white text-school-600 border border-school-200 hover:border-indigo-300 hover:text-indigo-600'
           "
         >
           {{ f.label }}
@@ -104,7 +104,7 @@ const filtered = computed(() =>
         <div
           v-for="item in filtered"
           :key="item.title"
-          class="group relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500"
+          class="group relative rounded-2xl overflow-hidden border border-school-200 bg-white shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500"
         >
           <img
             :src="item.img"
@@ -113,7 +113,7 @@ const filtered = computed(() =>
             class="w-full h-60 sm:h-72 object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div
-            class="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            class="absolute inset-0 bg-gradient-to-t from-indigo-950/90 via-indigo-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           ></div>
           <div
             class="absolute inset-x-0 bottom-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500"

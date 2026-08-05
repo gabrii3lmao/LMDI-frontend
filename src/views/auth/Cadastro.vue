@@ -103,7 +103,7 @@ async function handleSignup() {
 </script>
 
 <template>
-  <div class="min-h-screen flex w-full font-sans bg-slate-50 dark:bg-slate-900 overflow-hidden">
+  <div class="min-h-screen flex w-full font-sans bg-school-50 dark:bg-school-900 overflow-hidden">
     <div
       class="hidden lg:flex lg:w-1/2 relative overflow-hidden flex-col justify-between p-12 xl:p-16"
     >
@@ -114,7 +114,7 @@ async function handleSignup() {
       />
 
       <div
-        class="absolute inset-0 bg-gradient-to-br from-emerald-950/90 via-emerald-900/80 to-slate-900/90 z-10"
+        class="absolute inset-0 bg-gradient-to-br from-indigo-950/90 via-indigo-900/80 to-school-900/90 z-10"
       ></div>
 
       <div
@@ -138,13 +138,13 @@ async function handleSignup() {
         <span
           class="text-4xl xl:text-5xl font-extrabold text-white leading-none tracking-tight"
         >
-          Let Me<span class="text-emerald-400">Do It!</span>
+          Let Me<span class="text-indigo-400">Do It!</span>
         </span>
       </div>
 
       <div class="relative z-20 mt-auto max-w-lg">
         <div
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-emerald-300 text-xs font-semibold mb-6 shadow-sm"
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-400/10 border border-indigo-400/20 text-indigo-300 text-xs font-semibold mb-6 shadow-sm"
         >
           <i class="pi pi-sparkles text-[10px]"></i>
           <span>Painel Docente</span>
@@ -157,7 +157,7 @@ async function handleSignup() {
         </h1>
 
         <p
-          class="text-base xl:text-lg text-emerald-100/80 mb-8 max-w-md font-medium"
+          class="text-base xl:text-lg text-indigo-100/80 mb-8 max-w-md font-medium"
         >
           Gestão de gabaritos, análise de submissões e acompanhamento em tempo
           real para professores.
@@ -166,10 +166,10 @@ async function handleSignup() {
     </div>
 
     <div
-      class="w-full lg:w-1/2 flex flex-col justify-center p-8 sm:p-16 lg:px-24 xl:px-32 relative shadow-[-8px_0_30px_rgba(0,0,0,0.08)] bg-gradient-to-l from-slate-50 via-slate-50 to-emerald-50/20 dark:from-slate-900 dark:via-slate-900 dark:to-emerald-950/20"
+      class="w-full lg:w-1/2 flex flex-col justify-center p-8 sm:p-16 lg:px-24 xl:px-32 relative shadow-[-8px_0_30px_rgba(0,0,0,0.08)] bg-gradient-to-l from-school-50 via-school-50 to-indigo-50/20 dark:from-school-900 dark:via-school-900 dark:to-indigo-950/20"
     >
       <div
-        class="absolute top-0 right-0 w-72 h-72 translate-x-1/3 -translate-y-1/3 rounded-full bg-emerald-500/5 blur-3xl pointer-events-none"
+        class="absolute top-0 right-0 w-72 h-72 translate-x-1/3 -translate-y-1/3 rounded-full bg-indigo-500/5 blur-3xl pointer-events-none"
       ></div>
 
       <div class="w-full max-w-sm mx-auto relative z-10">
@@ -184,28 +184,28 @@ async function handleSignup() {
             />
           </div>
           <h1
-            class="text-4xl font-extrabold text-slate-800 dark:text-slate-100 text-center tracking-tight"
+            class="text-4xl font-extrabold text-school-800 dark:text-school-100 text-center tracking-tight"
           >
-            LetMe<span class="text-emerald-600 dark:text-emerald-400">DoIt</span>
+            LetMe<span class="text-indigo-600 dark:text-indigo-400">DoIt</span>
           </h1>
         </div>
 
           <div class="mb-8 text-center sm:text-left">
             <h2
-              class="text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight"
+              class="text-2xl sm:text-3xl font-extrabold text-school-800 dark:text-school-100 tracking-tight"
             >
               Crie sua conta
             </h2>
-            <p class="text-slate-500 dark:text-slate-400 text-sm mt-2">
+            <p class="text-school-500 dark:text-school-400 text-sm mt-2">
               Preencha seus dados para começar.
             </p>
           </div>
 
           <div
             v-if="successMessage"
-            class="mb-6 flex items-start gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400"
+            class="mb-6 flex items-start gap-3 p-4 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-800 text-indigo-700 dark:text-indigo-400"
           >
-            <i class="pi pi-check-circle mt-0.5 shrink-0 text-emerald-500"></i>
+            <i class="pi pi-check-circle mt-0.5 shrink-0 text-indigo-500"></i>
             <p class="text-sm font-medium">{{ successMessage }}</p>
           </div>
 
@@ -222,7 +222,7 @@ async function handleSignup() {
           <form class="space-y-5" @submit.prevent="handleSignup">
             <div>
               <label
-                class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 px-1"
+                class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-2 px-1"
               >
                 Nome completo
               </label>
@@ -231,7 +231,7 @@ async function handleSignup() {
                 type="text"
                 placeholder="Ex: Prof. Carlos Silva"
                 required
-                class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all"
+                class="w-full px-4 py-3 bg-school-50/50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-800 dark:text-school-100 placeholder-school-400 dark:placeholder-school-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
                 :class="fieldErrors.name ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20' : ''"
               />
               <p v-if="fieldErrors.name" class="mt-1.5 text-xs font-medium text-red-500 dark:text-red-400 flex items-center gap-1">
@@ -242,7 +242,7 @@ async function handleSignup() {
 
             <div>
               <label
-                class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 px-1"
+                class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-2 px-1"
               >
                 E-mail institucional
               </label>
@@ -251,7 +251,7 @@ async function handleSignup() {
                 type="email"
                 placeholder="carlos.silva@escola.com"
                 required
-                class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all"
+                class="w-full px-4 py-3 bg-school-50/50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-800 dark:text-school-100 placeholder-school-400 dark:placeholder-school-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
                 :class="fieldErrors.email ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20' : ''"
               />
               <p v-if="fieldErrors.email" class="mt-1.5 text-xs font-medium text-red-500 dark:text-red-400 flex items-center gap-1">
@@ -262,7 +262,7 @@ async function handleSignup() {
 
             <div>
               <label
-                class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 px-1"
+                class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-2 px-1"
               >
                 Senha
               </label>
@@ -272,13 +272,13 @@ async function handleSignup() {
                   :type="showPassword ? 'text' : 'password'"
                   placeholder="••••••••"
                   required
-                  class="w-full px-4 py-3 pr-11 bg-slate-50/50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all"
+                  class="w-full px-4 py-3 pr-11 bg-school-50/50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-800 dark:text-school-100 placeholder-school-400 dark:placeholder-school-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
                   :class="fieldErrors.password ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20' : ''"
                 />
                 <button
                   type="button"
                   @click="showPassword = !showPassword"
-                  class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors p-1"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-school-400 dark:text-school-500 hover:text-school-600 dark:hover:text-school-300 transition-colors p-1"
                   :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
                 >
                   <i :class="['pi text-sm', showPassword ? 'pi-eye-slash' : 'pi-eye']"></i>
@@ -292,7 +292,7 @@ async function handleSignup() {
 
             <div>
               <label
-                class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 px-1"
+                class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-2 px-1"
               >
                 Confirmar Senha
               </label>
@@ -302,13 +302,13 @@ async function handleSignup() {
                   :type="showConfirmPassword ? 'text' : 'password'"
                   placeholder="••••••••"
                   required
-                  class="w-full px-4 py-3 pr-11 bg-slate-50/50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all"
+                  class="w-full px-4 py-3 pr-11 bg-school-50/50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-800 dark:text-school-100 placeholder-school-400 dark:placeholder-school-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
                   :class="fieldErrors.confirmPassword ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20' : ''"
                 />
                 <button
                   type="button"
                   @click="showConfirmPassword = !showConfirmPassword"
-                  class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors p-1"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-school-400 dark:text-school-500 hover:text-school-600 dark:hover:text-school-300 transition-colors p-1"
                   :aria-label="showConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'"
                 >
                   <i :class="['pi text-sm', showConfirmPassword ? 'pi-eye-slash' : 'pi-eye']"></i>
@@ -323,7 +323,7 @@ async function handleSignup() {
             <button
               type="submit"
               :disabled="loading"
-              class="w-full py-3.5 mt-2 rounded-xl font-bold text-white bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-emerald-600/10 active:scale-[0.98]"
+              class="w-full py-3.5 mt-2 rounded-xl font-bold text-white bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-indigo-600/10 active:scale-[0.98]"
             >
               <span
                 v-if="loading"
@@ -337,10 +337,10 @@ async function handleSignup() {
 
           <div class="relative my-7">
             <div class="absolute inset-0 flex items-center">
-              <div class="w-full border-t border-slate-200 dark:border-slate-700"></div>
+              <div class="w-full border-t border-school-200 dark:border-school-700"></div>
             </div>
             <div class="relative flex justify-center text-sm">
-              <span class="px-3 bg-slate-50 dark:bg-slate-900 text-slate-500 dark:text-slate-400 font-medium">
+              <span class="px-3 bg-school-50 dark:bg-school-900 text-school-500 dark:text-school-400 font-medium">
                 Ou
               </span>
             </div>
@@ -351,12 +351,12 @@ async function handleSignup() {
           </div>
 
           <div
-            class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-700 text-center text-sm text-slate-500 dark:text-slate-400"
+            class="mt-8 pt-6 border-t border-school-100 dark:border-school-700 text-center text-sm text-school-500 dark:text-school-400"
           >
             Já possui uma conta?
             <RouterLink
               to="/signin"
-              class="font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
+              class="font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
             >
               Entrar
             </RouterLink>

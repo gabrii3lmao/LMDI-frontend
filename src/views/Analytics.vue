@@ -195,20 +195,19 @@ const stats = computed(() => {
   if (!hasData.value) return null;
   const s = (analytics.value as any).stats;
   return [
-    { label: "Média da Turma", value: s.average, icon: "pi pi-calculator", color: "emerald", bg: "bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800", iconBg: "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400" },
-    { label: "Maior Nota", value: s.highest, icon: "pi pi-arrow-up", color: "green", bg: "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800", iconBg: "bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400" },
+    { label: "Média da Turma", value: s.average, icon: "pi pi-calculator", color: "indigo", bg: "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-800", iconBg: "bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400" },
+    { label: "Maior Nota", value: s.highest, icon: "pi pi-arrow-up", color: "indigo", bg: "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-800", iconBg: "bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400" },
     { label: "Menor Nota", value: s.lowest, icon: "pi pi-arrow-down", color: "red", bg: "bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800", iconBg: "bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400" },
-    { label: "Total de Alunos", value: s.total, icon: "pi pi-users", color: "blue", bg: "bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800", iconBg: "bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400" },
+    { label: "Total de Alunos", value: s.total, icon: "pi pi-users", color: "school", bg: "bg-school-50 dark:bg-school-800 border-school-200 dark:border-school-700", iconBg: "bg-school-100 dark:bg-school-700/40 text-school-600 dark:text-school-300" },
   ];
 });
 
 function getStatTextColor(color: string) {
   return {
-    emerald: "text-emerald-700 dark:text-emerald-300",
-    green: "text-green-700 dark:text-green-300",
+    indigo: "text-indigo-700 dark:text-indigo-300",
     red: "text-red-700 dark:text-red-300",
-    blue: "text-blue-700 dark:text-blue-300",
-  }[color] || "text-slate-700 dark:text-slate-300";
+    school: "text-school-700 dark:text-school-300",
+  }[color] || "text-school-700 dark:text-school-300";
 }
 
 const exporting = ref(false);
@@ -250,18 +249,18 @@ async function downloadReport() {
 </script>
 
 <template>
-  <div class="sm:ml-64 min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-sans flex flex-col">
+  <div class="sm:ml-64 min-h-screen bg-school-50 dark:bg-school-900 text-school-700 dark:text-school-300 font-sans flex flex-col">
     <div class="flex-1 p-4 md:p-8">
       <div class="max-w-7xl 2xl:max-w-[90rem] mx-auto">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
           <div>
-            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-school-800 dark:text-school-100 tracking-tight flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
                 <i class="pi pi-chart-pie text-sm"></i>
               </span>
               Desempenho
             </h1>
-            <p class="text-slate-500 dark:text-slate-400 text-sm mt-2 ml-11">
+            <p class="text-school-500 dark:text-school-400 text-sm mt-2 ml-11">
               Gráficos e estatísticas detalhadas das suas provas.
             </p>
           </div>
@@ -282,26 +281,26 @@ async function downloadReport() {
         <LoadingSpinner v-if="loadingAnalytics" message="Carregando dados..." />
 
         <Transition name="fade" mode="out-in">
-          <div v-if="!selectedExamId" key="empty" class="p-12 sm:p-16 flex flex-col items-center justify-center text-center bg-white dark:bg-slate-800 rounded-2xl ring-1 ring-slate-200/80 dark:ring-slate-700 border border-slate-100 dark:border-slate-700 shadow-sm">
-            <div class="w-16 h-16 bg-emerald-50 dark:bg-emerald-900/30 rounded-2xl flex items-center justify-center mb-5 text-emerald-500 dark:text-emerald-400 ring-1 ring-emerald-200 dark:ring-emerald-700">
+          <div v-if="!selectedExamId" key="empty" class="p-12 sm:p-16 flex flex-col items-center justify-center text-center bg-white dark:bg-school-800 rounded-2xl ring-1 ring-school-200/80 dark:ring-school-700 border border-school-100 dark:border-school-700 shadow-sm">
+            <div class="w-16 h-16 bg-indigo-50 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center mb-5 text-indigo-500 dark:text-indigo-400 ring-1 ring-indigo-200 dark:ring-indigo-700">
               <i class="pi pi-chart-bar text-2xl"></i>
             </div>
-            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">
+            <h3 class="text-lg font-bold text-school-800 dark:text-school-100">
               Selecione uma avaliação
             </h3>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1.5 max-w-sm">
+            <p class="text-sm text-school-500 dark:text-school-400 mt-1.5 max-w-sm">
               Escolha a turma e a prova acima para visualizar gráficos e estatísticas de desempenho.
             </p>
           </div>
 
-          <div v-else-if="selectedExamId && !hasData && !loadingAnalytics" key="nodata" class="p-12 sm:p-16 flex flex-col items-center justify-center text-center bg-white dark:bg-slate-800 rounded-2xl ring-1 ring-slate-200/80 dark:ring-slate-700 border border-slate-100 dark:border-slate-700 shadow-sm">
-            <div class="w-16 h-16 bg-slate-100 dark:bg-slate-700/50 rounded-2xl flex items-center justify-center mb-5 text-slate-400 dark:text-slate-500 ring-1 ring-slate-200 dark:ring-slate-600">
+          <div v-else-if="selectedExamId && !hasData && !loadingAnalytics" key="nodata" class="p-12 sm:p-16 flex flex-col items-center justify-center text-center bg-white dark:bg-school-800 rounded-2xl ring-1 ring-school-200/80 dark:ring-school-700 border border-school-100 dark:border-school-700 shadow-sm">
+            <div class="w-16 h-16 bg-school-100 dark:bg-school-700/50 rounded-2xl flex items-center justify-center mb-5 text-school-400 dark:text-school-500 ring-1 ring-school-200 dark:ring-school-600">
               <i class="pi pi-inbox text-2xl"></i>
             </div>
-            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">
+            <h3 class="text-lg font-bold text-school-800 dark:text-school-100">
               Nenhum dado disponível
             </h3>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1.5 max-w-sm">
+            <p class="text-sm text-school-500 dark:text-school-400 mt-1.5 max-w-sm">
               Esta prova ainda não possui correções concluídas. Após corrigir as submissões, os gráficos serão exibidos aqui.
             </p>
           </div>
@@ -310,17 +309,17 @@ async function downloadReport() {
         <template v-if="hasData && stats">
           <Transition name="fade" mode="out-in">
             <div key="content">
-              <div class="bg-white dark:bg-slate-800 rounded-2xl p-5 sm:p-6 mb-6 ring-1 ring-slate-200/80 dark:ring-slate-700 border border-slate-100 dark:border-slate-700 shadow-sm">
+              <div class="bg-white dark:bg-school-800 rounded-2xl p-5 sm:p-6 mb-6 ring-1 ring-school-200/80 dark:ring-school-700 border border-school-100 dark:border-school-700 shadow-sm">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                   <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
                       <i class="pi pi-file-edit text-lg"></i>
                     </div>
                     <div>
-                      <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100">
+                      <h2 class="text-lg font-bold text-school-800 dark:text-school-100">
                         {{ (activeExam as any)?.title || "Prova" }}
                       </h2>
-                      <p class="text-sm text-slate-500 dark:text-slate-400">
+                      <p class="text-sm text-school-500 dark:text-school-400">
                         {{ (turmas || []).find((t: any) => t._id === selectedClassId)?.name || "-" }}
                         &middot; {{ (analytics as any).stats.total }} aluno{{ (analytics as any).stats.total !== 1 ? "s" : "" }}
                       </p>
@@ -329,7 +328,7 @@ async function downloadReport() {
                   <button
                     @click="downloadReport"
                     :disabled="exporting"
-                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 disabled:bg-emerald-300 dark:disabled:bg-emerald-800 text-white font-semibold text-sm rounded-xl transition-all shadow-sm shadow-emerald-200 dark:shadow-emerald-900/30"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 disabled:bg-indigo-300 dark:disabled:bg-indigo-800 text-white font-semibold text-sm rounded-xl transition-all shadow-sm shadow-indigo-200 dark:shadow-indigo-900/30"
                   >
                     <i class="pi pi-file-excel"></i>
                     <span>{{ exporting ? "Exportando…" : "Exportar relatório" }}</span>
@@ -346,7 +345,7 @@ async function downloadReport() {
                       <i :class="`${stat.icon} text-base`"></i>
                     </div>
                     <div class="min-w-0">
-                      <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide truncate">
+                      <p class="text-xs font-semibold text-school-500 dark:text-school-400 uppercase tracking-wide truncate">
                         {{ stat.label }}
                       </p>
                       <p :class="`text-xl sm:text-2xl font-extrabold ${getStatTextColor(stat.color)}`">
@@ -358,13 +357,13 @@ async function downloadReport() {
               </div>
 
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="bg-white dark:bg-slate-800 rounded-2xl ring-1 ring-slate-200/80 dark:ring-slate-700 border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden">
-                  <div class="px-5 pt-5 pb-2 border-b border-slate-100 dark:border-slate-700">
-                    <h3 class="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
-                      <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <div class="bg-white dark:bg-school-800 rounded-2xl ring-1 ring-school-200/80 dark:ring-school-700 border border-school-100 dark:border-school-700 shadow-sm overflow-hidden">
+                  <div class="px-5 pt-5 pb-2 border-b border-school-100 dark:border-school-700">
+                    <h3 class="text-sm font-bold text-school-700 dark:text-school-300 flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
                       Distribuição das Notas
                     </h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+                    <p class="text-xs text-school-400 dark:text-school-500 mt-0.5">
                       Quantidade de alunos por faixa de nota
                     </p>
                   </div>
@@ -375,13 +374,13 @@ async function downloadReport() {
                   </div>
                 </div>
 
-                <div class="bg-white dark:bg-slate-800 rounded-2xl ring-1 ring-slate-200/80 dark:ring-slate-700 border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden">
-                  <div class="px-5 pt-5 pb-2 border-b border-slate-100 dark:border-slate-700">
-                    <h3 class="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                <div class="bg-white dark:bg-school-800 rounded-2xl ring-1 ring-school-200/80 dark:ring-school-700 border border-school-100 dark:border-school-700 shadow-sm overflow-hidden">
+                  <div class="px-5 pt-5 pb-2 border-b border-school-100 dark:border-school-700">
+                    <h3 class="text-sm font-bold text-school-700 dark:text-school-300 flex items-center gap-2">
                       <span class="w-2 h-2 rounded-full bg-amber-500"></span>
                       % de Acerto por Questão
                     </h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+                    <p class="text-xs text-school-400 dark:text-school-500 mt-0.5">
                       Percentual de acertos em cada questão
                     </p>
                   </div>
@@ -392,13 +391,13 @@ async function downloadReport() {
                   </div>
                 </div>
 
-                <div class="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl ring-1 ring-slate-200/80 dark:ring-slate-700 border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden">
-                  <div class="px-5 pt-5 pb-2 border-b border-slate-100 dark:border-slate-700">
-                    <h3 class="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
-                      <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                <div class="lg:col-span-2 bg-white dark:bg-school-800 rounded-2xl ring-1 ring-school-200/80 dark:ring-school-700 border border-school-100 dark:border-school-700 shadow-sm overflow-hidden">
+                  <div class="px-5 pt-5 pb-2 border-b border-school-100 dark:border-school-700">
+                    <h3 class="text-sm font-bold text-school-700 dark:text-school-300 flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-school-500"></span>
                       Notas Individuais
                     </h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+                    <p class="text-xs text-school-400 dark:text-school-500 mt-0.5">
                       Nota de cada aluno (verde ≥ 7, amarelo ≥ 5, vermelho &lt; 5)
                     </p>
                   </div>

@@ -82,14 +82,14 @@ onUnmounted(() => {
 <template>
   <section
     id="inicio"
-    class="relative pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden bg-gradient-to-b from-emerald-50/80 via-white to-white"
+    class="relative pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden bg-gradient-to-b from-indigo-50/80 via-white to-white"
   >
     <div class="hero-glow"></div>
     <div
-      class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-200/30 via-transparent to-transparent pointer-events-none"
+      class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-200/30 via-transparent to-transparent pointer-events-none"
     ></div>
     <div
-      class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-slate-100 via-transparent to-transparent pointer-events-none"
+      class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-school-100 via-transparent to-transparent pointer-events-none"
     ></div>
 
     <div class="relative z-10 max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6">
@@ -99,22 +99,22 @@ onUnmounted(() => {
           <Transition name="slide" mode="out-in">
             <div :key="current" class="space-y-6">
               <span
-                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm font-semibold border border-emerald-200"
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-700 text-sm font-semibold border border-indigo-200"
               >
                 <i :class="['pi', slides[current]!.badgeIcon, 'text-xs']"></i>
                 {{ slides[current]!.badge }}
               </span>
               <h1
-                class="text-4xl md:text-5xl xl:text-6xl font-display font-extrabold text-slate-900 tracking-tight leading-[1.1]"
+                class="text-4xl md:text-5xl xl:text-6xl font-display font-extrabold text-school-900 tracking-tight leading-[1.1]"
               >
                 <span class="block">{{ slides[current]!.titleRest }}</span>
                 <span
-                  class="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-emerald-700"
+                  class="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-indigo-700"
                 >
                   {{ slides[current]!.titleHighlight }}
                 </span>
               </h1>
-              <p class="text-lg md:text-xl text-slate-500 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <p class="text-lg md:text-xl text-school-500 leading-relaxed max-w-xl mx-auto lg:mx-0">
                 {{ slides[current]!.subtitle }}
               </p>
             </div>
@@ -126,14 +126,14 @@ onUnmounted(() => {
           >
             <RouterLink
               to="/signup"
-              class="inline-flex items-center gap-2 px-8 py-3.5 text-base font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl transition-all shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 active:scale-95"
+              class="inline-flex items-center gap-2 px-8 py-3.5 text-base font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-all shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 active:scale-95"
             >
               Começar agora
               <i class="pi pi-arrow-right text-sm"></i>
             </RouterLink>
             <button
               @click="scrollToServicos"
-              class="inline-flex items-center gap-2 px-8 py-3.5 text-base font-semibold text-slate-700 bg-white hover:bg-slate-50 rounded-xl transition-all border border-slate-200 hover:border-slate-300 shadow-sm active:scale-95"
+              class="inline-flex items-center gap-2 px-8 py-3.5 text-base font-semibold text-school-700 bg-white hover:bg-school-50 rounded-xl transition-all border border-school-200 hover:border-school-300 shadow-sm active:scale-95"
             >
               Saiba mais
               <i class="pi pi-chevron-down text-xs"></i>
@@ -144,12 +144,12 @@ onUnmounted(() => {
         <!-- Imagem -->
         <div class="relative">
           <div
-            class="relative rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/60 overflow-hidden"
+            class="relative rounded-2xl border border-school-200 bg-white shadow-2xl shadow-school-200/60 overflow-hidden"
           >
-            <div class="h-9 bg-slate-50 border-b border-slate-200 flex items-center gap-1.5 px-4">
+            <div class="h-9 bg-school-50 border-b border-school-200 flex items-center gap-1.5 px-4">
               <span class="w-3 h-3 rounded-full bg-red-400"></span>
-              <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
-              <span class="w-3 h-3 rounded-full bg-green-400"></span>
+              <span class="w-3 h-3 rounded-full bg-indigo-400"></span>
+              <span class="w-3 h-3 rounded-full bg-indigo-400"></span>
             </div>
             <div class="relative overflow-hidden">
               <Transition name="fade" mode="out-in">
@@ -166,29 +166,29 @@ onUnmounted(() => {
 
           <!-- Chips flutuantes -->
           <div
-            class="hidden md:flex absolute -left-5 top-10 items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-xl border border-slate-100"
+            class="hidden md:flex absolute -left-5 top-10 items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-xl border border-school-100"
           >
             <div
-              class="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600"
+              class="w-9 h-9 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600"
             >
               <i class="pi pi-clock text-base"></i>
             </div>
             <div>
-              <p class="text-sm font-extrabold text-slate-900">+10h/semana</p>
-              <p class="text-xs text-slate-500">recuperadas</p>
+              <p class="text-sm font-extrabold text-school-900">+10h/semana</p>
+              <p class="text-xs text-school-500">recuperadas</p>
             </div>
           </div>
           <div
-            class="hidden md:flex absolute -right-4 bottom-10 items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-xl border border-slate-100"
+            class="hidden md:flex absolute -right-4 bottom-10 items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-xl border border-school-100"
           >
             <div
-              class="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600"
+              class="w-9 h-9 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600"
             >
               <i class="pi pi-shield text-base"></i>
             </div>
             <div>
-              <p class="text-sm font-extrabold text-slate-900">99% de precisão</p>
-              <p class="text-xs text-slate-500">na correção por IA</p>
+              <p class="text-sm font-extrabold text-school-900">99% de precisão</p>
+              <p class="text-xs text-school-500">na correção por IA</p>
             </div>
           </div>
         </div>
@@ -199,7 +199,7 @@ onUnmounted(() => {
         <button
           @click="prev"
           aria-label="Slide anterior"
-          class="w-11 h-11 flex items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 hover:text-emerald-600 hover:border-emerald-300 transition-all shadow-sm active:scale-90"
+          class="w-11 h-11 flex items-center justify-center rounded-full border border-school-200 bg-white text-school-600 hover:text-indigo-600 hover:border-indigo-300 transition-all shadow-sm active:scale-90"
         >
           <i class="pi pi-arrow-left text-sm"></i>
         </button>
@@ -210,13 +210,13 @@ onUnmounted(() => {
             @click="goTo(i)"
             :aria-label="`Ir para o slide ${i + 1}`"
             class="rounded-full transition-all duration-500"
-            :class="i === current ? 'w-8 h-2.5 bg-emerald-500' : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400'"
+            :class="i === current ? 'w-8 h-2.5 bg-indigo-500' : 'w-2.5 h-2.5 bg-school-300 hover:bg-school-400'"
           ></button>
         </div>
         <button
           @click="next"
           aria-label="Próximo slide"
-          class="w-11 h-11 flex items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 hover:text-emerald-600 hover:border-emerald-300 transition-all shadow-sm active:scale-90"
+          class="w-11 h-11 flex items-center justify-center rounded-full border border-school-200 bg-white text-school-600 hover:text-indigo-600 hover:border-indigo-300 transition-all shadow-sm active:scale-90"
         >
           <i class="pi pi-arrow-right text-sm"></i>
         </button>

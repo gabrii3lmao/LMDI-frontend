@@ -31,31 +31,31 @@ async function handleForgotPassword() {
 
 <template>
   <div
-    class="relative min-h-screen flex items-center justify-center p-4 overflow-hidden font-sans bg-gradient-to-br from-emerald-50 via-white to-slate-100 dark:from-emerald-950 dark:via-slate-900 dark:to-slate-950"
+    class="relative min-h-screen flex items-center justify-center p-4 overflow-hidden font-sans bg-gradient-to-br from-indigo-50 via-white to-school-100 dark:from-indigo-950 dark:via-school-900 dark:to-school-950"
   >
     <div
-      class="absolute top-0 right-0 w-[32rem] h-[32rem] translate-x-1/3 -translate-y-1/3 rounded-full bg-emerald-400/10 dark:bg-emerald-500/5 blur-3xl pointer-events-none"
+      class="absolute top-0 right-0 w-[32rem] h-[32rem] translate-x-1/3 -translate-y-1/3 rounded-full bg-indigo-400/10 dark:bg-indigo-500/5 blur-3xl pointer-events-none"
     ></div>
     <div
-      class="absolute bottom-0 left-0 w-[24rem] h-[24rem] -translate-x-1/4 translate-y-1/4 rounded-full bg-emerald-300/10 dark:bg-emerald-600/5 blur-3xl pointer-events-none"
+      class="absolute bottom-0 left-0 w-[24rem] h-[24rem] -translate-x-1/4 translate-y-1/4 rounded-full bg-indigo-300/10 dark:bg-indigo-600/5 blur-3xl pointer-events-none"
     ></div>
 
     <div
-      class="relative z-20 w-full max-w-md bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border border-slate-200/80 dark:border-slate-700 rounded-3xl p-8 sm:p-10 shadow-2xl"
+      class="relative z-20 w-full max-w-md bg-white/95 dark:bg-school-800/95 backdrop-blur-xl border border-school-200/80 dark:border-school-700 rounded-3xl p-8 sm:p-10 shadow-2xl"
     >
       <div class="flex flex-col items-center justify-center mb-8">
         <div
-          class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 dark:border-emerald-800 rounded-2xl flex items-center justify-center mb-4"
+          class="w-16 h-16 bg-indigo-500/10 border border-indigo-500/20 dark:border-indigo-800 rounded-2xl flex items-center justify-center mb-4"
         >
-          <i class="pi pi-key text-3xl text-emerald-600 dark:text-emerald-400"></i>
+          <i class="pi pi-key text-3xl text-indigo-600 dark:text-indigo-400"></i>
         </div>
 
         <h2
-          class="text-2xl font-extrabold tracking-tight text-slate-800 dark:text-slate-100 text-center"
+          class="text-2xl font-extrabold tracking-tight text-school-800 dark:text-school-100 text-center"
         >
           Esqueceu a senha?
         </h2>
-        <p class="text-sm text-slate-500 dark:text-slate-400 mt-2 text-center leading-relaxed font-medium">
+        <p class="text-sm text-school-500 dark:text-school-400 mt-2 text-center leading-relaxed font-medium">
           Informe seu e-mail de acesso e enviaremos as instruções de recuperação de senha.
         </p>
       </div>
@@ -63,17 +63,17 @@ async function handleForgotPassword() {
       <form class="space-y-5" @submit.prevent="handleForgotPassword">
         <div
           v-if="message"
-          class="p-5 rounded-2xl bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-100 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 text-sm flex flex-col gap-4 items-center text-center"
+          class="p-5 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-100 dark:border-indigo-800 text-indigo-800 dark:text-indigo-200 text-sm flex flex-col gap-4 items-center text-center"
         >
           <div
-            class="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-600 dark:text-emerald-400"
+            class="w-12 h-12 bg-indigo-500/10 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400"
           >
             <i class="pi pi-send text-xl"></i>
           </div>
           <p class="font-semibold leading-relaxed">{{ message }}</p>
           <RouterLink
             to="/signin"
-            class="w-full py-3 bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-600 text-white rounded-xl font-bold transition-all shadow-md shadow-emerald-600/10 text-center"
+            class="w-full py-3 bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 text-white rounded-xl font-bold transition-all shadow-md shadow-indigo-600/10 text-center"
           >
             Voltar para o Login
           </RouterLink>
@@ -91,13 +91,13 @@ async function handleForgotPassword() {
           <div class="space-y-1.5">
             <label
               for="email"
-              class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 px-1"
+              class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-2 px-1"
             >
               E-mail de Acesso
             </label>
             <div class="relative">
               <i
-                class="pi pi-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-sm"
+                class="pi pi-envelope absolute left-4 top-1/2 -translate-y-1/2 text-school-400 dark:text-school-500 text-sm"
               ></i>
               <input
                 v-model="email"
@@ -105,7 +105,7 @@ async function handleForgotPassword() {
                 id="email"
                 placeholder="professor@escola.com"
                 required
-                class="w-full pl-11 pr-4 py-3 bg-slate-50/50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all"
+                class="w-full pl-11 pr-4 py-3 bg-school-50/50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-800 dark:text-school-100 placeholder-school-400 dark:placeholder-school-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
               />
             </div>
           </div>
@@ -113,7 +113,7 @@ async function handleForgotPassword() {
           <button
             type="submit"
             :disabled="loading"
-            class="w-full flex justify-center items-center gap-2 py-3.5 mt-4 rounded-xl font-bold text-white bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-600 disabled:opacity-50 transition-all active:scale-[0.98] shadow-lg shadow-emerald-600/10"
+            class="w-full flex justify-center items-center gap-2 py-3.5 mt-4 rounded-xl font-bold text-white bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 disabled:opacity-50 transition-all active:scale-[0.98] shadow-lg shadow-indigo-600/10"
           >
             <i v-if="loading" class="pi pi-spin pi-spinner"></i>
             {{ loading ? "Enviando link..." : "Recuperar Acesso" }}
@@ -123,11 +123,11 @@ async function handleForgotPassword() {
 
       <div
         v-if="!message"
-        class="mt-8 text-center border-t border-slate-100 dark:border-slate-700 pt-6"
+        class="mt-8 text-center border-t border-school-100 dark:border-school-700 pt-6"
       >
         <RouterLink
           to="/signin"
-          class="text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all flex items-center justify-center gap-2"
+          class="text-sm font-semibold text-school-500 dark:text-school-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all flex items-center justify-center gap-2"
         >
           <i class="pi pi-arrow-left text-[10px]"></i> Voltar ao Login
         </RouterLink>

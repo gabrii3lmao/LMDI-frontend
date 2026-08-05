@@ -162,26 +162,26 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen w-full flex font-sans bg-slate-50 dark:bg-slate-900 overflow-hidden">
+  <div class="min-h-screen w-full flex font-sans bg-school-50 dark:bg-school-900 overflow-hidden">
     <div
-      class="w-full lg:w-1/2 flex flex-col justify-center p-8 sm:p-16 lg:px-24 xl:px-32 relative z-10 shadow-[4px_0_30px_rgba(0,0,0,0.08)] bg-gradient-to-r from-slate-50 via-slate-50 to-emerald-50/20 dark:from-slate-900 dark:via-slate-900 dark:to-emerald-950/20"
+      class="w-full lg:w-1/2 flex flex-col justify-center p-8 sm:p-16 lg:px-24 xl:px-32 relative z-10 shadow-[4px_0_30px_rgba(0,0,0,0.08)] bg-gradient-to-r from-school-50 via-school-50 to-indigo-50/20 dark:from-school-900 dark:via-school-900 dark:to-indigo-950/20"
     >
       <div
-        class="absolute top-0 right-0 w-72 h-72 -translate-y-1/3 translate-x-1/3 rounded-full bg-emerald-500/5 blur-3xl pointer-events-none"
+        class="absolute top-0 right-0 w-72 h-72 -translate-y-1/3 translate-x-1/3 rounded-full bg-indigo-500/5 blur-3xl pointer-events-none"
       ></div>
 
       <div class="w-full max-w-sm mx-auto relative z-10">
         <div class="flex items-center gap-3 mb-10">
-          <span class="text-5xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">
-            Let Me <span class="text-emerald-600 dark:text-emerald-400">Do It!</span>
+          <span class="text-5xl font-extrabold text-school-900 dark:text-school-100 tracking-tight">
+            Let Me <span class="text-indigo-600 dark:text-indigo-400">Do It!</span>
           </span>
         </div>
 
         <div class="mb-8">
-          <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2 tracking-tight">
+          <h1 class="text-3xl font-bold text-school-900 dark:text-school-100 mb-2 tracking-tight">
             Bem-vindo de volta
           </h1>
-          <p class="text-slate-500 dark:text-slate-400 text-sm">
+          <p class="text-school-500 dark:text-school-400 text-sm">
             Insira suas credenciais para acessar o seu painel de gestão.
           </p>
         </div>
@@ -197,7 +197,7 @@ onUnmounted(() => {
           <button
             @click="resendVerification"
             :disabled="isResending"
-            class="ml-7 text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors disabled:opacity-50"
+            class="ml-7 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors disabled:opacity-50"
           >
             <i v-if="isResending" class="pi pi-spin pi-spinner mr-1"></i>
             {{ isResending ? "Enviando..." : "Reenviar email de verificação" }}
@@ -214,7 +214,7 @@ onUnmounted(() => {
 
         <form class="space-y-5" @submit.prevent="handleLogin">
           <div>
-            <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+            <label class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider mb-2">
               E-mail
             </label>
             <input
@@ -222,7 +222,7 @@ onUnmounted(() => {
               type="email"
               placeholder="seu@email.com"
               required
-              class="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none transition-all"
+              class="w-full px-4 py-3 bg-school-50/50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-900 dark:text-school-100 placeholder-school-400 dark:placeholder-school-500 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all"
               :class="fieldErrors.email ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20 focus:border-red-500' : ''"
             />
             <p v-if="fieldErrors.email" class="mt-1.5 text-xs font-medium text-red-500 dark:text-red-400 flex items-center gap-1">
@@ -233,12 +233,12 @@ onUnmounted(() => {
 
           <div class="space-y-1.5">
             <div class="flex items-center justify-between">
-              <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+              <label class="block text-xs font-bold text-school-500 dark:text-school-400 uppercase tracking-wider">
                 Senha
               </label>
               <RouterLink
                 to="/forgot-password"
-                class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
+                class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
               >
                 Esqueceu a senha?
               </RouterLink>
@@ -249,12 +249,12 @@ onUnmounted(() => {
                 :type="showPassword ? 'text' : 'password'"
                 placeholder="••••••••"
                 required
-                class="w-full px-4 py-3 pr-11 bg-slate-50/50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none transition-all"
+                class="w-full px-4 py-3 pr-11 bg-school-50/50 dark:bg-school-700/50 border border-school-200 dark:border-school-600 rounded-xl text-school-900 dark:text-school-100 placeholder-school-400 dark:placeholder-school-500 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all"
               />
               <button
                 type="button"
                 @click="showPassword = !showPassword"
-                class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors p-1"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-school-400 dark:text-school-500 hover:text-school-600 dark:hover:text-school-300 transition-colors p-1"
                 :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
               >
                 <i :class="['pi text-sm', showPassword ? 'pi-eye-slash' : 'pi-eye']"></i>
@@ -269,7 +269,7 @@ onUnmounted(() => {
           <button
             type="submit"
             :disabled="isLoading"
-            class="w-full py-3.5 mt-2 rounded-xl font-bold text-white bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-emerald-600/10 active:scale-[0.98] flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+            class="w-full py-3.5 mt-2 rounded-xl font-bold text-white bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-indigo-600/10 active:scale-[0.98] flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
           >
             <i v-if="isLoading" class="pi pi-spin pi-spinner text-sm"></i>
             <span>{{ isLoading ? "Entrando..." : "Entrar na conta" }}</span>
@@ -278,10 +278,10 @@ onUnmounted(() => {
 
         <div class="relative my-8">
           <div class="absolute inset-0 flex items-center">
-            <div class="w-full border-t border-slate-200 dark:border-slate-700"></div>
+            <div class="w-full border-t border-school-200 dark:border-school-700"></div>
           </div>
           <div class="relative flex justify-center text-sm">
-            <span class="px-3 bg-slate-50 dark:bg-slate-900 text-slate-500 dark:text-slate-400 font-medium"
+            <span class="px-3 bg-school-50 dark:bg-school-900 text-school-500 dark:text-school-400 font-medium"
               >Ou</span
             >
           </div>
@@ -293,11 +293,11 @@ onUnmounted(() => {
           <GoogleLogin :callback="callbackGoogle" :button-config="{text: 'continue_with'}"/>
         </div>
 
-        <p class="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
+        <p class="mt-8 text-center text-sm text-school-500 dark:text-school-400">
           Ainda não tem uma conta?
           <RouterLink
             to="/signup"
-            class="font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
+            class="font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
           >
             Cadastre-se grátis
           </RouterLink>
@@ -306,7 +306,7 @@ onUnmounted(() => {
     </div>
 
     <div
-      class="hidden lg:flex lg:w-1/2 relative overflow-hidden flex-col justify-between p-12 lg:p-20 bg-emerald-950"
+      class="hidden lg:flex lg:w-1/2 relative overflow-hidden flex-col justify-between p-12 lg:p-20 bg-indigo-950"
     >
       <div class="absolute right-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent z-10"></div>
 
@@ -316,7 +316,7 @@ onUnmounted(() => {
         class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay z-0"
       />
       <div
-        class="absolute inset-0 bg-gradient-to-br from-emerald-950/90 via-emerald-900/80 to-slate-900/90 z-0"
+        class="absolute inset-0 bg-gradient-to-br from-indigo-950/90 via-indigo-900/80 to-school-900/90 z-0"
       ></div>
 
       <div
@@ -334,7 +334,7 @@ onUnmounted(() => {
             {{ slides[currentSlide]!.title }}
           </h2>
           <p
-            class="text-emerald-100/80 text-lg max-w-lg transition-opacity duration-500"
+            class="text-indigo-100/80 text-lg max-w-lg transition-opacity duration-500"
           >
             {{ slides[currentSlide]!.description }}
           </p>
@@ -344,7 +344,7 @@ onUnmounted(() => {
           class="w-full rounded-2xl bg-white/10 p-2 backdrop-blur-md border border-white/20 shadow-2xl relative"
         >
           <div
-            class="relative w-full aspect-video overflow-hidden rounded-xl bg-slate-800 border border-white/10"
+            class="relative w-full aspect-video overflow-hidden rounded-xl bg-school-800 border border-white/10"
           >
             <template v-for="(slide, index) in slides" :key="index">
               <img
@@ -367,7 +367,7 @@ onUnmounted(() => {
             class="transition-all duration-500 rounded-full"
             :class="
               currentSlide === index
-                ? 'w-8 h-2.5 bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)]'
+                ? 'w-8 h-2.5 bg-indigo-400 shadow-[0_0_10px_rgba(74,222,128,0.5)]'
                 : 'w-2.5 h-2.5 bg-white/30 hover:bg-white/50'
             "
             aria-label="Ir para o slide"

@@ -60,7 +60,7 @@ onUnmounted(() => {
     class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
     :class="
       scrolled || menuOpen
-        ? 'bg-white/95 backdrop-blur-xl shadow-lg shadow-slate-900/5 border-b border-slate-200'
+        ? 'bg-white/95 backdrop-blur-xl shadow-lg shadow-school-900/5 border-b border-school-200'
         : 'bg-white/80 backdrop-blur-md border-b border-transparent'
     "
   >
@@ -73,8 +73,8 @@ onUnmounted(() => {
           @click.prevent="scrollTo('inicio')"
         >
           <img :src="logLight" alt="Logo LetMeDoIt" class="h-8 sm:h-9 w-auto" />
-          <span class="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight whitespace-nowrap">
-            Let me <span class="text-emerald-600">Do it</span>
+          <span class="text-lg sm:text-xl font-extrabold text-school-900 tracking-tight whitespace-nowrap">
+            Let me <span class="text-indigo-600">Do it</span>
           </span>
         </a>
 
@@ -87,8 +87,8 @@ onUnmounted(() => {
             class="px-3 py-2 text-sm font-semibold rounded-lg transition-colors"
             :class="
               activeId === item.id
-                ? 'text-emerald-600 bg-emerald-50'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                ? 'text-indigo-600 bg-indigo-50'
+                : 'text-school-600 hover:text-school-900 hover:bg-school-50'
             "
             @click.prevent="scrollTo(item.id)"
           >
@@ -100,13 +100,13 @@ onUnmounted(() => {
         <div class="flex items-center gap-2 sm:gap-3">
           <RouterLink
             to="/signin"
-            class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors"
+            class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold text-school-600 hover:text-school-900 transition-colors"
           >
             Entrar
           </RouterLink>
           <RouterLink
             to="/signup"
-            class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition-all shadow-sm shadow-emerald-600/20 active:scale-95"
+            class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-all shadow-sm shadow-indigo-600/20 active:scale-95"
           >
             Começar agora
             <i class="pi pi-arrow-right text-xs"></i>
@@ -114,7 +114,7 @@ onUnmounted(() => {
 
           <!-- Botão hambúrguer (mobile) -->
           <button
-            class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 transition-colors"
+            class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg text-school-700 hover:bg-school-100 transition-colors"
             aria-label="Abrir menu"
             :aria-expanded="menuOpen"
             @click="menuOpen = !menuOpen"
@@ -127,7 +127,7 @@ onUnmounted(() => {
 
     <!-- Menu mobile -->
     <Transition name="mobile-menu">
-      <div v-if="menuOpen" class="lg:hidden bg-white border-t border-slate-200 shadow-xl">
+      <div v-if="menuOpen" class="lg:hidden bg-white border-t border-school-200 shadow-xl">
         <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
           <a
             v-for="item in navItems"
@@ -136,23 +136,23 @@ onUnmounted(() => {
             class="px-4 py-3 rounded-xl text-base font-semibold transition-colors"
             :class="
               activeId === item.id
-                ? 'text-emerald-600 bg-emerald-50'
-                : 'text-slate-700 hover:bg-slate-50'
+                ? 'text-indigo-600 bg-indigo-50'
+                : 'text-school-700 hover:bg-school-50'
             "
             @click.prevent="scrollTo(item.id)"
           >
             {{ item.label }}
           </a>
-          <div class="grid grid-cols-2 gap-3 pt-3 mt-2 border-t border-slate-100">
+          <div class="grid grid-cols-2 gap-3 pt-3 mt-2 border-t border-school-100">
             <RouterLink
               to="/signin"
-              class="px-4 py-3 rounded-xl text-center text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors"
+              class="px-4 py-3 rounded-xl text-center text-sm font-bold text-school-700 bg-school-100 hover:bg-school-200 transition-colors"
             >
               Entrar
             </RouterLink>
             <RouterLink
               to="/signup"
-              class="px-4 py-3 rounded-xl text-center text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors"
+              class="px-4 py-3 rounded-xl text-center text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
             >
               Começar agora
             </RouterLink>
