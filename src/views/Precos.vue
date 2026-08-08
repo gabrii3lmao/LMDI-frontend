@@ -421,6 +421,10 @@ onUnmounted(() => {
             <RouterLink to="/signin" class="text-sm text-school-400 hover:text-white transition-colors">Entrar</RouterLink>
             <RouterLink to="/pricing" class="text-sm text-school-400 hover:text-white transition-colors">Preços</RouterLink>
             <RouterLink to="/perguntas-frequentes" class="text-sm text-school-400 hover:text-white transition-colors">FAQ</RouterLink>
+            <RouterLink to="/doar" class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-1.5">
+              <i class="pi pi-heart text-xs text-indigo-400"></i>
+              Apoiar o projeto
+            </RouterLink>
           </nav>
         </div>
         <div class="space-y-4">

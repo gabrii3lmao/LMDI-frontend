@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from "vue-router";
 import logoWhite from "@/assets/logo-white.png";
 
 function scrollTo(id: string) {
@@ -81,6 +82,13 @@ function scrollTop() {
           >
             FAQ
           </a>
+          <RouterLink
+            to="/doar"
+            class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-1.5"
+          >
+            <i class="pi pi-heart text-xs text-indigo-400"></i>
+            Apoiar o projeto
+          </RouterLink>
         </nav>
       </div>
 

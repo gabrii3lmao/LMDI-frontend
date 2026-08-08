@@ -17,6 +17,12 @@ const routes = [
     meta: { hideSidebar: true },
   },
   {
+    path: "/doar",
+    name: "doar",
+    component: () => import("@/views/Doar.vue"),
+    meta: { hideSidebar: true, title: "Apoiar o LetMeDoIt" },
+  },
+  {
     path: "/perguntas-frequentes",
     name: "perguntas-frequentes",
     component: () => import("@/views/LandingFAQ.vue"),
