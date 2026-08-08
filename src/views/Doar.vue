@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { useRoute, RouterLink } from "vue-router";
-import { useThemeStore } from "@/stores/theme";
 import logLight from "@/assets/logo1.webp";
 import logDark from "@/assets/logo-white.png";
 import { donationService } from "@/services/donationService";
@@ -12,15 +11,17 @@ import PaymentStatus from "@/components/donation/PaymentStatus.vue";
 type Step = "form" | "aguardando" | "sucesso" | "erro";
 
 const route = useRoute();
-const themeStore = useThemeStore();
 
-const logoSrc = computed(() =>
-  themeStore.theme === "dark" ? logDark : logLight,
-);
-
-const scrolled = ref(false);
-function handleScroll() {
-  scrolled.value = window.scrollY > 60;
+// Esta página é sempre light: remove o tema escuro do documento enquanto
+// estiver aberta e restaura ao sair.
+let tinhaDark = false;
+function forcarLight() {
+  const root = document.documentElement;
+  tinhaDark = root.classList.contains("my-app-dark");
+  root.classList.remove("dark", "my-app-dark");
+}
+function restaurarTema() {
+  if (tinhaDark) document.documentElement.classList.add("dark", "my-app-dark");
 }
 
 // ────────────────────────── máquina de estados ──────────────────────────
@@ -122,7 +123,7 @@ function voltarParaForm() {
 
 // Ao voltar da página de pagamento do ASAAS (success_url), retoma o fluxo.
 onMounted(async () => {
-  window.addEventListener("scroll", handleScroll, { passive: true });
+  forcarLight();
 
   const query = route.query.pagamento as string | undefined;
   const lastId = localStorage.getItem("lastDonationId");
@@ -139,85 +140,51 @@ onMounted(async () => {
 });
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
   pararPolling();
+  restaurarTema();
 });
 </script>
 
 <template>
-  <div class="min-h-screen bg-white dark:bg-lousa-900 font-sans">
-    <!-- Navbar -->
-    <header
-      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      :class="
-        scrolled
-          ? 'bg-white/95 dark:bg-lousa-900/95 backdrop-blur-xl shadow-lg shadow-school-900/5 dark:shadow-black/30 border-b border-school-200/50 dark:border-lousa-700/50'
-          : 'bg-white/80 dark:bg-lousa-900/80 backdrop-blur-md border-b border-transparent'
-      "
-    >
-      <div
-        class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 transition-all duration-300"
-        :class="scrolled ? 'h-14' : 'h-16'"
-      >
-        <div class="flex items-center justify-between gap-2 h-full">
-          <RouterLink to="/" class="flex items-center gap-2 sm:gap-3 shrink-0">
-            <img :src="logoSrc" alt="LetMeDoIt" class="h-8 sm:h-9 w-auto" />
-            <p class="text-base sm:text-xl font-extrabold text-school-900 dark:text-lousa-100 tracking-tight whitespace-nowrap">
-              Let me <span class="text-indigo-600 dark:text-indigo-400">Do it</span>
-            </p>
-          </RouterLink>
-          <nav class="flex items-center gap-1.5 sm:gap-3">
-            <RouterLink
-              to="/signin"
-              class="px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-school-600 dark:text-lousa-400 hover:text-school-900 dark:hover:text-lousa-100 transition-colors whitespace-nowrap"
-            >
-              Entrar
-            </RouterLink>
-            <RouterLink
-              to="/signup"
-              class="px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 rounded-lg transition-all shadow-sm active:scale-95 whitespace-nowrap"
-            >
-              Cadastre-se Grátis
-            </RouterLink>
-          </nav>
-        </div>
-      </div>
-    </header>
-
+  <div class="min-h-screen bg-white font-sans">
     <!-- Hero -->
-    <section
-      class="relative pt-32 pb-14 md:pt-40 md:pb-16 overflow-hidden bg-gradient-to-b from-indigo-50/60 to-white dark:from-lousa-800 dark:to-lousa-900"
-    >
-      <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-200/20 via-transparent to-transparent pointer-events-none"
-      ></div>
-      <div class="max-w-3xl mx-auto px-6 relative z-10 text-center space-y-6">
+    <section class="pt-16 pb-14 md:pt-20 md:pb-12">
+      <div class="max-w-2xl mx-auto px-6 text-center space-y-6">
         <div
-          class="mx-auto w-20 h-20 md:w-24 md:h-24 rounded-full bg-white dark:bg-lousa-800 border-2 border-indigo-100 dark:border-lousa-600 shadow-lg shadow-indigo-600/10 flex items-center justify-center overflow-hidden p-2"
+          class="mx-auto w-20 h-20 md:w-24 md:h-24 rounded-full bg-white border-2 border-emerald-400 shadow-sm flex items-center justify-center overflow-hidden p-2"
         >
-          <img :src="logoSrc" alt="Logo LetMeDoIt" class="w-full h-full object-contain" />
+          <img :src="logLight" alt="LetMeDoIt" class="w-full h-full object-contain" />
         </div>
 
         <div>
-          <h1 class="text-3xl md:text-5xl font-extrabold text-school-900 dark:text-lousa-100 tracking-tight leading-tight">
-            Ajude a manter o
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-indigo-700">
-              LetMeDoIt no ar
-            </span>
+          <h1 class="font-display text-3xl md:text-[2.75rem] font-extrabold text-school-900 tracking-tight leading-tight">
+            Isso significa muito, sério —
+            <span class="text-emerald-600">valeu por pensar em mim</span>
           </h1>
-          <p class="mt-4 text-base md:text-lg text-school-500 dark:text-lousa-400 max-w-xl mx-auto">
-            Cada contribuição cobre hospedagem e o tempo que gasto mantendo e
-            criando novas funcionalidades — e me dá energia pra continuar
-            melhorando a correção por IA dos seus alunos.
+          <p class="mt-4 text-base md:text-lg text-school-500 max-w-xl mx-auto leading-relaxed">
+            A sua ajuda seria muito gratificante pra mim, sério.
+            Você ajuda a manter o projeto no ar e me dá energia pra
+            continuar melhorando. A conta da IA chega cara, sabia?
           </p>
+          <ul class="mt-6 flex flex-wrap items-center justify-center gap-2">
+            <li class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 text-sm font-medium text-emerald-800">
+              🖥️ Hospedagem
+            </li>
+            <li class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 text-sm font-medium text-emerald-800">
+              ⏰ Tempo de desenvolvimento
+            </li>
+            <li class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 text-sm font-medium text-emerald-800">
+              💚 Energia pra seguir
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- Card de doação -->
-    <section class="pb-20 md:pb-28 -mt-4 relative z-10">
+    <section class="pb-20 md:pb-24">
       <div class="max-w-xl mx-auto px-4 sm:px-6">
-        <div class="reveal visible rounded-2xl border bg-white dark:bg-lousa-800 p-6 sm:p-8 shadow-xl shadow-school-900/5 border-school-200 dark:border-lousa-700">
+        <div class="rounded-2xl border border-school-400 bg-white p-6 sm:p-8 shadow-sm">
           <!-- Passo 1: escolher valor / meios -->
           <DonationCard v-if="step === 'form'" @criar="criarDoacao" />
 
@@ -236,37 +203,131 @@ onUnmounted(() => {
 
     <!-- Footer -->
     <footer class="bg-school-900 text-school-400">
-      <div class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-6 py-12">
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div class="flex items-center gap-3">
-            <img :src="logDark" alt="LetMeDoIt" class="h-8 w-auto" />
-            <p class="text-sm text-school-500">
-              Obrigado de coração por apoiar o projeto. 💚
-            </p>
+      <div
+        class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
+      >
+        <!-- Marca -->
+        <div class="space-y-4">
+          <RouterLink to="/" class="flex items-center gap-2">
+            <img :src="logDark" alt="Logo LetMeDoIt" class="h-8 w-auto" />
+          </RouterLink>
+          <p class="text-sm text-school-500 leading-relaxed max-w-xs">
+            Obrigado de coração por apoiar o LetMeDoIt. Sua doação mantém a
+            correção de provas por IA no ar, de professor pra professor. 💚
+          </p>
+          <div class="flex items-center gap-3 pt-2">
+            <a
+              href="https://www.instagram.com/letmedoit_ifpi"
+              aria-label="Instagram"
+              class="w-9 h-9 rounded-lg bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all"
+            >
+              <i class="pi pi-instagram text-sm"></i>
+            </a>
+            <a
+              href="#"
+              aria-label="YouTube"
+              class="w-9 h-9 rounded-lg bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all"
+            >
+              <i class="pi pi-youtube text-sm"></i>
+            </a>
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              class="w-9 h-9 rounded-lg bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all"
+            >
+              <i class="pi pi-linkedin text-sm"></i>
+            </a>
           </div>
-          <nav class="flex items-center gap-5">
-            <RouterLink to="/" class="text-sm text-school-400 hover:text-white transition-colors">
-              <i class="pi pi-arrow-left text-xs mr-1"></i>
+        </div>
+
+        <!-- Navegação -->
+        <div class="space-y-4">
+          <h3 class="text-xs font-bold text-white uppercase tracking-widest">Navegação</h3>
+          <nav class="flex flex-col gap-3">
+            <RouterLink
+              to="/"
+              class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
+            >
+              <i class="pi pi-arrow-left text-xs text-indigo-400"></i>
               Voltar para o site
             </RouterLink>
+            <RouterLink
+              to="/pricing"
+              class="text-sm text-school-400 hover:text-white transition-colors"
+            >
+              Preços
+            </RouterLink>
+            <RouterLink
+              to="/perguntas-frequentes"
+              class="text-sm text-school-400 hover:text-white transition-colors"
+            >
+              Perguntas frequentes
+            </RouterLink>
+            <RouterLink
+              to="/doar"
+              class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-1.5"
+            >
+              <i class="pi pi-heart text-xs text-indigo-400"></i>
+              Apoiar o projeto
+            </RouterLink>
+          </nav>
+        </div>
+
+        <!-- Empresa -->
+        <div class="space-y-4">
+          <h3 class="text-xs font-bold text-white uppercase tracking-widest">Empresa</h3>
+          <nav class="flex flex-col gap-3">
+            <RouterLink to="/" class="text-sm text-school-400 hover:text-white transition-colors">
+              Sobre Nós
+            </RouterLink>
+            <RouterLink to="/" class="text-sm text-school-400 hover:text-white transition-colors">
+              Equipe
+            </RouterLink>
+            <RouterLink to="/" class="text-sm text-school-400 hover:text-white transition-colors">
+              Blog
+            </RouterLink>
+            <a href="#" class="text-sm text-school-400 hover:text-white transition-colors">
+              Termos de Uso
+            </a>
+          </nav>
+        </div>
+
+        <!-- Contato rápido -->
+        <div class="space-y-4">
+          <h3 class="text-xs font-bold text-white uppercase tracking-widest">Entre em contato</h3>
+          <nav class="flex flex-col gap-3">
             <a
               href="mailto:contato@letmedoit.app.br"
               class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
             >
               <i class="pi pi-envelope text-xs text-indigo-400"></i>
-              Contato
+              contato@letmedoit.app.br
+            </a>
+            <a
+              href="tel:+5586900000000"
+              class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
+            >
+              <i class="pi pi-phone text-xs text-indigo-400"></i>
+              +55 (89) 99426-8109
+            </a>
+            <a
+              href="#"
+              class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
+            >
+              <i class="pi pi-map-marker text-xs text-indigo-400"></i>
+              Picos · Piauí
             </a>
           </nav>
         </div>
       </div>
-      <div class="border-t border-school-800 py-5">
-        <div class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p class="text-xs text-school-600">
-            &copy; 2026 LetMeDoIt. Todos os direitos reservados.
-          </p>
-          <p class="text-xs text-school-600">
-            Pagamentos processados pelo ASAAS (ambiente de teste).
-          </p>
+
+      <!-- Créditos -->
+      <div class="border-t border-school-800 py-6">
+        <div
+          class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3"
+        >
+          <p class="text-xs text-school-600">&copy; 2026 LetMeDoIt. Todos os direitos reservados.</p>
+          <p class="text-xs text-school-600">Pagamentos processados pelo ASAAS (ambiente de teste).</p>
         </div>
       </div>
     </footer>

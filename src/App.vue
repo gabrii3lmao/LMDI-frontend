@@ -4,6 +4,7 @@ import { useQueryClient } from "@tanstack/vue-query";
 import TheAside from "./components/TheAside.vue";
 import Toast from "primevue/toast";
 import ConfirmDialog from "primevue/confirmdialog";
+import SupportPrompt from "./components/donation/SupportPrompt.vue";
 import { isRouteLoading } from "./router";
 import { getSocket } from "./services/socket";
 
@@ -32,6 +33,7 @@ onUnmounted(() => {
         <TheAside />
         <Toast />
         <ConfirmDialog />
+        <SupportPrompt />
         <div class="page-content">
             <RouterView v-slot="{ Component }">
                 <Transition name="page" mode="out-in">

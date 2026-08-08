@@ -96,10 +96,10 @@ onUnmounted(() => {
           </a>
           <RouterLink
             to="/doar"
-            class="ml-1 px-3 py-2 text-sm font-bold text-indigo-600 hover:text-indigo-700 rounded-lg transition-colors flex items-center gap-1.5"
+            class="ml-1 inline-flex items-center gap-1.5 px-4 py-2 text-sm font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 rounded-full transition-colors"
           >
             <i class="pi pi-heart text-xs"></i>
-            Apoiar
+            Apoiar projeto
           </RouterLink>
         </nav>
 
@@ -152,10 +152,10 @@ onUnmounted(() => {
           </a>
           <RouterLink
             to="/doar"
-            class="px-4 py-3 rounded-xl text-base font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 transition-colors flex items-center gap-2"
+            class="px-4 py-3 rounded-xl text-base font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 transition-colors flex items-center gap-2"
           >
             <i class="pi pi-heart text-sm"></i>
-            Apoiar o projeto
+            Apoiar projeto
           </RouterLink>
           <div class="grid grid-cols-2 gap-3 pt-3 mt-2 border-t border-school-100">
             <RouterLink

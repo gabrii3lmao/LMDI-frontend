@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import type { BillingType } from "@/types/Donation";
+import cartaoImg from "@/assets/cartao.png";
+import pixImg from "@/assets/pix.png";
+import boletoImg from "@/assets/boleto.png";
 
 const emit = defineEmits<{
   (e: "criar", payload: {
@@ -24,10 +27,10 @@ const email = ref("");
 const cpfCnpj = ref("");
 const enviando = ref(false);
 
-const meios: { value: BillingType; label: string; icon: string }[] = [
-  { value: "CREDIT_CARD", label: "Cartão", icon: "pi-credit-card" },
-  { value: "PIX", label: "Pix", icon: "pi-qrcode" },
-  { value: "BOLETO", label: "Boleto", icon: "pi-barcode" },
+const meios: { value: BillingType; label: string; img: string }[] = [
+  { value: "CREDIT_CARD", label: "Cartão", img: cartaoImg },
+  { value: "PIX", label: "Pix", img: pixImg },
+  { value: "BOLETO", label: "Boleto", img: boletoImg },
 ];
 
 const valorFinal = computed(() => {
@@ -162,8 +165,8 @@ preencherUsuarioLogado();
   <div class="space-y-6">
     <!-- Valores sugeridos -->
     <div>
-      <p class="text-sm font-semibold text-school-700 dark:text-lousa-200 mb-3">
-        Quanto você quer apoiar?
+      <p class="text-sm font-semibold text-school-700 mb-3">
+        💚 Quanto faz sentido pra você?
       </p>
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <button
@@ -171,11 +174,11 @@ preencherUsuarioLogado();
           :key="v"
           type="button"
           @click="selecionarSugerido(v)"
-          class="py-3 rounded-xl text-center font-bold transition-all active:scale-95 border"
+          class="py-3 rounded-full text-center font-bold transition-all active:scale-95 border"
           :class="
             !usarCustomizado && valorSelecionado === v
-              ? 'bg-indigo-600 text-white border-indigo-600 shadow-lg shadow-indigo-600/20'
-              : 'bg-white dark:bg-lousa-700 text-school-700 dark:text-lousa-200 border-school-200 dark:border-lousa-600 hover:border-indigo-400'
+              ? 'bg-indigo-600 text-white border-indigo-600'
+              : 'bg-white text-school-700 border-school-400 hover:border-indigo-400'
           "
         >
           R$ {{ v }}
@@ -188,8 +191,8 @@ preencherUsuarioLogado();
           class="flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition-all"
           :class="
             usarCustomizado
-              ? 'border-indigo-500 bg-indigo-50/60 dark:bg-indigo-900/20'
-              : 'border-school-200 dark:border-lousa-600 hover:border-borda-300'
+              ? 'border-indigo-500 bg-indigo-50/60'
+              : 'border-school-400 hover:border-borda-500'
           "
         >
           <input
@@ -203,12 +206,12 @@ preencherUsuarioLogado();
             :class="
               usarCustomizado
                 ? 'bg-indigo-600 border-indigo-600 text-white'
-                : 'border-school-300 dark:border-lousa-500'
+                : 'border-school-500'
             "
           >
             <i v-if="usarCustomizado" class="pi pi-check text-xs"></i>
           </span>
-          <span class="text-sm text-school-600 dark:text-lousa-300">
+          <span class="text-sm text-school-600">
             Outro valor
           </span>
           <input
@@ -217,11 +220,11 @@ preencherUsuarioLogado();
             type="text"
             inputmode="decimal"
             placeholder="Ex.: 12,50"
-            class="flex-1 min-w-0 px-3 py-1.5 bg-white dark:bg-lousa-800 border border-school-200 dark:border-lousa-500 rounded-lg text-sm text-school-900 dark:text-lousa-100 placeholder-school-400 outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-borda-500 transition-all"
+            class="flex-1 min-w-0 px-3 py-1.5 bg-white border border-school-400 rounded-lg text-sm text-school-900 placeholder-school-400 outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-borda-500 transition-all"
             @keydown.enter.prevent="enviar"
           />
         </label>
-        <p v-if="erroValor" class="mt-1.5 text-xs text-red-500 dark:text-red-400">
+        <p v-if="erroValor" class="mt-1.5 text-xs text-red-500">
           {{ erroValor }}
         </p>
       </div>
@@ -230,11 +233,11 @@ preencherUsuarioLogado();
     <!-- Recorrente -->
     <div class="flex items-center justify-between gap-4">
       <div>
-        <p class="text-sm font-semibold text-school-700 dark:text-lousa-200">
-          Tornar mensal
+        <p class="text-sm font-semibold text-school-700">
+          Quero apoiar todo mês
         </p>
-        <p class="text-xs text-school-400 dark:text-lousa-500 mt-0.5">
-          Doado todo mês automaticamente
+        <p class="text-xs text-school-400 mt-0.5">
+          Faz a doação virar mensal — me dá previsibilidade pra seguir.
         </p>
       </div>
       <button
@@ -243,7 +246,7 @@ preencherUsuarioLogado();
         :aria-checked="recorrente"
         @click="onRecorrente(!recorrente)"
         class="relative w-12 h-7 rounded-full transition-colors shrink-0"
-        :class="recorrente ? 'bg-indigo-600' : 'bg-school-200 dark:bg-lousa-600'"
+        :class="recorrente ? 'bg-indigo-600' : 'bg-school-200'"
       >
         <span
           class="absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-all"
@@ -254,7 +257,7 @@ preencherUsuarioLogado();
 
     <!-- Meio de pagamento -->
     <div>
-      <p class="text-sm font-semibold text-school-700 dark:text-lousa-200 mb-3">
+      <p class="text-sm font-semibold text-school-700 mb-3">
         Como você prefere pagar?
       </p>
       <div class="grid grid-cols-3 gap-3">
@@ -266,11 +269,11 @@ preencherUsuarioLogado();
           class="py-3 rounded-xl flex flex-col items-center gap-1.5 text-sm font-semibold border transition-all active:scale-95"
           :class="
             billingType === meio.value
-              ? 'bg-indigo-600 text-white border-indigo-600 shadow-lg shadow-indigo-600/20'
-              : 'bg-white dark:bg-lousa-700 text-school-600 dark:text-lousa-300 border-school-200 dark:border-lousa-600 hover:border-indigo-400'
+              ? 'bg-indigo-600 text-white border-indigo-600'
+              : 'bg-white text-school-600 border-school-400 hover:border-indigo-400'
           "
         >
-          <i :class="meio.icon" class="text-base"></i>
+          <img :src="meio.img" :alt="meio.label" class="w-8 h-8 object-contain" />
           {{ meio.label }}
         </button>
       </div>
@@ -279,7 +282,7 @@ preencherUsuarioLogado();
     <!-- Nome / e-mail / CPF -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
       <div>
-        <label class="block text-xs font-semibold text-school-500 dark:text-lousa-400 mb-1.5" for="don-nome">
+        <label class="block text-xs font-semibold text-school-500 mb-1.5" for="don-nome">
           Seu nome
         </label>
         <input
@@ -288,11 +291,11 @@ preencherUsuarioLogado();
           type="text"
           autocomplete="name"
           placeholder="Seu nome"
-          class="w-full px-4 py-3 bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-900 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 focus:ring-2 focus:ring-indigo-500/20 focus:border-borda-500 outline-none transition-all"
+          class="w-full px-4 py-3 bg-school-50/50 border border-school-400 rounded-xl text-school-900 placeholder-school-400 focus:ring-2 focus:ring-indigo-500/20 focus:border-borda-500 outline-none transition-all"
         />
       </div>
       <div>
-        <label class="block text-xs font-semibold text-school-500 dark:text-lousa-400 mb-1.5" for="don-email">
+        <label class="block text-xs font-semibold text-school-500 mb-1.5" for="don-email">
           E-mail
         </label>
         <input
@@ -301,11 +304,11 @@ preencherUsuarioLogado();
           type="email"
           autocomplete="email"
           placeholder="voce@email.com"
-          class="w-full px-4 py-3 bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-900 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 focus:ring-2 focus:ring-indigo-500/20 focus:border-borda-500 outline-none transition-all"
+          class="w-full px-4 py-3 bg-school-50/50 border border-school-400 rounded-xl text-school-900 placeholder-school-400 focus:ring-2 focus:ring-indigo-500/20 focus:border-borda-500 outline-none transition-all"
         />
       </div>
       <div class="sm:col-span-2">
-        <label class="block text-xs font-semibold text-school-500 dark:text-lousa-400 mb-1.5" for="don-cpf">
+        <label class="block text-xs font-semibold text-school-500 mb-1.5" for="don-cpf">
           CPF ou CNPJ <span class="font-normal text-red-400">*</span>
         </label>
         <input
@@ -316,13 +319,13 @@ preencherUsuarioLogado();
           inputmode="numeric"
           autocomplete="off"
           placeholder="000.000.000-00"
-          class="w-full px-4 py-3 bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-900 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 focus:ring-2 focus:ring-indigo-500/20 focus:border-borda-500 outline-none transition-all"
-          :class="erroDocumento ? 'border-red-300 dark:border-red-700' : ''"
+          class="w-full px-4 py-3 bg-school-50/50 border border-school-400 rounded-xl text-school-900 placeholder-school-400 focus:ring-2 focus:ring-indigo-500/20 focus:border-borda-500 outline-none transition-all"
+          :class="erroDocumento ? 'border-red-300' : ''"
         />
-        <p v-if="erroDocumento" class="mt-1.5 text-xs text-red-500 dark:text-red-400">
+        <p v-if="erroDocumento" class="mt-1.5 text-xs text-red-500">
           {{ erroDocumento }}
         </p>
-        <p v-else class="mt-1.5 text-xs text-school-400 dark:text-lousa-500">
+        <p v-else class="mt-1.5 text-xs text-school-400">
           Necessário para o pagamento seguro via ASAAS.
         </p>
       </div>
@@ -333,21 +336,29 @@ preencherUsuarioLogado();
       type="button"
       @click="enviar"
       :disabled="!podeEnviar || enviando"
-      class="w-full py-3.5 rounded-xl font-bold text-white bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-indigo-600/10 active:scale-[0.98] flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+      class="w-full py-3.5 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-sm active:scale-[0.98] flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
     >
       <template v-if="enviando">
         <span class="w-5 h-5 rounded-full border-2 border-white/40 border-t-white animate-spin"></span>
         Criando cobrança...
       </template>
       <template v-else>
-        <span>Apoiar com {{ valorFormatado }}</span>
-        <i class="pi pi-arrow-right text-sm"></i>
+        <span>Quero apoiar com {{ valorFormatado }}</span>
+        <i class="pi pi-heart text-sm"></i>
       </template>
     </button>
 
-    <p class="text-center text-xs text-school-400 dark:text-lousa-500">
+    <p class="text-center text-sm text-school-500">
+      {{
+        recorrente
+          ? "Um apoio mensal muda muito — obrigado por fazer parte disso. 🙏"
+          : "Muito obrigado, de verdade. É assim que esse projeto segue de pé. 🙏"
+      }}
+    </p>
+
+    <p class="text-center text-xs text-school-400">
       <i class="pi pi-lock mr-1"></i>
-      Pagamento seguro — ambiente de teste (sandbox) do ASAAS.
+      Pagamento seguro gerenciado pelo ASAAS.
     </p>
   </div>
 </template>
