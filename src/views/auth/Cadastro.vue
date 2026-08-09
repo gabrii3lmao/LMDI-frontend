@@ -31,6 +31,7 @@ const callbackGoogle = async (response: any) => {
     localStorage.setItem("username", res.data.user.name);
     localStorage.setItem("userId", res.data.user.id);
     localStorage.setItem("userPhoto", res.data.user.avatarUrl || "");
+    localStorage.removeItem("supportPromptDismissed");
 
     router.push("/dashboard");
   } catch (error) {

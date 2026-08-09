@@ -52,6 +52,7 @@ const handleSignout = async () => {
     localStorage.removeItem("username");
     localStorage.removeItem("userId");
     localStorage.removeItem("userPhoto");
+    localStorage.removeItem("supportPromptDismissed");
     window.location.href = "/signin";
   }
 };

@@ -146,52 +146,61 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-white font-sans">
+  <div class="min-h-screen bg-slate-50 font-sans flex flex-col">
     <!-- Hero -->
-    <section class="pt-16 pb-14 md:pt-20 md:pb-12">
-      <div class="max-w-2xl mx-auto px-6 text-center space-y-6">
+    <!-- Espaçamento superior reduzido (pt-8 / md:pt-12) para o conteúdo subir na tela -->
+    <section class="relative pt-8 pb-32 md:pt-12 md:pb-40 overflow-hidden z-0">
+      <!-- Background sutil com gradiente -->
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-emerald-50/70 to-slate-50 -z-10"
+      ></div>
+
+      <!-- Espaçamento entre os elementos (space-y-5) otimizado -->
+      <div class="max-w-3xl mx-auto px-6 text-center space-y-5 relative">
+        <!-- Logo / Avatar (Tamanho ajustado para w-28 / md:w-32) -->
         <div
-          class="mx-auto w-20 h-20 md:w-24 md:h-24 rounded-full bg-white border-2 border-emerald-400 shadow-sm flex items-center justify-center overflow-hidden p-2"
+          class="mx-auto w-28 h-28 md:w-32 md:h-32 flex items-center justify-center overflow-hidden p-3"
         >
-          <img :src="logLight" alt="LetMeDoIt" class="w-full h-full object-contain" />
+          <img
+            :src="logLight"
+            alt="LetMeDoIt"
+            class="w-full h-full object-contain drop-shadow-sm"
+          />
         </div>
 
-        <div>
-          <h1 class="font-display text-3xl md:text-[2.75rem] font-extrabold text-school-900 tracking-tight leading-tight">
-            Isso significa muito, sério —
-            <span class="text-emerald-600">valeu por pensar em mim</span>
+        <!-- Títulos e Texto -->
+        <div class="space-y-4">
+          <h1
+            class="font-display text-4xl md:text-[3rem] font-extrabold text-school-900 tracking-tight leading-tight"
+          >
+            Caramba, valeu mesmo! <span class="text-emerald-500">💚</span>
           </h1>
-          <p class="mt-4 text-base md:text-lg text-school-500 max-w-xl mx-auto leading-relaxed">
-            A sua ajuda seria muito gratificante pra mim, sério.
-            Você ajuda a manter o projeto no ar e me dá energia pra
-            continuar melhorando. A conta da IA chega cara, sabia?
+          <p
+            class="text-base md:text-lg text-school-600 max-w-2xl mx-auto leading-relaxed"
+          >
+            Sério, isso ajuda demais a manter o projeto no ar. Esse tipo de
+            apoio nos motiva a continuar evoluindo o site para entregar sempre a
+            melhor experiência possível!
           </p>
-          <ul class="mt-6 flex flex-wrap items-center justify-center gap-2">
-            <li class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 text-sm font-medium text-emerald-800">
-              🖥️ Hospedagem
-            </li>
-            <li class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 text-sm font-medium text-emerald-800">
-              ⏰ Tempo de desenvolvimento
-            </li>
-            <li class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 text-sm font-medium text-emerald-800">
-              💚 Energia pra seguir
-            </li>
-          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Card de doação -->
-    <section class="pb-20 md:pb-24">
-      <div class="max-w-xl mx-auto px-4 sm:px-6">
-        <div class="rounded-2xl border border-school-400 bg-white p-6 sm:p-8 shadow-sm">
+    <!-- Card de doação (Sobreposto ao Hero com -mt-16 / md:-mt-24) -->
+    <section
+      class="pb-20 md:pb-24 px-4 sm:px-6 relative z-10 -mt-16 md:-mt-24 flex-grow"
+    >
+      <div class="max-w-2xl mx-auto">
+        <div
+          class="rounded-3xl border border-school-200/60 bg-white/95 backdrop-blur-xl p-6 sm:p-10 shadow-2xl shadow-school-900/10 ring-1 ring-black/5"
+        >
           <!-- Passo 1: escolher valor / meios -->
           <DonationCard v-if="step === 'form'" @criar="criarDoacao" />
 
           <!-- Aguardando / sucesso / erro -->
           <PaymentStatus
             v-else
-            :step="step === 'sucesso' ? 'sucesso' : step === 'erro' ? 'erro' : 'aguardando'"
+            :step="['sucesso', 'erro'].includes(step) ? step : 'aguardando'"
             :amount-cents="pagamento?.amountCents ?? 0"
             :recurring="pagamento?.recurring ?? false"
             :erro-msg="erroMsg"
@@ -202,13 +211,16 @@ onUnmounted(() => {
     </section>
 
     <!-- Footer -->
-    <footer class="bg-school-900 text-school-400">
+    <footer class="bg-school-900 text-school-400 mt-auto">
       <div
         class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
       >
         <!-- Marca -->
-        <div class="space-y-4">
-          <RouterLink to="/" class="flex items-center gap-2">
+        <div class="space-y-5">
+          <RouterLink
+            to="/"
+            class="flex items-center gap-2 transition-opacity hover:opacity-80"
+          >
             <img :src="logDark" alt="Logo LetMeDoIt" class="h-8 w-auto" />
           </RouterLink>
           <p class="text-sm text-school-500 leading-relaxed max-w-xs">
@@ -219,36 +231,40 @@ onUnmounted(() => {
             <a
               href="https://www.instagram.com/letmedoit_ifpi"
               aria-label="Instagram"
-              class="w-9 h-9 rounded-lg bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all"
+              class="w-10 h-10 rounded-xl bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all duration-300"
             >
-              <i class="pi pi-instagram text-sm"></i>
+              <i class="pi pi-instagram text-base"></i>
             </a>
             <a
               href="#"
               aria-label="YouTube"
-              class="w-9 h-9 rounded-lg bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all"
+              class="w-10 h-10 rounded-xl bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all duration-300"
             >
-              <i class="pi pi-youtube text-sm"></i>
+              <i class="pi pi-youtube text-base"></i>
             </a>
             <a
               href="#"
               aria-label="LinkedIn"
-              class="w-9 h-9 rounded-lg bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all"
+              class="w-10 h-10 rounded-xl bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all duration-300"
             >
-              <i class="pi pi-linkedin text-sm"></i>
+              <i class="pi pi-linkedin text-base"></i>
             </a>
           </div>
         </div>
 
         <!-- Navegação -->
-        <div class="space-y-4">
-          <h3 class="text-xs font-bold text-white uppercase tracking-widest">Navegação</h3>
-          <nav class="flex flex-col gap-3">
+        <div class="space-y-5">
+          <h3 class="text-xs font-bold text-white uppercase tracking-widest">
+            Navegação
+          </h3>
+          <nav class="flex flex-col gap-3.5">
             <RouterLink
               to="/"
-              class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
+              class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2 group"
             >
-              <i class="pi pi-arrow-left text-xs text-indigo-400"></i>
+              <i
+                class="pi pi-arrow-left text-xs text-indigo-400 group-hover:-translate-x-1 transition-transform"
+              ></i>
               Voltar para o site
             </RouterLink>
             <RouterLink
@@ -265,7 +281,7 @@ onUnmounted(() => {
             </RouterLink>
             <RouterLink
               to="/doar"
-              class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-1.5"
+              class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
             >
               <i class="pi pi-heart text-xs text-indigo-400"></i>
               Apoiar o projeto
@@ -274,28 +290,40 @@ onUnmounted(() => {
         </div>
 
         <!-- Empresa -->
-        <div class="space-y-4">
-          <h3 class="text-xs font-bold text-white uppercase tracking-widest">Empresa</h3>
-          <nav class="flex flex-col gap-3">
-            <RouterLink to="/" class="text-sm text-school-400 hover:text-white transition-colors">
-              Sobre Nós
-            </RouterLink>
-            <RouterLink to="/" class="text-sm text-school-400 hover:text-white transition-colors">
-              Equipe
-            </RouterLink>
-            <RouterLink to="/" class="text-sm text-school-400 hover:text-white transition-colors">
-              Blog
-            </RouterLink>
-            <a href="#" class="text-sm text-school-400 hover:text-white transition-colors">
-              Termos de Uso
-            </a>
+        <div class="space-y-5">
+          <h3 class="text-xs font-bold text-white uppercase tracking-widest">
+            Empresa
+          </h3>
+          <nav class="flex flex-col gap-3.5">
+            <RouterLink
+              to="/"
+              class="text-sm text-school-400 hover:text-white transition-colors"
+              >Sobre Nós</RouterLink
+            >
+            <RouterLink
+              to="/"
+              class="text-sm text-school-400 hover:text-white transition-colors"
+              >Equipe</RouterLink
+            >
+            <RouterLink
+              to="/"
+              class="text-sm text-school-400 hover:text-white transition-colors"
+              >Blog</RouterLink
+            >
+            <a
+              href="#"
+              class="text-sm text-school-400 hover:text-white transition-colors"
+              >Termos de Uso</a
+            >
           </nav>
         </div>
 
         <!-- Contato rápido -->
-        <div class="space-y-4">
-          <h3 class="text-xs font-bold text-white uppercase tracking-widest">Entre em contato</h3>
-          <nav class="flex flex-col gap-3">
+        <div class="space-y-5">
+          <h3 class="text-xs font-bold text-white uppercase tracking-widest">
+            Entre em contato
+          </h3>
+          <nav class="flex flex-col gap-3.5">
             <a
               href="mailto:contato@letmedoit.app.br"
               class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
@@ -310,24 +338,22 @@ onUnmounted(() => {
               <i class="pi pi-phone text-xs text-indigo-400"></i>
               +55 (89) 99426-8109
             </a>
-            <a
-              href="#"
-              class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
-            >
+            <span class="text-sm text-school-400 flex items-center gap-2">
               <i class="pi pi-map-marker text-xs text-indigo-400"></i>
               Picos · Piauí
-            </a>
+            </span>
           </nav>
         </div>
       </div>
 
       <!-- Créditos -->
-      <div class="border-t border-school-800 py-6">
+      <div class="border-t border-school-800/60 py-6 bg-school-950/30">
         <div
-          class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3"
+          class="max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
         >
-          <p class="text-xs text-school-600">&copy; 2026 LetMeDoIt. Todos os direitos reservados.</p>
-          <p class="text-xs text-school-600">Pagamentos processados pelo ASAAS (ambiente de teste).</p>
+          <p class="text-xs text-school-600">
+            &copy; 2026 LetMeDoIt. Todos os direitos reservados.
+          </p>
         </div>
       </div>
     </footer>
