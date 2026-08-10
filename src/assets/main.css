@@ -46,6 +46,11 @@
   .page-content {
     padding-top: 4rem;
   }
+
+  /* Páginas públicas (auth/landing) não têm topbar fixa */
+  .page-content.public-page {
+    padding-top: 0;
+  }
 }
 
 /* Page transition animations */

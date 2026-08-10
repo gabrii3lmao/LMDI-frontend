@@ -58,7 +58,7 @@ const confetes = Array.from({ length: 12 }, (_, i) => i + 1);
         <div
           class="don-coracao w-20 h-20 rounded-full bg-emerald-500 flex items-center justify-center shadow-md"
         >
-          <i class="pi pi-heart text-white text-3xl"></i>
+          <i class="pi pi-heart text-white text-3xl" style="font-size: 1.5rem;"></i>
         </div>
       </div>
       <h3 class="don-fade text-2xl font-extrabold text-school-900 mb-2">

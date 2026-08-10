@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from "vue";
+import { useRoute } from "vue-router";
 import { useQueryClient } from "@tanstack/vue-query";
 import TheAside from "./components/TheAside.vue";
 import Toast from "primevue/toast";
@@ -8,6 +9,7 @@ import SupportPrompt from "./components/donation/SupportPrompt.vue";
 import { isRouteLoading } from "./router";
 import { getSocket } from "./services/socket";
 
+const route = useRoute();
 const queryClient = useQueryClient();
 
 onMounted(() => {
@@ -34,7 +36,7 @@ onUnmounted(() => {
         <Toast />
         <ConfirmDialog />
         <SupportPrompt />
-        <div class="page-content">
+        <div class="page-content" :class="{ 'public-page': route.meta.hideSidebar }">
             <RouterView v-slot="{ Component }">
                 <Transition name="page" mode="out-in">
                     <component :is="Component" />

@@ -117,12 +117,12 @@ onUnmounted(() => {
                 "{{ depoimentos[current]!.quote }}"
               </p>
               <div class="flex items-center justify-center gap-4">
-                <img
+                <!-- <img
                   :src="depoimentos[current]!.photo"
                   :alt="`Foto de ${depoimentos[current]!.author}`"
                   class="w-14 h-14 rounded-full object-cover border-2 border-borda-200"
                   loading="lazy"
-                />
+                /> -->
                 <div class="text-left">
                   <p class="text-lg font-bold text-school-900">{{ depoimentos[current]!.author }}</p>
                   <p class="text-sm text-school-500">{{ depoimentos[current]!.role }}</p>

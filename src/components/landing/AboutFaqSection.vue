@@ -54,7 +54,7 @@ function toggle(index: number) {
               Perguntas <span class="text-indigo-600">frequentes</span>
             </h2>
             <p class="text-lg text-school-500">
-              Somos uma plataforma feita por e para educadores. Trabalhamos para devolver ao
+              Somos uma plataforma feita para educadores. Trabalhamos para devolver ao
               professor o que mais importa: tempo para ensinar.
             </p>
           </div>

@@ -3,8 +3,6 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { RouterLink } from "vue-router";
 
 interface HeroSlide {
-  badge: string;
-  badgeIcon: string;
   titleRest: string;
   titleHighlight: string;
   subtitle: string;
@@ -14,8 +12,6 @@ interface HeroSlide {
 
 const slides: HeroSlide[] = [
   {
-    badge: "Correção de provas por inteligência artificial",
-    badgeIcon: "pi-sparkles",
     titleRest: "Corrigir provas é",
     titleHighlight: "trabalho da IA.",
     subtitle:
@@ -24,8 +20,6 @@ const slides: HeroSlide[] = [
     imgAlt: "Tela do dashboard do LetMeDoIt com métricas de desempenho",
   },
   {
-    badge: "Feito para escolas e professores",
-    badgeIcon: "pi-building",
     titleRest: "Mais tempo para ensinar,",
     titleHighlight: "menos pilhas de papel.",
     subtitle:
@@ -34,8 +28,6 @@ const slides: HeroSlide[] = [
     imgAlt: "Tela de correção de provas do LetMeDoIt",
   },
   {
-    badge: "Simples, rápido e no seu bolso",
-    badgeIcon: "pi-mobile",
     titleRest: "Notas prontas em segundos,",
     titleHighlight: "direto do celular.",
     subtitle:
@@ -98,12 +90,6 @@ onUnmounted(() => {
         <div class="text-center lg:text-left">
           <Transition name="slide" mode="out-in">
             <div :key="current" class="space-y-6">
-              <span
-                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-700 text-sm font-semibold border border-borda-200"
-              >
-                <i :class="['pi', slides[current]!.badgeIcon, 'text-xs']"></i>
-                {{ slides[current]!.badge }}
-              </span>
               <h1
                 class="text-4xl md:text-5xl xl:text-6xl font-display font-extrabold text-school-900 tracking-tight leading-[1.1]"
               >

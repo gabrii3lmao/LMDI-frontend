@@ -5,10 +5,10 @@ const contactInfo = [
   {
     icon: "pi-map-marker",
     label: "Endereço",
-    value: "IFPI · Picos, Piauí · Brasil",
+    value: "IFPI Campus Picos · Av. Pedro Marques de Medeiros, S/N, Picos - PI",
   },
-  { icon: "pi-phone", label: "Telefone", value: "+55 (86) 90000-0000" },
-  { icon: "pi-envelope", label: "E-mail", value: "contato@letmedoit.app.br" },
+  { icon: "pi-phone", label: "Telefone", value: "+55 (89) 99426-8109" },
+  { icon: "pi-envelope", label: "E-mail", value: "gabrielmluz56@gmail.com" },
 ];
 
 const form = reactive({ nome: "", email: "", mensagem: "" });
@@ -73,28 +73,38 @@ async function handleSubmit() {
               <i :class="['pi', info.icon, 'text-3xl text-indigo-600 shrink-0']"></i>
               <div>
                 <p class="text-sm font-bold text-school-900">{{ info.label }}</p>
-                <p class="text-sm text-school-500 mt-0.5">{{ info.value }}</p>
+                <a
+                  v-if="info.label === 'E-mail'"
+                  :href="`mailto:${info.value}`"
+                  class="text-sm text-school-500 hover:text-indigo-600 transition-colors mt-0.5"
+                >
+                  {{ info.value }}
+                </a>
+                <a
+                  v-else-if="info.label === 'Telefone'"
+                  :href="`tel:${info.value.replace(/[^\d+]/g, '')}`"
+                  class="text-sm text-school-500 hover:text-indigo-600 transition-colors mt-0.5"
+                >
+                  {{ info.value }}
+                </a>
+                <p v-else class="text-sm text-school-500 mt-0.5">{{ info.value }}</p>
               </div>
             </div>
           </div>
 
-          <!-- Mapa placeholder -->
+          <!-- Mapa -->
           <div
-            class="relative rounded-2xl overflow-hidden border border-school-200 h-64 map-grid"
+            class="relative rounded-2xl overflow-hidden border border-school-200 h-64"
           >
-            <div
-              class="absolute inset-0 flex flex-col items-center justify-center"
-            >
-              <div
-                class="w-14 h-14 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-lg shadow-indigo-500/40 animate-bounce"
-              >
-                <i class="pi pi-map-marker text-xl"></i>
-              </div>
-              <p class="mt-3 text-sm font-bold text-school-700">
-                Teresina · Piauí · Brasil
-              </p>
-              <p class="text-xs text-school-400">Mapa ilustrativo</p>
-            </div>
+            <iframe
+              src="https://maps.google.com/maps?q=IFPI%20Campus%20Picos&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              class="absolute inset-0 w-full h-full border-0"
+              style="filter: grayscale(20%) contrast(1.05)"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+              title="Mapa do IFPI Campus Picos"
+            ></iframe>
           </div>
         </div>
 
@@ -211,14 +221,6 @@ async function handleSubmit() {
 </template>
 
 <style scoped>
-.map-grid {
-  background-color: #f8fafc;
-  background-image:
-    linear-gradient(rgba(5, 150, 105, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(5, 150, 105, 0.12) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;

@@ -77,7 +77,9 @@ async function handleSignup() {
       email: email.value,
       password: password.value,
     });
-    successMessage.value = res.data.message || "Conta criada! Verifique seu email antes de fazer login.";
+    successMessage.value =
+      res.data.message ||
+      "Conta criada! Verifique seu email antes de fazer login.";
     toast.add({
       severity: "success",
       summary: "Conta criada!",
@@ -104,7 +106,9 @@ async function handleSignup() {
 </script>
 
 <template>
-  <div class="min-h-screen flex w-full font-sans bg-school-50 dark:bg-lousa-900 overflow-hidden">
+  <div
+    class="min-h-dvh flex w-full font-sans bg-school-50 dark:bg-lousa-900 overflow-hidden"
+  >
     <div
       class="hidden lg:flex lg:w-1/2 relative overflow-hidden flex-col justify-between p-12 xl:p-16"
     >
@@ -120,10 +124,15 @@ async function handleSignup() {
 
       <div
         class="absolute inset-0 z-[5] opacity-[0.04]"
-        style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 24px 24px;"
+        style="
+          background-image: radial-gradient(circle, white 1px, transparent 1px);
+          background-size: 24px 24px;
+        "
       ></div>
 
-      <div class="absolute right-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent z-20"></div>
+      <div
+        class="absolute right-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent z-20"
+      ></div>
 
       <div class="relative z-20 flex items-center gap-4">
         <div
@@ -144,13 +153,6 @@ async function handleSignup() {
       </div>
 
       <div class="relative z-20 mt-auto max-w-lg">
-        <div
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-400/10 border border-borda-400/20 text-indigo-300 text-xs font-semibold mb-6 shadow-sm"
-        >
-          <i class="pi pi-sparkles text-[10px]"></i>
-          <span>Painel Docente</span>
-        </div>
-
         <h1
           class="text-4xl xl:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tight"
         >
@@ -167,201 +169,245 @@ async function handleSignup() {
     </div>
 
     <div
-      class="w-full lg:w-1/2 flex flex-col justify-center p-8 sm:p-16 lg:px-24 xl:px-32 relative shadow-[-8px_0_30px_rgba(0,0,0,0.08)] bg-gradient-to-l from-school-50 via-school-50 to-indigo-50/20 dark:from-lousa-900 dark:via-lousa-900 dark:to-indigo-950/20"
+      class="w-full lg:w-1/2 flex flex-col justify-center p-5 sm:p-10 lg:px-16 xl:px-24 relative shadow-[-8px_0_30px_rgba(0,0,0,0.08)] bg-gradient-to-l from-school-50 via-school-50 to-indigo-50/20 dark:from-lousa-900 dark:via-lousa-900 dark:to-indigo-950/20"
     >
       <div
         class="absolute top-0 right-0 w-72 h-72 translate-x-1/3 -translate-y-1/3 rounded-full bg-indigo-500/5 blur-3xl pointer-events-none"
       ></div>
 
       <div class="w-full max-w-sm mx-auto relative z-10">
-        <div class="lg:hidden flex flex-col items-center mb-8 gap-4">
+        <div class="lg:hidden flex items-center justify-center gap-3 mb-5">
           <div
-            class="w-22 h-22 rounded-2xl flex items-center justify-center p-3 shadow-sm"
+            class="w-10 h-10 rounded-xl flex items-center justify-center p-1 shadow-sm shrink-0"
           >
             <img
               src="@/assets/logo1.webp"
               alt="Logo"
-              class="w-16 h-22 object-contain"
+              class="w-full h-full object-contain"
             />
           </div>
           <h1
-            class="text-4xl font-extrabold text-school-800 dark:text-lousa-100 text-center tracking-tight"
+            class="text-2xl font-extrabold text-school-800 dark:text-lousa-100 text-center tracking-tight"
           >
             LetMe<span class="text-indigo-600 dark:text-indigo-400">DoIt</span>
           </h1>
         </div>
 
-          <div class="mb-8 text-center sm:text-left">
-            <h2
-              class="text-2xl sm:text-3xl font-extrabold text-school-800 dark:text-lousa-100 tracking-tight"
+        <div class="mb-4 text-center sm:text-left">
+          <h2
+            class="text-xl sm:text-2xl font-extrabold text-school-800 dark:text-lousa-100 tracking-tight"
+          >
+            Crie sua conta
+          </h2>
+          <p class="text-school-500 dark:text-lousa-400 text-sm mt-2">
+            Preencha seus dados para começar.
+          </p>
+        </div>
+
+        <div
+          v-if="successMessage"
+          class="mb-4 flex items-start gap-3 p-4 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-borda-100 dark:border-borda-800 text-indigo-700 dark:text-indigo-400"
+        >
+          <i class="pi pi-check-circle mt-0.5 shrink-0 text-indigo-500"></i>
+          <p class="text-sm font-medium">{{ successMessage }}</p>
+        </div>
+
+        <div
+          v-if="errorMessage"
+          class="mb-4 flex items-start gap-3 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 text-red-700 dark:text-red-400"
+        >
+          <i class="pi pi-exclamation-circle mt-0.5 shrink-0 text-red-500"></i>
+          <p class="text-sm font-medium">{{ errorMessage }}</p>
+        </div>
+
+        <form class="space-y-3.5" @submit.prevent="handleSignup">
+          <div>
+            <label
+              class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-1 px-1"
             >
-              Crie sua conta
-            </h2>
-            <p class="text-school-500 dark:text-lousa-400 text-sm mt-2">
-              Preencha seus dados para começar.
+              Nome completo
+            </label>
+            <input
+              v-model="name"
+              type="text"
+              placeholder="Ex: Prof. Carlos Silva"
+              required
+              class="w-full px-4 py-2.5 bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-800 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
+              :class="
+                fieldErrors.name
+                  ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20'
+                  : ''
+              "
+            />
+            <p
+              v-if="fieldErrors.name"
+              class="mt-1.5 text-xs font-medium text-red-500 dark:text-red-400 flex items-center gap-1"
+            >
+              <i class="pi pi-exclamation-circle text-[10px]"></i>
+              {{ fieldErrors.name }}
             </p>
           </div>
 
-          <div
-            v-if="successMessage"
-            class="mb-6 flex items-start gap-3 p-4 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-borda-100 dark:border-borda-800 text-indigo-700 dark:text-indigo-400"
-          >
-            <i class="pi pi-check-circle mt-0.5 shrink-0 text-indigo-500"></i>
-            <p class="text-sm font-medium">{{ successMessage }}</p>
-          </div>
-
-          <div
-            v-if="errorMessage"
-            class="mb-6 flex items-start gap-3 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 text-red-700 dark:text-red-400"
-          >
-            <i
-              class="pi pi-exclamation-circle mt-0.5 shrink-0 text-red-500"
-            ></i>
-            <p class="text-sm font-medium">{{ errorMessage }}</p>
-          </div>
-
-          <form class="space-y-5" @submit.prevent="handleSignup">
-            <div>
-              <label
-                class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-2 px-1"
-              >
-                Nome completo
-              </label>
-              <input
-                v-model="name"
-                type="text"
-                placeholder="Ex: Prof. Carlos Silva"
-                required
-                class="w-full px-4 py-3 bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-800 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
-                :class="fieldErrors.name ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20' : ''"
-              />
-              <p v-if="fieldErrors.name" class="mt-1.5 text-xs font-medium text-red-500 dark:text-red-400 flex items-center gap-1">
-                <i class="pi pi-exclamation-circle text-[10px]"></i>
-                {{ fieldErrors.name }}
-              </p>
-            </div>
-
-            <div>
-              <label
-                class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-2 px-1"
-              >
-                E-mail institucional
-              </label>
-              <input
-                v-model="email"
-                type="email"
-                placeholder="carlos.silva@escola.com"
-                required
-                class="w-full px-4 py-3 bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-800 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
-                :class="fieldErrors.email ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20' : ''"
-              />
-              <p v-if="fieldErrors.email" class="mt-1.5 text-xs font-medium text-red-500 dark:text-red-400 flex items-center gap-1">
-                <i class="pi pi-exclamation-circle text-[10px]"></i>
-                {{ fieldErrors.email }}
-              </p>
-            </div>
-
-            <div>
-              <label
-                class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-2 px-1"
-              >
-                Senha
-              </label>
-              <div class="relative">
-                <input
-                  v-model="password"
-                  :type="showPassword ? 'text' : 'password'"
-                  placeholder="••••••••"
-                  required
-                  class="w-full px-4 py-3 pr-11 bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-800 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
-                  :class="fieldErrors.password ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20' : ''"
-                />
-                <button
-                  type="button"
-                  @click="showPassword = !showPassword"
-                  class="absolute right-3 top-1/2 -translate-y-1/2 text-school-400 dark:text-lousa-500 hover:text-school-600 dark:hover:text-lousa-300 transition-colors p-1"
-                  :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
-                >
-                  <i :class="['pi text-sm', showPassword ? 'pi-eye-slash' : 'pi-eye']"></i>
-                </button>
-              </div>
-              <p v-if="fieldErrors.password" class="mt-1.5 text-xs font-medium text-red-500 dark:text-red-400 flex items-center gap-1">
-                <i class="pi pi-exclamation-circle text-[10px]"></i>
-                {{ fieldErrors.password }}
-              </p>
-            </div>
-
-            <div>
-              <label
-                class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-2 px-1"
-              >
-                Confirmar Senha
-              </label>
-              <div class="relative">
-                <input
-                  v-model="confirmPassword"
-                  :type="showConfirmPassword ? 'text' : 'password'"
-                  placeholder="••••••••"
-                  required
-                  class="w-full px-4 py-3 pr-11 bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-800 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
-                  :class="fieldErrors.confirmPassword ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20' : ''"
-                />
-                <button
-                  type="button"
-                  @click="showConfirmPassword = !showConfirmPassword"
-                  class="absolute right-3 top-1/2 -translate-y-1/2 text-school-400 dark:text-lousa-500 hover:text-school-600 dark:hover:text-lousa-300 transition-colors p-1"
-                  :aria-label="showConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'"
-                >
-                  <i :class="['pi text-sm', showConfirmPassword ? 'pi-eye-slash' : 'pi-eye']"></i>
-                </button>
-              </div>
-              <p v-if="fieldErrors.confirmPassword" class="mt-1.5 text-xs font-medium text-red-500 dark:text-red-400 flex items-center gap-1">
-                <i class="pi pi-exclamation-circle text-[10px]"></i>
-                {{ fieldErrors.confirmPassword }}
-              </p>
-            </div>
-
-            <button
-              type="submit"
-              :disabled="loading"
-              class="w-full py-3.5 mt-2 rounded-xl font-bold text-white bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-indigo-600/10 active:scale-[0.98]"
+          <div>
+            <label
+              class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-1 px-1"
             >
-              <span
-                v-if="loading"
-                class="flex items-center justify-center gap-2"
-              >
-                <i class="pi pi-spin pi-spinner text-sm"></i> Criando conta...
-              </span>
-              <span v-else>Criar Conta</span>
-            </button>
-          </form>
-
-          <div class="relative my-7">
-            <div class="absolute inset-0 flex items-center">
-              <div class="w-full border-t border-school-200 dark:border-lousa-700"></div>
-            </div>
-            <div class="relative flex justify-center text-sm">
-              <span class="px-3 bg-school-50 dark:bg-lousa-900 text-school-500 dark:text-lousa-400 font-medium">
-                Ou
-              </span>
-            </div>
-          </div>
-
-          <div class="flex justify-center w-full transform transition-all hover:scale-[1.02] active:scale-[0.98]">
-            <GoogleLogin :callback="callbackGoogle" :button-config="{text: 'signup_with' }" />
-          </div>
-
-          <div
-            class="mt-8 pt-6 border-t border-school-100 dark:border-lousa-700 text-center text-sm text-school-500 dark:text-lousa-400"
-          >
-            Já possui uma conta?
-            <RouterLink
-              to="/signin"
-              class="font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
+              E-mail institucional
+            </label>
+            <input
+              v-model="email"
+              type="email"
+              placeholder="carlos.silva@escola.com"
+              required
+              class="w-full px-4 py-2.5 bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-800 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
+              :class="
+                fieldErrors.email
+                  ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20'
+                  : ''
+              "
+            />
+            <p
+              v-if="fieldErrors.email"
+              class="mt-1.5 text-xs font-medium text-red-500 dark:text-red-400 flex items-center gap-1"
             >
-              Entrar
-            </RouterLink>
+              <i class="pi pi-exclamation-circle text-[10px]"></i>
+              {{ fieldErrors.email }}
+            </p>
           </div>
+
+          <div>
+            <label
+              class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-1 px-1"
+            >
+              Senha
+            </label>
+            <div class="relative">
+              <input
+                v-model="password"
+                :type="showPassword ? 'text' : 'password'"
+                placeholder="••••••••"
+                required
+                class="w-full px-4 py-3 pr-11 bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-800 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
+                :class="
+                  fieldErrors.password
+                    ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20'
+                    : ''
+                "
+              />
+              <button
+                type="button"
+                @click="showPassword = !showPassword"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-school-400 dark:text-lousa-500 hover:text-school-600 dark:hover:text-lousa-300 transition-colors p-1"
+                :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
+              >
+                <i
+                  :class="[
+                    'pi text-sm',
+                    showPassword ? 'pi-eye-slash' : 'pi-eye',
+                  ]"
+                ></i>
+              </button>
+            </div>
+            <p
+              v-if="fieldErrors.password"
+              class="mt-1.5 text-xs font-medium text-red-500 dark:text-red-400 flex items-center gap-1"
+            >
+              <i class="pi pi-exclamation-circle text-[10px]"></i>
+              {{ fieldErrors.password }}
+            </p>
+          </div>
+
+          <div>
+            <label
+              class="block text-xs font-bold text-school-500 dark:text-lousa-400 uppercase tracking-wider mb-1 px-1"
+            >
+              Confirmar Senha
+            </label>
+            <div class="relative">
+              <input
+                v-model="confirmPassword"
+                :type="showConfirmPassword ? 'text' : 'password'"
+                placeholder="••••••••"
+                required
+                class="w-full px-4 py-3 pr-11 bg-school-50/50 dark:bg-lousa-700/50 border border-school-200 dark:border-lousa-600 rounded-xl text-school-800 dark:text-lousa-100 placeholder-school-400 dark:placeholder-lousa-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
+                :class="
+                  fieldErrors.confirmPassword
+                    ? 'border-red-300 dark:border-red-700 focus:ring-red-500/20'
+                    : ''
+                "
+              />
+              <button
+                type="button"
+                @click="showConfirmPassword = !showConfirmPassword"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-school-400 dark:text-lousa-500 hover:text-school-600 dark:hover:text-lousa-300 transition-colors p-1"
+                :aria-label="
+                  showConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'
+                "
+              >
+                <i
+                  :class="[
+                    'pi text-sm',
+                    showConfirmPassword ? 'pi-eye-slash' : 'pi-eye',
+                  ]"
+                ></i>
+              </button>
+            </div>
+            <p
+              v-if="fieldErrors.confirmPassword"
+              class="mt-1.5 text-xs font-medium text-red-500 dark:text-red-400 flex items-center gap-1"
+            >
+              <i class="pi pi-exclamation-circle text-[10px]"></i>
+              {{ fieldErrors.confirmPassword }}
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            :disabled="loading"
+            class="w-full py-3 mt-1 rounded-xl font-bold text-white bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-indigo-600/10 active:scale-[0.98]"
+          >
+            <span v-if="loading" class="flex items-center justify-center gap-2">
+              <i class="pi pi-spin pi-spinner text-sm"></i> Criando conta...
+            </span>
+            <span v-else>Criar Conta</span>
+          </button>
+        </form>
+
+        <div class="relative my-4">
+          <div class="absolute inset-0 flex items-center">
+            <div
+              class="w-full border-t border-school-200 dark:border-lousa-700"
+            ></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span
+              class="px-3 bg-school-50 dark:bg-lousa-900 text-school-500 dark:text-lousa-400 font-medium"
+            >
+              Ou
+            </span>
+          </div>
+        </div>
+
+        <div
+          class="flex justify-center w-full transform transition-all hover:scale-[1.02] active:scale-[0.98]"
+        >
+          <GoogleLogin
+            :callback="callbackGoogle"
+            :button-config="{ text: 'signup_with' }"
+          />
+        </div>
+
+        <div
+          class="mt-5 pt-4 border-t border-school-100 dark:border-lousa-700 text-center text-sm text-school-500 dark:text-lousa-400"
+        >
+          Já possui uma conta?
+          <RouterLink
+            to="/signin"
+            class="font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
+          >
+            Entrar
+          </RouterLink>
+        </div>
       </div>
     </div>
   </div>

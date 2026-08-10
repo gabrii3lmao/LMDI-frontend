@@ -10,10 +10,9 @@ const activeId = ref("inicio");
 const navItems = [
   { id: "inicio", label: "Início" },
   { id: "servicos", label: "Serviços" },
-  { id: "portfolio", label: "Portfólio" },
+  // { id: "portfolio", label: "Portfólio" },
   { id: "precos", label: "Preços" },
   { id: "sobre", label: "Sobre" },
-  { id: "equipe", label: "Equipe" },
   { id: "contato", label: "Contato" },
 ];
 

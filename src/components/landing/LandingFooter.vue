@@ -33,20 +33,6 @@ function scrollTop() {
           >
             <i class="pi pi-instagram text-sm"></i>
           </a>
-          <a
-            href="#"
-            aria-label="YouTube"
-            class="w-9 h-9 rounded-lg bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all"
-          >
-            <i class="pi pi-youtube text-sm"></i>
-          </a>
-          <a
-            href="#"
-            aria-label="LinkedIn"
-            class="w-9 h-9 rounded-lg bg-school-800 hover:bg-indigo-600 flex items-center justify-center text-school-400 hover:text-white transition-all"
-          >
-            <i class="pi pi-linkedin text-sm"></i>
-          </a>
         </div>
       </div>
 
@@ -122,18 +108,18 @@ function scrollTop() {
         <h3 class="text-xs font-bold text-white uppercase tracking-widest">Entre em contato</h3>
         <nav class="flex flex-col gap-3">
           <a
-            href="mailto:contato@letmedoit.app.br"
+            href="mailto:gabrielmluz56@gmail.com"
             class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
           >
             <i class="pi pi-envelope text-xs text-indigo-400"></i>
-            contato@letmedoit.app.br
+            gabrielmluz56@gmail.com
           </a>
           <a
-            href="tel:+5586900000000"
+            href="tel:+5589994268109"
             class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
           >
             <i class="pi pi-phone text-xs text-indigo-400"></i>
-            +55 (86) 90000-0000
+            +55 (89) 99426-8109
           </a>
           <a
             href="#contato"
@@ -141,7 +127,7 @@ function scrollTop() {
             class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
           >
             <i class="pi pi-map-marker text-xs text-indigo-400"></i>
-            Picos · Piauí
+            IFPI Campus Picos · Picos - PI
           </a>
         </nav>
       </div>

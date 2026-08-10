@@ -325,14 +325,14 @@ onUnmounted(() => {
           </h3>
           <nav class="flex flex-col gap-3.5">
             <a
-              href="mailto:contato@letmedoit.app.br"
+              href="mailto:gabrielmluz56@gmail.com"
               class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
             >
               <i class="pi pi-envelope text-xs text-indigo-400"></i>
-              contato@letmedoit.app.br
+              gabrielmluz56@gmail.com
             </a>
             <a
-              href="tel:+5586900000000"
+              href="tel:+5589994268109"
               class="text-sm text-school-400 hover:text-white transition-colors flex items-center gap-2"
             >
               <i class="pi pi-phone text-xs text-indigo-400"></i>
@@ -340,7 +340,7 @@ onUnmounted(() => {
             </a>
             <span class="text-sm text-school-400 flex items-center gap-2">
               <i class="pi pi-map-marker text-xs text-indigo-400"></i>
-              Picos · Piauí
+              IFPI Campus Picos · Picos - PI
             </span>
           </nav>
         </div>

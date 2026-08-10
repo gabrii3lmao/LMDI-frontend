@@ -30,7 +30,7 @@ onMounted(() => {
     <main>
       <HeroCarousel />
       <ServicesSection />
-      <PortfolioSection />
+      <!-- <PortfolioSection /> -->
       <PricingSection />
       <AboutFaqSection />
       <TestimonialsSection />
