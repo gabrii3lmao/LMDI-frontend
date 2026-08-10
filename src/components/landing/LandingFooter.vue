@@ -97,9 +97,9 @@ function scrollTop() {
             Equipe
           </a>
           <a href="#" class="text-sm text-school-400 hover:text-white transition-colors">Blog</a>
-          <a href="#" class="text-sm text-school-400 hover:text-white transition-colors">
+          <RouterLink to="/termos" class="text-sm text-school-400 hover:text-white transition-colors">
             Termos de Uso
-          </a>
+          </RouterLink>
         </nav>
       </div>
 
@@ -143,9 +143,9 @@ function scrollTop() {
           <a href="#" class="text-xs text-school-600 hover:text-school-400 transition-colors">
             Privacidade
           </a>
-          <a href="#" class="text-xs text-school-600 hover:text-school-400 transition-colors">
+          <RouterLink to="/termos" class="text-xs text-school-600 hover:text-school-400 transition-colors">
             Termos
-          </a>
+          </RouterLink>
           <a href="#" class="text-xs text-school-600 hover:text-school-400 transition-colors">
             Cookies
           </a>

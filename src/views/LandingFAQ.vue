@@ -308,7 +308,7 @@ onUnmounted(() => {
             <a href="#" class="text-sm text-school-400 hover:text-white transition-colors">Sobre Nós</a>
             <a href="#" class="text-sm text-school-400 hover:text-white transition-colors">Blog</a>
             <a href="#" class="text-sm text-school-400 hover:text-white transition-colors">Carreiras</a>
-            <a href="#" class="text-sm text-school-400 hover:text-white transition-colors">Termos de Uso</a>
+            <RouterLink to="/termos" class="text-sm text-school-400 hover:text-white transition-colors">Termos de Uso</RouterLink>
           </nav>
         </div>
         <div class="space-y-4">
@@ -330,7 +330,7 @@ onUnmounted(() => {
           <p class="text-xs text-school-600">&copy; 2026 LetMeDoIt. Todos os direitos reservados.</p>
           <div class="flex items-center gap-4">
             <a href="#" class="text-xs text-school-600 hover:text-school-400 transition-colors">Privacidade</a>
-            <a href="#" class="text-xs text-school-600 hover:text-school-400 transition-colors">Termos</a>
+            <RouterLink to="/termos" class="text-xs text-school-600 hover:text-school-400 transition-colors">Termos</RouterLink>
             <a href="#" class="text-xs text-school-600 hover:text-school-400 transition-colors">Cookies</a>
           </div>
         </div>

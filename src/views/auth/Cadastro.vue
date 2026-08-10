@@ -11,6 +11,7 @@ const password = ref("");
 const confirmPassword = ref("");
 const showPassword = ref(false);
 const showConfirmPassword = ref(false);
+const acceptedTerms = ref(false);
 const loading = ref(false);
 const successMessage = ref("");
 const errorMessage = ref("");
@@ -31,6 +32,7 @@ const callbackGoogle = async (response: any) => {
     localStorage.setItem("username", res.data.user.name);
     localStorage.setItem("userId", res.data.user.id);
     localStorage.setItem("userPhoto", res.data.user.avatarUrl || "");
+    localStorage.setItem("acceptedTermsAt", res.data.user.acceptedTermsAt || "");
     localStorage.removeItem("supportPromptDismissed");
 
     router.push("/dashboard");
@@ -62,6 +64,9 @@ function validateForm(): boolean {
   } else if (password.value !== confirmPassword.value) {
     fieldErrors.value.confirmPassword = "As senhas não coincidem.";
   }
+  if (!acceptedTerms.value) {
+    fieldErrors.value.acceptedTerms = "Você deve aceitar os Termos de Uso.";
+  }
   return Object.keys(fieldErrors.value).length === 0;
 }
 
@@ -76,6 +81,7 @@ async function handleSignup() {
       name: name.value,
       email: email.value,
       password: password.value,
+      acceptedTerms: acceptedTerms.value,
     });
     successMessage.value =
       res.data.message ||
@@ -358,6 +364,43 @@ async function handleSignup() {
             >
               <i class="pi pi-exclamation-circle text-[10px]"></i>
               {{ fieldErrors.confirmPassword }}
+            </p>
+          </div>
+
+          <div>
+            <label
+              class="flex items-start gap-3 cursor-pointer select-none py-1"
+              :class="
+                fieldErrors.acceptedTerms
+                  ? 'text-red-500 dark:text-red-400'
+                  : ''
+              "
+            >
+              <input
+                v-model="acceptedTerms"
+                type="checkbox"
+                class="mt-0.5 h-4 w-4 rounded border-school-300 dark:border-lousa-600 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-0 dark:bg-lousa-700"
+              />
+              <span
+                class="text-xs text-school-500 dark:text-lousa-400 leading-relaxed"
+              >
+                Li e concordo com os
+                <RouterLink
+                  to="/termos"
+                  target="_blank"
+                  class="font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
+                >
+                  Termos de Uso
+                </RouterLink>
+                e com a Política de Privacidade da plataforma.
+              </span>
+            </label>
+            <p
+              v-if="fieldErrors.acceptedTerms"
+              class="mt-1.5 text-xs font-medium text-red-500 dark:text-red-400 flex items-center gap-1"
+            >
+              <i class="pi pi-exclamation-circle text-[10px]"></i>
+              {{ fieldErrors.acceptedTerms }}
             </p>
           </div>
 

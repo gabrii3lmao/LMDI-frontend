@@ -6,6 +6,7 @@ import TheAside from "./components/TheAside.vue";
 import Toast from "primevue/toast";
 import ConfirmDialog from "primevue/confirmdialog";
 import SupportPrompt from "./components/donation/SupportPrompt.vue";
+import TermsOverlay from "./components/terms/TermsOverlay.vue";
 import { isRouteLoading } from "./router";
 import { getSocket } from "./services/socket";
 
@@ -36,6 +37,7 @@ onUnmounted(() => {
         <Toast />
         <ConfirmDialog />
         <SupportPrompt />
+        <TermsOverlay />
         <div class="page-content" :class="{ 'public-page': route.meta.hideSidebar }">
             <RouterView v-slot="{ Component }">
                 <Transition name="page" mode="out-in">

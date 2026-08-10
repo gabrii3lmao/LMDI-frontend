@@ -29,6 +29,12 @@ const routes = [
     meta: { hideSidebar: true },
   },
   {
+    path: "/termos",
+    name: "termos",
+    component: () => import("@/views/Termos.vue"),
+    meta: { hideSidebar: true, title: "Termos de Uso" },
+  },
+  {
     path: "/dashboard",
     name: "home",
     component: () => import("@/views/Home.vue"),
